@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #7E2C2C; /* color institucional */
+    color: white;
+    padding: 1em;
+    text-align: center;
+    
+}
+footer {
+    background-color: #7E2C2C; /* color institucional */
+    color: white;
+    padding: 1em;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2em;
+    color: white;
+}
+main {
+    padding: 2em;
+    text-align: center;
+}
+.mensaje {
+    background-color: #e6f0ff;
+    border-left: 5px solid #004080;
+    padding: 1em;
+    margin: 1em auto;
+    width: 80%;
+}
