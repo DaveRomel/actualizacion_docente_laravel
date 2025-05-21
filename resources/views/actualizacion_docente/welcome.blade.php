@@ -19,7 +19,7 @@
         
         <header>
             <nav>
-                <div><a class="barra-nav" href="#">Inicio</a></div>
+                <div><a class="barra-nav" href="#">Actualización Docente</a></div>
                 <div ><a class="barra-nav" href="#">Regístrate</a><a> / </a><a class="barra-nav" href="#">Iniciar sesión</a></div>
             </nav>
         </header>
@@ -33,13 +33,13 @@
                 <div class="mensajes">
                     <ul>
                         <li>
-                            <p>Los cursos se abren con un mínimo de 10 integrantes</p>
+                            <p>Los cursos se abren con un mínimo de 10 integrantes.</p>
                         </li>
                         <li>
-                            <p>Si no se apertura un curso puedes darte de baja y elegir otro</p>
+                            <p>Si no se apertura un curso puedes darte de baja y elegir otro.</p>
                         </li>
                         <li>
-                            <p>fecha límite de registro es el <strong>2 de julio de 2025</strong></p>
+                            <p>fecha <strong>límite </strong>de registro es el <strong>2 de julio de 2025.</strong></p>
                         </li>
                     </ul>
                 </div>
