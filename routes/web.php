@@ -24,7 +24,12 @@ Route::get('/fastapi-lale', [FastApiController::class, 'get_users']);
 
 Route::get('/', function () {
     return view('actualizacion_docente.welcome');
+    
 });
+Route::get('/matematicas', function () {
+    return view('matematicas.matematicas');
+});
+
 
 Route::middleware('auth')-> group(function(){
     
