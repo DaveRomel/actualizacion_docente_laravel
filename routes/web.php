@@ -26,6 +26,10 @@ Route::get('/', function () {
     return view('actualizacion_docente.welcome');
 });
 
+Route::get('/fisica', function () {
+    return view('fisica.fisica');
+});
+
 Route::middleware('auth')-> group(function(){
     
 });
