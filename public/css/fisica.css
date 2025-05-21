@@ -67,3 +67,27 @@
     font-size: 19.5pt;
     color: #C68C3E;
 }
+
+
+.fisica_inscrito {
+    width: 715px;
+    height: 240px;
+    border: 1px solid #C68C3E;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.recuerda2{
+    width: 652px;
+    height: 162px;
+    border: 1px solid #C68C3E;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
