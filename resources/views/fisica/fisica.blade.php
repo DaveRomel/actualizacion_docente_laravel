@@ -17,7 +17,7 @@
     $datos = json_decode($respuesta, true);
 
     $nombre = $datos["name"];
-    $status = 1;//$datos["status"];
+    $status = 1; //$datos["status"];
     $procedencia = $datos["procedencia"];
 ?>
 
@@ -43,8 +43,8 @@
     </head>
     <body>
         
-        <header style="height: 90px;">
-            <nav>
+        <header style="height: 90px;padding: 0px; display: flex;flex-direction: row;align-items: center;justify-content: space-around;">
+            <nav style="width: 90%;">
                 <div class="titles"><strong>Inicio</strong></div>
                 <div class="titles"><a href="#">Cerrar sesión</a></div>
                 
@@ -52,6 +52,7 @@
         </header>
 
         <main class="main1">
+            
             <div class="container1">
                 <h2 class="title1">Actualización docente educacion media superior</h2>
                 <?php if ($status == 0){  ?> 
@@ -65,11 +66,13 @@
                         <a href="http://" class="inscribirme">Inscribirme</a>
                     </div>
                     <div class="recuerda1">
-                        <div class="titulo_r">Recuerda que:</div>
-                        <ul>
-                            <li>los cursos se abren con un mínimo de 10 integrantes</li>
-                            <li>Si no se apertura un curso puedes darte de baja y elegir otro</li>
-                            <li>La fecha limite de registro es el 2 de Julio 2025</li>
+                        <div class="titulosr">
+                            <div class="titulo_r">Recuerda que:</div>
+                            <div class="cupos">3/20</div>
+                        </div>
+                        <ul class="colored-marker" style="text-align: start;">
+                            <li class="lista">Solo puedes cambiar de curso sí hay disponibilidad</li>
+                            <li class="lista">Este curso tíene un cupo máximo para 20 participantes</li>
                         </ul>
                     </div>
                 <?php } else{ ?>
@@ -81,12 +84,18 @@
                             <div class="nombre_ins">Instituto: <?php echo $procedencia ?></div>
                         </div>
                     </div>
-                    <div class="recuerda1">
-                        <div class="titulo_r">Recuerda que:</div>
-                        <ul>
-                            <li>Solo puedes cambiar de curso sí hay disponibilidad</li>
-                            <li>Este curso tíene un cupo máximo para 20 participantes</li>
+                    <div class="recuerda2">
+                        <div class="titulosr">
+                            <div class="titulo_r">Recuerda que:</div>
+                            <div class="cupos">3/20</div>
+                        </div>
+                        <div style="width: 100%; display: flex">
+                            <ul style="text-align: start;">
+                            <li class="lista">los cursos se abren con un mínimo de 10 integrantes</li>
+                            <li class="lista">Si no se apertura un curso puedes darte de baja y elegir otro</li>
+                            <li class="lista">La fecha limite de registro es el 2 de Julio 2025</li>
                         </ul>
+                        </div>
                     </div>
                 <?php } ?>
             </div>

@@ -1,17 +1,43 @@
+@font-face {
+  font-family: 'Bradley Hand ITC';
+  src: url('./../fonts/BRADHITC.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .titles {
     font-family: 'Impact', sans-serif;
     font-size: 29.28pt;
     color: white;
 }
 
+.titles a {
+    color: white;        /* Aplica el color blanco al enlace */
+    text-decoration: none;  /* Opcional: quita el subrayado */
+}
+
 .main1 {
-    background-image: url('./../images/');
+    background-image: url('./../images/Grecas\ fondo\ jpg.jpg');
+    background-size: 85%; /* Ajusta la imagen al ancho y alto del contenedor */
+    position: relative;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.dar_baja {
+    position: absolute;
+    left: 0;
 }
 
 .container1 {
+    /*position: absolute;
+    left: 50%;
+    transform: translateX(-50%);*/
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 16px;
 }
 
 .title1 {
@@ -25,6 +51,7 @@
     height: 275px;
     border: 1px solid #C68C3E;
     border-radius: 10px;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,6 +62,7 @@
     font-family: 'Gabriola', sans-serif;
     font-size: 24pt;
     color: #7E2C2C;
+    height: 35px;
 }
 
 .inscribirme {
@@ -55,17 +83,32 @@
     height: auto;
     border: 1px solid #C68C3E;
     border-radius: 10px;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
 }
+.titulosr {
+    display: flex;
+    justify-content: space-between; /* distribuye espacio entre los elementos */
+    align-items: center;            /* centra verticalmente */
+    width: 90%;
+}
+
+.cupos {
+    text-align: right;
+}
+
 
 .titulo_r{
     font-family: 'Bahncrishft', sans-serif;
     font-size: 19.5pt;
     color: #C68C3E;
+    margin: 0 auto; /* se puede omitir si usamos space-between */
+    text-align: center;
+    flex: 1; 
 }
 
 
@@ -74,6 +117,7 @@
     height: 240px;
     border: 1px solid #C68C3E;
     border-radius: 10px;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -85,9 +129,18 @@
     height: 162px;
     border: 1px solid #C68C3E;
     border-radius: 10px;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
 
+ul.colored-marker li::marker {
+  color: #C68C3E;
+}
+
+.lista{
+    font-family: 'Bradley Hand ITC', sans-serif;
+    font-size: 15pt;
 }
