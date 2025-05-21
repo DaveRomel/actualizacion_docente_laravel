@@ -40,3 +40,10 @@ Route::get('/principal', function () {
     return view('actualizacion_docente.princial');
 });
 
+Route::get('/inscripcion/computacion', function () {
+    return view('computacion.principal');
+});
+
+Route::get('/confirmacion/computacion', function () {
+    return view('computacion.confirmacion');
+});
