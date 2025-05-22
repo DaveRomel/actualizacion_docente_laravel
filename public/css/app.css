@@ -37,7 +37,13 @@ header {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
+    height: 625.34px;
+    max-height: 625.34px;
+    min-height: 625.34px;
+    /* height: 561.34px;
+    max-height: 561.34px;
+    min-height: 561.34px; */
+    overflow: hidden;
 }
 .mensaje-strong {
     font-family: Bahnschrift;
