@@ -18,6 +18,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    min-width: 1150px;
+    min-height: 680px;
 }
 
 header {
@@ -33,7 +35,7 @@ header {
     color: #E1E8EC;
 }
 .fondo-personalizado {
-    background-image: url('/images/grecas.jpg');
+    background-image: url('/images/fondo.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -133,7 +135,7 @@ main {
 }
 
 /* Responsivo para móviles */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     footer .container {
         flex-direction: column;
         text-align: center;
@@ -148,4 +150,4 @@ main {
     footer p {
         text-align: center;
     }
-}
+} */
