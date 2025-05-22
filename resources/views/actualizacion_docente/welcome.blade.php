@@ -14,6 +14,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/computacion.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/registro-editar.css') }}">
 
     </head>
     <body>
@@ -25,7 +26,7 @@
             </nav>
         </header>
 
-        <main>
+        <main class="fondo-personalizado">
            @yield('contenido')
         </main>
 

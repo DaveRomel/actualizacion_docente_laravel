@@ -8,28 +8,16 @@
     src: url('/fonts/Gabriola.ttf');
 }
 
-/* Estilo para el contenedor del formulario Registrar */
+/* Estilo para el contenedor del formulario Registrar y Editar */
 .contenedor-formulario {
     background-color: white;
     border: 2px solid #C68C3E;/* dorado */
     border-radius: 30px;
     padding: 1.5rem;
     width: 340px;
-    height: 500px;
+    height: auto;
     display: block;
-    margin: -12px auto -2px auto;
-}
-
-/* Estilo para el contenedor del formulario Editar */
-.contenedor-formulario2 {
-    background-color: white;
-    border: 2px solid #C68C3E;/* dorado */
-    border-radius: 30px;
-    padding: 1.5rem;
-    width: 340px;
-    height: 375px;
-    display: block;
-    margin: -12px auto -2px auto;
+    margin: 0 auto 0 auto;
 }
 
 /* Estilo para el titulo "Registro" y "Editar información" */

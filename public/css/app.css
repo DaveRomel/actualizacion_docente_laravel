@@ -18,6 +18,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    min-width: 1150px;
+    min-height: 680px;
 }
 
 header {
@@ -33,11 +35,18 @@ header {
     color: #E1E8EC;
 }
 .fondo-personalizado {
-    background-image: url('/images/grecas.jpg');
+    background-image: url('/images/fondo.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
+    height: calc(100vh - (62.67px + 80px));
+    /* height: 625.34px;
+    max-height: 625.34px;
+    min-height: 625.34px; */
+    /* height: 561.34px;
+    max-height: 561.34px;
+    min-height: 561.34px; */
+    overflow: hidden;
 }
 .mensaje-strong {
     font-family: Bahnschrift;
@@ -126,7 +135,7 @@ main {
 }
 
 /* Responsivo para móviles */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     footer .container {
         flex-direction: column;
         text-align: center;
@@ -141,4 +150,4 @@ main {
     footer p {
         text-align: center;
     }
-}
+} */

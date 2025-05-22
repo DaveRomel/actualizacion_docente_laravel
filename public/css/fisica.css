@@ -5,29 +5,11 @@
   font-style: normal;
 }
 
-.titles {
-    font-family: 'Impact', sans-serif;
-    font-size: 29.28pt;
-    color: white;
-}
-
-.titles a {
-    color: white;        /* Aplica el color blanco al enlace */
-    text-decoration: none;  /* Opcional: quita el subrayado */
-}
-
 .main1 {
-    background-image: url('./../images/Grecas\ fondo\ jpg.jpg');
-    background-size: 85%; /* Ajusta la imagen al ancho y alto del contenedor */
     position: relative;
     height: auto;
     display: flex;
     justify-content: center;
-}
-
-.dar_baja {
-    position: absolute;
-    left: 0;
 }
 
 .container1 {
@@ -143,4 +125,19 @@ ul.colored-marker li::marker {
 .lista{
     font-family: 'Bradley Hand ITC', sans-serif;
     font-size: 15pt;
+}
+
+.temariod {
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 18pt;
+    color: #7E2C2C;
+}
+
+.dar_baja{
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 18pt;
+    color: #C68C3E;
+    margin-left: -200px;
+    margin-top: -50px;
+    align-self: flex-start;
 }

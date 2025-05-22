@@ -37,11 +37,11 @@ Route::get('/', function () {
 });
 
 Route::get('/registro', function () {
-    return view('actualizacion_docente.registro');
+    return view('actualizacion_docente.layouts.registro');
 });
 
 Route::get('/editar', function () {
-    return view('actualizacion_docente.editar');
+    return view('actualizacion_docente.layouts.editar');
 });
 
 Route::get('/iniciar_sesion', function () {
