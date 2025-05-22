@@ -17,7 +17,7 @@
     $datos = json_decode($respuesta, true);
 
     $nombre ="string"; //$datos["name"];
-    $status = 0; //$datos["status"];
+    $status = 1; //$datos["status"];
     $procedencia = "Instituto 1"//$datos["procedencia"];
 ?>
 @extends('actualizacion_docente.welcome')
@@ -74,6 +74,10 @@
                             <li class="lista">La fecha limite de registro es el 2 de Julio 2025</li>
                         </ul>
                         </div>
+                    </div>
+                    <div class="dar_baja">
+                        <img src="{{ asset('images/configuracion.png') }}" alt="computacion" style="width: 40px; height: 40px;">
+                        <a class="temariod">Dar de baja</a>
                     </div>
                 <?php } ?>
             </div>
