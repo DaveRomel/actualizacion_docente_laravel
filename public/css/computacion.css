@@ -1,0 +1,182 @@
+        /* Estilos específicos para esta vista, idealmente deberían ir en un archivo CSS */
+        html, body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column; /* Apila los elementos verticalmente */
+            max-height: 90vh; /* El contenedor principal debe ocupar al menos el 100% del viewport height */
+        }
+
+        .header {
+            background-color: #7E2C2C; /* Color vino tinto */
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: underline;
+            font-size: 42px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            margin : 0px 110px;
+        }
+
+        
+        h1.main-title {
+            color: #7E2C2C;
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .inscription-card {
+            background-color: #fff;
+            border: 1px solid #C68C3E;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .inscription-card img.icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 5px;
+        }
+
+        .inscription-card h2 {
+            font-size: 40px;
+            margin: 10px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: #7E2C2C;
+            
+        }
+
+        .inscription-card p {
+            font-size: 28px;
+            color: #7E2C2C;
+            margin: 1px;
+            font-family: Gabriola;
+        }
+
+        .inscription-card button {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            background-color: #7E2C2C; /* Color vino tinto */
+            color: white;
+            border: none;
+            padding: 2px 50px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+
+        .reminder-card {
+            background-color: #fff;
+            border: 1px solid #C68C3E;
+            border-radius: 8px;
+            padding: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+           
+        }
+
+        .reminder-card h2 {
+            font-family: Bahnschrift, 'Segoe UI', Arial, sans-serif;
+            font-size: 30px;
+            color: #C68C3E;
+            margin: 0 auto;
+             text-align: center;
+        }
+
+        .reminder-card p {
+            font-family: 'Bradley Hand ITC', 'Bradley Hand', 'Brush S   cript MT', 'Comic Sans MS', cursive;
+            font-size: 22px;
+
+            color: #333;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .reminder-card p::before {
+            content: '•';
+            color: #7E2C2C; /* Color vino tinto para el bullet */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left:0;
+            width: 100%;
+            background-color: #7E2C2C;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           
+            flex-shrink: 0; /* Asegura que no se encoja */
+            z-index: 1000;
+        }
+
+        .footer .logo img {
+            height: 65px; /* Ajusta el tamaño del logo */
+            margin-right: 10px;
+        }
+
+        .footer .logo {
+            display: flex;
+            align-items: center;
+            font-family: Bahnschrift, 'Segoe UI', Arial, sans-serif;
+            font-size: 24px;
+        }
+
+        .footer .address {
+            display: flex;
+            align-items: center;
+             text-align: center;
+            font-family: Bahnschrift, 'Segoe UI', Arial, sans-serif;
+            font-size: 18px;
+            padding: 0 80px;
+        }
+
+        .footer .address img {
+            height: 57px; /* Tamaño del icono de ubicación */
+            margin-right: 5px;
+        }
+
+        /* Media Queries para responsividad */
+        @media (max-width: 768px) {
+            .header, .footer {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .header a, .footer .address {
+                margin-top: 10px;
+            }
+
+            .footer .address {
+                text-align: center;
+            }
+        }

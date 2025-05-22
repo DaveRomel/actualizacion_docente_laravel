@@ -47,3 +47,10 @@ Route::get('/iniciar_sesion', function () {
 Route::get('/recuperar_contraseña', function () {
     return view('actualizacion_docente.recuperar_contraseña');
 });
+Route::get('/inscripcion/computacion', function () {
+    return view('computacion.principal');
+});
+
+Route::get('/confirmacion/computacion', function () {
+    return view('computacion.confirmacion');
+});
