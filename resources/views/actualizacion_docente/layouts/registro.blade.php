@@ -6,8 +6,8 @@ head:
 body:
     <header>
         <nav>
-            <div><a class="barra-nav" href="#"><u>Inicio</u></a></div>
-            <div><a class="barra-nav" href="#"><u>Iniciar sesión</u></a></div>
+            <div><a class="barra-nav" href="#">Inicio</a></div>
+            <div><a class="barra-nav" href="#">Iniciar sesión</a></div>
         </nav>
     </header>
 -->
