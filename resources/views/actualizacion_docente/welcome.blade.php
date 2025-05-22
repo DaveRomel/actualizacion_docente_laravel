@@ -19,26 +19,31 @@
         
         <header>
             <nav>
-                <div><strong>Inicio</strong></div>
-                <div><a href="#">Regístrate</a><a> / </a><a href="#">Iniciar sesión</a></div>
-                
+                <div><a class="barra-nav" href="#">Actualización Docente</a></div>
+                <div ><a class="barra-nav" href="#">Regístrate</a><a> / </a><a class="barra-nav" href="#">Iniciar sesión</a></div>
             </nav>
         </header>
 
         <main>
-            <img src="{{ asset('images/logo-blanco.png') }}" alt="Logo" style="width: 200px; height: 200px;" >
-            <div class="mensaje">
-                <p><strong>Recuerda que:</strong></p>
-                <p> los cursos se abren con un mínimo de 10 integrantes</p>
-                <p>Si no se apertura un curso puedes darte de baja y elegir otro</p>
-                <p>La fecha límite de registro es el <strong>2 de julio de 2025</strong></p>
-            </div>
+           @yield('contenido')
         </main>
 
         <footer>
-            <p><strong>Universidad Tecnológica de la Mixteca</strong></p>
-            <p>Av. Doctor Modesto Seara Vázquez No.1, Acatlima,<br>
-            Heroica Ciudad de Huajuapan de León, Oax., México, C.P. 69004</p>
+            <div class="container">
+                <div>
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 60px; height: 60px;" >
+                    <div class="footer-uni">
+                        <p>Universidad Tecnológica de la Mixteca</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="{{ asset('images/ubicacion.png') }}" alt="Logo" style="width: 40px; height: 50px;" >
+                    <div class="footer-texto">
+                        <p>Av. Doctor Modesto Seara Vázquez No.1, Acatlima,<br>
+                        Heroica Ciudad de Huajuapan de León, Oax., México, C.P. 69004</p>
+                    </div>
+                </div>
+            </div>
         </footer>
         
     </body>
