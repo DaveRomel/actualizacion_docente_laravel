@@ -33,7 +33,7 @@ header {
     color: #E1E8EC;
 }
 .fondo-personalizado {
-    background-image: url('/images/fondo.jpg');
+    background-image: url('/images/grecas.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -52,7 +52,7 @@ header {
 }
 .contenedor-lista {
     background-color: white;
-    border: 4px solid #C68C3E;/* dorado */
+    border: 4px solid #C68C3E;
     border-radius: 5px;
     padding: 1.5rem;
     width: 600px;
