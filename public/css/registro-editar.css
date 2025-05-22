@@ -1,0 +1,83 @@
+/* Declaración de las fuentes */
+@font-face {
+    font-family: 'Impact';
+    src: url('/fonts/Impact.ttf');
+}
+@font-face {
+    font-family: 'Gabriola';
+    src: url('/fonts/Gabriola.ttf');
+}
+
+/* Estilo para el contenedor del formulario Registrar */
+.contenedor-formulario {
+    background-color: white;
+    border: 2px solid #C68C3E;/* dorado */
+    border-radius: 30px;
+    padding: 1.5rem;
+    width: 340px;
+    height: 500px;
+    display: block;
+    margin: -12px auto -2px auto;
+}
+
+/* Estilo para el contenedor del formulario Editar */
+.contenedor-formulario2 {
+    background-color: white;
+    border: 2px solid #C68C3E;/* dorado */
+    border-radius: 30px;
+    padding: 1.5rem;
+    width: 340px;
+    height: 375px;
+    display: block;
+    margin: -12px auto -2px auto;
+}
+
+/* Estilo para el titulo "Registro" y "Editar información" */
+.titulo-registro {
+    font-family: Impact;
+    font-size: 32pt;
+    color: #7E2C2C;
+}
+
+/* Estilo para los inputs */
+input {
+    width: 250px;
+    padding: 4px 0; /* solo espacio arriba y abajo */
+    font-family: Gabriola;
+    font-size: 12pt;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #7E2C2C;
+    outline: none;
+}
+
+/* Estilo del placeholder */
+input::placeholder {
+    color: #7E2C2C;
+    font-family: Gabriola;
+    font-size: 16px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+/* Estilo para el botón */
+.btn-registrarme {
+    width: 220px;
+    height: 30px;
+    background-color: #7E2C2C;
+    color: white;
+    font-family: Impact;
+    font-size: 14pt;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top: 21px;
+}
+
+.btn-registrarme:hover {
+    background-color: #661f1f;
+}

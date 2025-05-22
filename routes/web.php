@@ -28,6 +28,10 @@ Route::get('/registro', function () {
     return view('actualizacion_docente.registro');
 });
 
+Route::get('/editar', function () {
+    return view('actualizacion_docente.editar');
+});
+
 Route::get('/iniciar_sesion', function () {
     return view('actualizacion_docente.iniciar_sesion');
 });
