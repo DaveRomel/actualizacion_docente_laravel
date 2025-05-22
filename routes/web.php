@@ -58,3 +58,11 @@ Route::get('/inscripcion/computacion', function () {
 Route::get('/confirmacion/computacion', function () {
     return view('computacion.confirmacion');
 });
+
+Route::get('/fisica', function () {
+    return view('fisica.fisica');
+});
+
+Route::get('/home', function () {
+    return view('home.home');
+});
