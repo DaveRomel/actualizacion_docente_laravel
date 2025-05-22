@@ -5,10 +5,22 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Bahnschrift';
+    src: url('./../fonts/BAHNSCHRIFT.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 .titles {
     font-family: 'Impact', sans-serif;
     font-size: 29.28pt;
     color: white;
+}
+
+.nombres {
+    display: flex;
 }
 
 .titles a {
@@ -19,12 +31,10 @@
 }
 
 .main1 {
-    background-image: url('./../images/Grecas\ fondo\ jpg.jpg');
-    background-size: 85%;
-    /* Ajusta la imagen al ancho y alto del contenedor */
     position: relative;
     height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -36,9 +46,20 @@
 }
 
 .bienvenido {
-    width: 1200px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+.bienvenidop{
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 24pt;
+    color: #7E2C2C;
+}
+
+.nombrep{
+    font-family: 'gabriola', sans-serif;
+    font-size: 24pt;
+    color: #7E2C2C;
 }
 
 .cursos {
@@ -53,7 +74,7 @@
     gap: 24px;
 }
 
-.titulocurso{
+.titulocurso {
     font-family: 'Bahnschrift', sans-serif;
     font-size: 25.5pt;
     color: #7E2C2C;
@@ -67,13 +88,32 @@
 
 .botonTemario {
     width: 120px;
-    height: 120px;
     background-color: #fff;
     border: 2px solid #7E2C2C;
     border-radius: 16px;
-    display: flex
-;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.temario1 {
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 12pt;
+    color: #7E2C2C;
+    margin-top: 10px;
+}
+
+.temario{
+    display: flex
+;
+    align-items: center;
+    margin-left: -70px;
+    gap: 16px;
+}
+
+.temariod {
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 18pt;
+    color: #7E2C2C;
 }
