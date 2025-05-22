@@ -20,6 +20,10 @@ Route::get('/', function () {
     
 });
 
+Route::get('/fisica', function () {
+    return view('fisica.fisica');
+});
+
 Route::middleware('auth')-> group(function(){
     
 });
