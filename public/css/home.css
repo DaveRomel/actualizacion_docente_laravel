@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'Bradley Hand ITC';
+    src: url('./../fonts/BRADHITC.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.titles {
+    font-family: 'Impact', sans-serif;
+    font-size: 29.28pt;
+    color: white;
+}
+
+.titles a {
+    color: white;
+    /* Aplica el color blanco al enlace */
+    text-decoration: none;
+    /* Opcional: quita el subrayado */
+}
+
+.main1 {
+    background-image: url('./../images/Grecas\ fondo\ jpg.jpg');
+    background-size: 85%;
+    /* Ajusta la imagen al ancho y alto del contenedor */
+    position: relative;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.bienvenido {
+    width: 1200px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.cursos {
+    display: flex;
+    gap: 160px;
+}
+
+.curso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.titulocurso{
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 25.5pt;
+    color: #7E2C2C;
+}
+
+.title1 {
+    font-family: 'Impact', sans-serif;
+    font-size: 27pt;
+    color: #7E2C2C;
+}
+
+.botonTemario {
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    border: 2px solid #7E2C2C;
+    border-radius: 16px;
+    display: flex
+;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

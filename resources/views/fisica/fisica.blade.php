@@ -16,9 +16,9 @@
     // Convertir JSON en array asociativo
     $datos = json_decode($respuesta, true);
 
-    $nombre = $datos["name"];
-    $status = 1; //$datos["status"];
-    $procedencia = $datos["procedencia"];
+    $nombre ="string"; //$datos["name"];
+    $status = 0; //$datos["status"];
+    $procedencia = "Instituto 1"//$datos["procedencia"];
 ?>
 
 <!DOCTYPE html>
