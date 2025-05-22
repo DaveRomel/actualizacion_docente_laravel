@@ -17,9 +17,17 @@ Route::get('/fastapi-lale', [FastApiController::class, 'get_users']);
 
 Route::get('/', function () {
     return view('actualizacion_docente.welcome');
+    
+});
+
+Route::middleware('auth')-> group(function(){
+    
 });
 */
-    
+Route::get('/matematicas', function () {
+    return view('matematicas.matematicas');
+});
+
 Route::get('/', function () {
     return view('actualizacion_docente.layouts.index');
 });
@@ -39,8 +47,3 @@ Route::get('/iniciar_sesion', function () {
 Route::get('/recuperar_contraseña', function () {
     return view('actualizacion_docente.recuperar_contraseña');
 });
-
-Route::get('/principal', function () {
-    return view('actualizacion_docente.princial');
-});
-
