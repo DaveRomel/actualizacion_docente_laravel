@@ -1,0 +1,42 @@
+# Laravel
+/vendor
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/.idea
+/.vscode
+/.env
+/.env.backup
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# Ignorar archivos de testing/local
+.phpunit.result.cache
+.env.testing
+.env.local
+.env.*.backup
+
+# Mac / Linux / Windows
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+/storage/logs/*
+!.gitignore
+
+# Cache
+bootstrap/cache/*
+!bootstrap/cache/.gitignore
+
+# Laravel Telescope
+storage/telescope
+
+# Laravel Nova (si lo usas)
+/nova
+
+# Ignorar coverage si usas PHPUnit o Xdebug
+coverage/
