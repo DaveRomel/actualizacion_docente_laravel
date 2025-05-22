@@ -117,3 +117,12 @@
     font-size: 18pt;
     color: #7E2C2C;
 }
+
+.dar_baja{
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 18pt;
+    color: #C68C3E;
+    margin-left: 18px;
+    margin-top: -50px;
+    align-self: flex-start;
+}

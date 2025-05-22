@@ -35,7 +35,7 @@
                     </div>
                     <div class="nombres">
                         <div class="bienvenidop">Estatus: </div>
-                        <div class="nombrep"><?php echo $nombre ?></div>
+                        <div class="nombrep"><?php echo $procedencia ?></div>
                     </div>
                 </div>
             <div class="container1">
@@ -71,6 +71,10 @@
                         <img src="{{ asset('images/descarga.png') }}" alt="computacion" style="width: 60px; height: 60px;">
                     </div>
                     <div class="temariod">Descarga aqui tu constancia una vez finalizado el curso</div>
+                </div>
+                <div class="dar_baja">
+                    <img src="{{ asset('images/configuracion.png') }}" alt="computacion" style="width: 40px; height: 40px;">
+                    <a class="temariod">Dar de baja</a>
                 </div>
             </div>
 </div>
