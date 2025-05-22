@@ -24,26 +24,8 @@
             </nav>
         </header>
 
-        <main class="fondo-personalizado">
-            <img src="{{ asset('images/logo-blanco.png') }}" alt="Logo" style="width: 200px; height: 200px;" >
-            <div class="contenedor-lista">
-                <div>
-                    <p class="mensaje-strong"><strong>Recuerda que:</strong></p>
-                </div>
-                <div class="mensajes">
-                    <ul>
-                        <li>
-                            <p>Los cursos se abren con un mínimo de 10 integrantes.</p>
-                        </li>
-                        <li>
-                            <p>Si no se apertura un curso puedes darte de baja y elegir otro.</p>
-                        </li>
-                        <li>
-                            <p>fecha <strong>límite </strong>de registro es el <strong>2 de julio de 2025.</strong></p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <main>
+           @yield('contenido')
         </main>
 
         <footer>
@@ -55,7 +37,7 @@
                     </div>
                 </div>
                 <div>
-                    <img src="{{ asset('images/posicion.png') }}" alt="Logo" style="width: 40px; height: 50px;" >
+                    <img src="{{ asset('images/ubicacion.png') }}" alt="Logo" style="width: 40px; height: 50px;" >
                     <div class="footer-texto">
                         <p>Av. Doctor Modesto Seara Vázquez No.1, Acatlima,<br>
                         Heroica Ciudad de Huajuapan de León, Oax., México, C.P. 69004</p>

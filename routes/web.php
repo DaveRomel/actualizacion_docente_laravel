@@ -21,7 +21,7 @@ Route::get('/', function () {
 */
     
 Route::get('/', function () {
-    return view('actualizacion_docente.welcome');
+    return view('actualizacion_docente.layouts.index');
 });
 
 Route::get('/registro', function () {
