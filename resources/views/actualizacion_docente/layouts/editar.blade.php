@@ -12,11 +12,13 @@ body:
 -->
 @section('contenido')
 
-<div class="contenedor-formulario" style="max-height: 350px;">
-    <img src="{{ asset('images/registro.png') }}" alt="Icono editar" style="width: 40px; height: 40px;">
+<div class="contenedor-formulario" style="max-height: 450px;">
+    <img src="{{ asset('images/registro.png') }}" alt="Icono editar" style="width: 80px; height: 80px;">
+    <br>
     <div>
         <div class="titulo-registro"><strong>Editar información</strong></div>
     </div>
+    <br>
     <form action="#" method="PUT">
         @csrf
 
@@ -35,7 +37,7 @@ body:
         <div class="form-group">
             <input type="email" name="correo" placeholder="Correo electrónico" required>
         </div>
-
+        
         <button type="submit" class="btn-registrarme">Guardar cambios</button>
     </form>
 </div>

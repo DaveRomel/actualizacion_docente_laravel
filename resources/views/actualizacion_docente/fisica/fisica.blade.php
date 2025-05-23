@@ -1,25 +1,3 @@
-<?php
-    $url = "http://localhost:8000/api/user/1"; // URL de la API
-
-    // Inicializar cURL
-    $ch = curl_init($url);
-
-    // Configurar opciones
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Obtener respuesta como string
-
-    // Ejecutar petición y obtener resultado
-    $respuesta = curl_exec($ch);
-
-    // Cerrar sesión cURL
-    curl_close($ch);
-
-    // Convertir JSON en array asociativo
-    $datos = json_decode($respuesta, true);
-
-    $nombre ="string"; //$datos["name"];
-    $status = 0; //$datos["status"];
-    $procedencia = "Instituto 1"//$datos["procedencia"];
-?>
 @extends('actualizacion_docente.welcome')
 @section('contenido')
     

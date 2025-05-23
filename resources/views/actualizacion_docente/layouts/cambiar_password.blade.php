@@ -2,7 +2,7 @@
 @section('contenido')
 
 <div class="contenedor-formulario" style="max-height: 450px;">
-    <img src="{{ asset('images/contraseña.png') }}" alt="Icono editar" style="width: 80px; height: 80px;">
+    <img src="{{ asset('images/contraseña.png') }}" alt="Icono editar" style="width: 70px; height: 80px;">
     <br>
     <div>
         <div class="titulo-registro"><strong>Recuperar Contraseña</strong></div>

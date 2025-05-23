@@ -1,26 +1,3 @@
-<?php
-    $url = "http://localhost:8000/api/user/1"; // URL de la API
-
-    // Inicializar cURL
-    $ch = curl_init($url);
-
-    // Configurar opciones
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Obtener respuesta como string
-
-    // Ejecutar petición y obtener resultado
-    $respuesta = curl_exec($ch);
-
-    // Cerrar sesión cURL
-    curl_close($ch);
-
-    // Convertir JSON en array asociativo
-    $datos = json_decode($respuesta, true);
-
-    $nombre ="Juan Pérez Pérez";// $datos["name"];
-    $status = 0; //$datos["status"];
-    $procedencia = "Computacion"//$datos["procedencia"];
-?>
-
 @extends('actualizacion_docente.welcome')
 @section('contenido')
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -31,11 +8,11 @@
             <div class="bienvenido">
                     <div class="nombres">
                         <div class="bienvenidop">Bienvenido/a: </div>
-                        <div class="nombrep"><?php echo $nombre ?></div>
+                        <div class="nombrep">Nombre</div>
                     </div>
                     <div class="nombres">
                         <div class="bienvenidop">Estatus: </div>
-                        <div class="nombrep"><?php echo $procedencia ?></div>
+                        <div class="nombrep">Ninguno</div>
                     </div>
                 </div>
             <div class="container1">

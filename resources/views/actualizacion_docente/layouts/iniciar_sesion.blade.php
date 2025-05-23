@@ -1,10 +1,8 @@
 @extends('actualizacion_docente.welcome')
 @section('contenido')
 
-
-
 <div class="contenedor-formulario-inicio-sesion" style="max-height: 450px;">
-    <img src="{{ asset('images/inicio_sesion.png') }}" alt="Icono editar" style="width: 100px; height: 100px;">
+    <img src="{{ asset('images/inicio_sesion.png') }}" alt="Icono editar" style="width: 80px; height: 80px;">
     <br>
     <div>
         <div class="titulo-iniciar-sesion"><strong>Iniciar Sesión</strong></div>

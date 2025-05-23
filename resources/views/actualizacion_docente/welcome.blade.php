@@ -23,7 +23,7 @@
         <header>
             <nav>
                 <div><a class="barra-nav" href="#">Actualización Docente</a></div>
-                <div ><a class="barra-nav" href="#">Regístrate</a><a> / </a><a class="barra-nav" href="#">Iniciar sesión</a></div>
+                <div ><a class="barra-nav" href="{{ route('registrarse') }}">Regístrate</a><a> / </a><a class="barra-nav" href="{{ route('iniciar_sesion') }}">Iniciar sesión</a></div>
             </nav>
         </header>
 

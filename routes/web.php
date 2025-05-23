@@ -30,19 +30,19 @@ Route::middleware('auth')-> group(function(){
 */
 Route::get('/', function () {
     return view('actualizacion_docente.layouts.index');
-});
+})->name('index');
 
 Route::get('/registrarse', function () {
     return view('actualizacion_docente.layouts.registro');
-});
+})->name('registrarse');
 
 Route::get('/editar', function () {
     return view('actualizacion_docente.layouts.editar');
-});
+})->name('editar');
 
 Route::get('/iniciar_sesion', function () {
     return view('actualizacion_docente.layouts.iniciar_sesion');
-});
+})->name('iniciar_sesion');
 /*
 Route::get('/editar', function () {
     return view('actualizacion_docente.layouts.editar');
@@ -50,31 +50,31 @@ Route::get('/editar', function () {
 
 Route::get('/recuperar_contraseña', function () {
     return view('actualizacion_docente.layouts.cambiar_password');
-});
+})->name('recuperar_contraseña');
 
 Route::get('/matematicas/inscripcion/', function () {
     return view('actualizacion_docente.matematicas.matematicas');
-});
+})->name('inscripcion_matematicas');
 Route::get('/matematicas/confirmacion/', function () {
     return view('actualizacion_docente.matematicas.confirmacion');
-});
+})->name('confirmacion_matematicas');
 
 Route::get('/computacion/inscripcion', function () {
     return view('actualizacion_docente.computacion.computacion');
-});
+})->name('inscripcion_computacion');
 
 Route::get('/computacion/confirmacion', function () {
     return view('actualizacion_docente.computacion.confirmacion');
-});
+})->name('confirmacion_computacion');
 
 Route::get('/fisica/inscripcion', function () {
     return view('actualizacion_docente.fisica.fisica');
-});
+})->name('inscripcion_fisica');
 
 Route::get('/fisica/confirmacion', function () {
     return view('actualizacion_docente.fisica.confirmacion');
-});
+})->name('confirmacion_fisica');
 
 Route::get('/home', function () {
     return view('actualizacion_docente.home.home');
-});
+})->name('principal');
