@@ -1,4 +1,13 @@
 @extends('actualizacion_docente.welcome')
+
+@section('header_primero')
+    <a class="barra-nav" href="#">Actualización Docente</a>
+@endsection
+
+@section('header_sesion')
+    <a class="barra-nav" href="{{ route('index') }}">Cerrar sesión</a>
+@endsection
+
 @section('contenido')
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/impact" rel="stylesheet">

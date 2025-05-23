@@ -1,4 +1,13 @@
 @extends('actualizacion_docente.welcome')
+
+@section('header_primero')
+    <a class="barra-nav" href="#">Actualización Docente</a>
+@endsection
+
+@section('header_sesion')
+    <a class="barra-nav" href="{{ route('registrarse') }}">Regístrate</a><a> / </a><a class="barra-nav" href="{{ route('iniciar_sesion') }}">Iniciar sesión</a>
+@endsection
+
 @section('contenido')
 <img src="{{ asset('images/logo-blanco.png') }}" alt="Logo" style="width: 200px; height: 200px;" >
 <div class="contenedor-lista">
