@@ -16,14 +16,14 @@
                     </div>
                 </div>
             <div class="container1">
-                <h2 class="title1">Actualización docente educacion media superior</h2>
+                <h2 class="title1">Actualización docente educación media superior</h2>
                 <div class="cursos">
                     <div class="curso">
                         <div class="img-hover-m"></div>
                         <div class="titulocurso">Matemáticas</div>
                         <div class="botonTemario">
                             <div class="temario1">Temario</div>
-                            <img src="{{ asset('images/descarga.png') }}" alt="computacion" style="width: 60px; height: 60px; margin-bottom: 10px;">
+                            <img src="{{ asset('images/descarga temario.png') }}" alt="computacion" style="width: 30px; height: 30px; margin-bottom: 10px;">
                         </div>
                     </div>
                     <div class="curso">
@@ -31,7 +31,7 @@
                         <div class="titulocurso">Física</div>
                         <div class="botonTemario">
                             <div class="temario1">Temario</div>
-                            <img src="{{ asset('images/descarga.png') }}" alt="computacion" style="width: 60px; height: 60px; margin-bottom: 10px;">
+                            <img src="{{ asset('images/descarga temario.png') }}" alt="computacion" style="width: 30px; height: 30px; margin-bottom: 10px;">
                         </div>
                     </div>
                     <div class="curso">
@@ -39,18 +39,22 @@
                         <div class="titulocurso">Computación</div>
                         <div class="botonTemario">
                             <div class="temario1">Temario</div>
-                            <img src="{{ asset('images/descarga.png') }}" alt="computacion" style="width: 50px; height: 50px; margin-bottom: 10px;">
+                            <img src="{{ asset('images/descarga temario.png') }}" alt="computacion" style="width: 30px; height: 30px; margin-bottom: 10px;">
                         </div>
                     </div>
                 </div>
                 <div class="temario">
                     <div class="botonTemario">
-                        <img src="{{ asset('images/descarga.png') }}" alt="computacion" style="width: 60px; height: 60px;">
+                        <img src="{{ asset('images/descargar constancia.png') }}" alt="descarga temario" style="width: 30px; height: 30px;">
                     </div>
-                    <div class="temariod">Descarga aqui tu constancia una vez finalizado el curso</div>
+                    <div class="temariod">Descarga aquí tu constancia una vez finalizado el curso</div>
+                </div>
+                <div class="editar_informacion">
+                    <img src="{{ asset('images/configuracion.png') }}" alt="editar" style="width: 40px; height: 40px;">
+                    <a class="temariod">Editar información</a>
                 </div>
                 <div class="dar_baja">
-                    <img src="{{ asset('images/configuracion.png') }}" alt="computacion" style="width: 40px; height: 40px;">
+                    <img src="{{ asset('images/baja.png') }}" alt="baja" style="width: 40px; height: 40px;">
                     <a class="temariod">Dar de baja</a>
                 </div>
             </div>

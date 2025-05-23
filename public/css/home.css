@@ -133,13 +133,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 12px;
 }
 
 .temario1 {
     font-family: 'Bahnschrift', sans-serif;
     font-size: 12pt;
     color: #7E2C2C;
-    margin-top: 10px;
 }
 
 .temario{
@@ -154,6 +154,14 @@
     font-size: 18pt;
     color: #7E2C2C;
 }
+.editar_informacion{
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 18pt;
+    color: #C68C3E;
+    margin-left: 18px;
+    margin-top: -50px;
+    align-self: flex-start;
+}
 
 .dar_baja{
     font-family: 'Bahnschrift', sans-serif;
@@ -161,5 +169,5 @@
     color: #C68C3E;
     margin-left: 18px;
     margin-top: -50px;
-    align-self: flex-start;
+    align-self: flex-end;
 }
