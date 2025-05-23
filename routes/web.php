@@ -52,8 +52,11 @@ Route::get('/recuperar_contraseña', function () {
     return view('actualizacion_docente.layouts.cambiar_password');
 });
 
-Route::get('/matematicas', function () {
+Route::get('/inscripcion/matematicas', function () {
     return view('actualizacion_docente.matematicas.matematicas');
+});
+Route::get('/confirmacion/matematicas', function () {
+    return view('actualizacion_docente.matematicas.confirmacion');
 });
 
 Route::get('/inscripcion/computacion', function () {
@@ -61,11 +64,15 @@ Route::get('/inscripcion/computacion', function () {
 });
 
 Route::get('/confirmacion/computacion', function () {
-    return view('computacion.confirmacion');
+    return view('actualizacion_docente.computacion.confirmacion');
 });
 
-Route::get('/fisica', function () {
-    return view('fisica.fisica');
+Route::get('/inscripcion/fisica', function () {
+    return view('actualizacion_docente.fisica.fisica');
+});
+
+Route::get('/confirmacion/fisica', function () {
+    return view('actualizacion_docente.fisica.confirmacion');
 });
 
 Route::get('/home', function () {

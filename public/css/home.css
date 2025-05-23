@@ -42,7 +42,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
 }
 
 .bienvenido {
@@ -52,14 +52,53 @@
 
 .bienvenidop{
     font-family: 'Bahnschrift', sans-serif;
-    font-size: 24pt;
+    font-size: 20pt;
     color: #7E2C2C;
 }
 
 .nombrep{
     font-family: 'gabriola', sans-serif;
-    font-size: 24pt;
+    font-size: 20pt;
     color: #7E2C2C;
+}
+
+.img-hover-m {
+    width: 120px;
+    height: 120px;
+    background-image: url('../images/matematicas.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+}
+
+.img-hover-m:hover {
+    background-image: url('../images/Matematicas-\ gris.png');
+}
+
+.img-hover-f {
+    width: 120px;
+    height: 120px;
+    background-image: url('../images/fisica.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+}
+
+.img-hover-f:hover {
+    background-image: url('../images/fisica_gris.png');
+}
+
+.img-hover-c {
+    width: 120px;
+    height: 120px;
+    background-image: url('../images/computación.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+}
+
+.img-hover-c:hover {
+    background-image: url('../images/computacion_gris.png');
 }
 
 .cursos {
@@ -71,23 +110,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
 }
 
 .titulocurso {
     font-family: 'Bahnschrift', sans-serif;
-    font-size: 25.5pt;
+    font-size: 17pt;
     color: #7E2C2C;
 }
 
 .title1 {
     font-family: 'Impact', sans-serif;
-    font-size: 27pt;
+    font-size: 22.5pt;
     color: #7E2C2C;
 }
 
 .botonTemario {
-    width: 120px;
+    width: 100px;
     background-color: #fff;
     border: 2px solid #7E2C2C;
     border-radius: 16px;
@@ -105,10 +143,9 @@
 }
 
 .temario{
-    display: flex
-;
+    display: flex;
     align-items: center;
-    margin-left: -70px;
+    margin-left: 18px;
     gap: 16px;
 }
 

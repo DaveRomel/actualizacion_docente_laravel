@@ -6,7 +6,7 @@
     
             <div class="confirmacion-card">
                 <img src="{{ asset('images/reactivo_inscrito.png') }}" alt="Icono Diploma" class="icon">
-                <h2>Inscrito a Computación</h2>
+                <h2>Inscrito a Matemáticas</h2>
                 <p>Nombre: Juan Perez</p>
                 <p>Institución: Instituto 1234</p>
             </div>

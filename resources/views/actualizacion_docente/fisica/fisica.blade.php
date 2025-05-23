@@ -17,71 +17,27 @@
     $datos = json_decode($respuesta, true);
 
     $nombre ="string"; //$datos["name"];
-    $status = 1; //$datos["status"];
+    $status = 0; //$datos["status"];
     $procedencia = "Instituto 1"//$datos["procedencia"];
 ?>
 @extends('actualizacion_docente.welcome')
 @section('contenido')
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link href="https://fonts.cdnfonts.com/css/impact" rel="stylesheet">
-        <link href="https://fonts.cdnfonts.com/css/gabriola" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('css/fisica.css') }}">
-
-        <div class="main1">
-            
-            <div class="container1">
-                <h2 class="title1">Actualización docente educacion media superior</h2>
-                <?php if ($status == 0){  ?> 
-                    <div class="fisica_inscripcion">
-                        <img src="{{ asset('images/inscripción_fisica.png') }}" alt="fisica_logo" style="width: 67px; height: 67px;">
-                        <div class="title1">Inscripcion - Física</div>
-                        <div class="datos_ins">
-                            <div class="nombre_ins">Nombre: <?php echo $nombre ?> </div>
-                            <div class="nombre_ins">Instituto: <?php echo $procedencia ?></div>
-                        </div>
-                        <a href="http://" class="inscribirme">Inscribirme</a>
-                    </div>
-                    <div class="recuerda1">
-                        <div class="titulosr">
-                            <div class="titulo_r">Recuerda que:</div>
-                            <div class="cupos">3/20</div>
-                        </div>
-                        <ul class="colored-marker" style="text-align: start;">
-                            <li class="lista">Solo puedes cambiar de curso sí hay disponibilidad</li>
-                            <li class="lista">Este curso tíene un cupo máximo para 20 participantes</li>
-                        </ul>
-                    </div>
-                <?php } else{ ?>
-                    <div class="fisica_inscrito">
-                        <img src="{{ asset('images/reactivo_inscrito.png') }}" alt="inscrito_logo" style="width: 74px; height: 77px;">
-                        <div class="title1">Inscrito a Física</div>
-                        <div class="datos_ins">
-                            <div class="nombre_ins">Nombre: <?php echo $nombre ?></div>
-                            <div class="nombre_ins">Instituto: <?php echo $procedencia ?></div>
-                        </div>
-                    </div>
-                    <div class="recuerda2">
-                        <div class="titulosr">
-                            <div class="titulo_r">Recuerda que:</div>
-                            <div class="cupos">3/20</div>
-                        </div>
-                        <div style="width: 100%; display: flex">
-                            <ul style="text-align: start;">
-                            <li class="lista">los cursos se abren con un mínimo de 10 integrantes</li>
-                            <li class="lista">Si no se apertura un curso puedes darte de baja y elegir otro</li>
-                            <li class="lista">La fecha limite de registro es el 2 de Julio 2025</li>
-                        </ul>
-                        </div>
-                    </div>
-                    <div class="dar_baja">
-                        <img src="{{ asset('images/configuracion.png') }}" alt="computacion" style="width: 40px; height: 40px;">
-                        <a class="temariod">Dar de baja</a>
-                    </div>
-                <?php } ?>
+    
+        <div class="content-area">
+            <h1 class="main-title">Actualización docente educación media superior</h1>
+    
+            <div class="inscription-card">
+                <img src="{{ asset('images/Inscripción_fisica.png') }}" alt="Icono Diploma" class="icon"> {{-- Asegúrate de tener un icono apropiado --}}
+                <h2>Inscripción - Física</h2>
+                <p>Nombre:Juan Perez</p>
+                <p>Institución: Instituto 1234</p>
+                <button>Inscribirme</button>
+            </div>
+    
+            <div class="reminder-card">
+               <h2><span>Recuerda que:</span> <span>5/20</sapn></h2>
+                <p>Solo puedes cambiar de curso si hay disponibilidad.</p>
+                <p>Este curso tiene un cupo máximo para 20 participantes </p>
             </div>
         </div>
-
-
 @endsection
