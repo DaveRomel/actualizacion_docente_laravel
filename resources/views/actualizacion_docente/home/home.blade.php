@@ -12,7 +12,7 @@
                     </div>
                     <div class="nombres">
                         <div class="bienvenidop">Estatus: </div>
-                        <div class="nombrep">Ninguno</div>
+                        <div class="nombrep">Inscrito</div>
                     </div>
                 </div>
             <div class="container1">
