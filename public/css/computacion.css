@@ -1,40 +1,12 @@
         /* Estilos específicos para esta vista, idealmente deberían ir en un archivo CSS */
-        html, body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
         .main-container {
             display: flex;
             flex-direction: column; /* Apila los elementos verticalmente */
-            max-height: 90vh; /* El contenedor principal debe ocupar al menos el 100% del viewport height */
-        }
-
-        .header {
-            background-color: #7E2C2C; /* Color vino tinto */
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-shrink: 0;
-        }
-
-        .header a {
-            color: white;
-            text-decoration: underline;
-            font-size: 42px;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            margin : 0px 110px;
-        }
-
-        
+            max-height: 100vh; /* El contenedor principal debe ocupar al menos el 100% del viewport height */
+        }        
         h1.main-title {
             color: #7E2C2C;
-            font-size: 36px;
+            font-size: 23pt;
             margin-bottom: 30px;
             text-align: center;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -43,34 +15,36 @@
         .inscription-card {
             background-color: #fff;
             border: 1px solid #C68C3E;
-            border-radius: 8px;
+            border-radius: 20px;
             padding: 10px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 500px;
-            margin-bottom: 20px;
+            margin: 20px auto;
+            width: 457px;
+            height: 237px;
         }
 
         .inscription-card img.icon {
-            width: 70px;
-            height: 70px;
+            width: 67px;
+            height: 67px;
             margin-bottom: 5px;
         }
 
         .inscription-card h2 {
-            font-size: 40px;
-            margin: 10px;
+            font-size: 23pt;
+            margin-bottom: 10px;
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             color: #7E2C2C;
+            line-height: 1;
             
         }
 
         .inscription-card p {
-            font-size: 28px;
+            font-size: 20pt;
             color: #7E2C2C;
             margin: 1px;
             font-family: Gabriola;
+            line-height: 1;
+            
         }
 
         .inscription-card button {
@@ -81,35 +55,57 @@
             padding: 2px 50px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 18px;
-            margin-top: 20px;
+            font-size: 15pt;
+            margin-top: 10px;
         }
 
 
         .reminder-card {
             background-color: #fff;
             border: 1px solid #C68C3E;
-            border-radius: 8px;
+            border-radius: 20px;
             padding: 2px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-           
+            width: 457px;
+            height: 138px;
+           margin: 0 auto;
+           padding-top: 15px;
         }
 
         .reminder-card h2 {
-            font-family: Bahnschrift, 'Segoe UI', Arial, sans-serif;
-            font-size: 30px;
-            color: #C68C3E;
-            margin: 0 auto;
-             text-align: center;
-        }
+    font-family: Bahnschrift, 'Segoe UI', Arial, sans-serif;
+    font-size: 16pt;
+    color: #C68C3E;
+    margin: 0 auto;
+    /* Remover text-align: center; daqui, pois o flexbox vai controlar */
+    display: flex;
+    justify-content: space-between; /* Distribui o espaço entre os itens */
+    align-items: baseline;
+}
+
+/* Centraliza o primeiro span (o texto "Recuerda que:") */
+.reminder-card h2 span:first-child {
+    flex-grow: 1; /* Permite que este span cresça para centralizar */
+    text-align: center; /* Centraliza o texto dentro dele */
+}
+
+/* O segundo span (o "5/30") já está alinhado à direita pelo space-between */
+.reminder-card h2 span:last-child {
+    /* Não precisa de margin-left: auto; aqui com justify-content: space-between; */
+    flex-shrink: 0; /* Impede que ele encolha */
+    text-align: right; /* Garante que o texto esteja alinhado à direita dentro do span */
+     color: #7E2C2C;
+}
 
         .reminder-card p {
             font-family: 'Bradley Hand ITC', 'Bradley Hand', 'Brush S   cript MT', 'Comic Sans MS', cursive;
-            font-size: 22px;
-
+            font-size: 13pt;
+            line-height: 1;
             color: #333;
             display: flex;
             align-items: flex-start;
+            padding: 0;
+            margin: 15px 0;
         }
 
         .reminder-card p::before {
@@ -122,61 +118,109 @@
             margin-right: 5px;
         }
 
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left:0;
-            width: 100%;
-            background-color: #7E2C2C;
-            color: white;
-            padding: 20px 30px;
+        .baja
+        {
+            text-align: left;
+            margin: 20px;
+            bottom: 0px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-           
-            flex-shrink: 0; /* Asegura que no se encoja */
-            z-index: 1000;
+            position: absolute;
+        }
+        .textoBaja
+        {
+            padding: 5px 10px;
+            font-size: 15pt;
+            color: #C68C3E;
         }
 
-        .footer .logo img {
-            height: 65px; /* Ajusta el tamaño del logo */
-            margin-right: 10px;
+        .confirmacion-card {
+            background-color: #fff;
+            border: 1px solid #C68C3E;
+            border-radius: 20px;
+            padding: 10px;
+            text-align: center;
+            margin: 20px auto;
+            width: 615px;
+            height: 206px;
         }
 
-        .footer .logo {
+        .confirmacion-card img.icon {
+            width: 67px;
+            height: 67px;
+            margin-bottom: 5px;
+        }
+
+        .confirmacion-card h2 {
+            font-size: 23pt;
+            margin-bottom: 10px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: #7E2C2C;
+            line-height: 1;
+            
+        }
+
+        .confirmacion-card p {
+            font-size: 20pt;
+            color: #7E2C2C;
+            margin: 1px;
+            font-family: Gabriola;
+            line-height: 1;
+            
+        }
+         .confirmacion-reminder-card {
+            background-color: #fff;
+            border: 1px solid #C68C3E;
+            border-radius: 20px;
+            padding: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            width: 561px;
+            height: 177px;
+           margin: 0 auto;
+           padding-top: 15px;
+        }
+
+        .confirmacion-reminder-card h2 {
+    font-family: Bahnschrift, 'Segoe UI', Arial, sans-serif;
+    font-size: 16pt;
+    color: #C68C3E;
+    margin: 0 auto;
+    /* Remover text-align: center; daqui, pois o flexbox vai controlar */
+    display: flex;
+    justify-content: space-between; /* Distribui o espaço entre os itens */
+    align-items: baseline;
+}
+
+/* Centraliza o primeiro span (o texto "Recuerda que:") */
+.confirmacion-reminder-card h2 span:first-child {
+    flex-grow: 1; /* Permite que este span cresça para centralizar */
+    text-align: center; /* Centraliza o texto dentro dele */
+}
+
+/* O segundo span (o "5/30") já está alinhado à direita pelo space-between */
+.confirmacion-reminder-card h2 span:last-child {
+    /* Não precisa de margin-left: auto; aqui com justify-content: space-between; */
+    flex-shrink: 0; /* Impede que ele encolha */
+    text-align: right; /* Garante que o texto esteja alinhado à direita dentro do span */
+     color: #7E2C2C;
+}
+
+        .confirmacion-reminder-card p {
+            font-family: 'Bradley Hand ITC', 'Bradley Hand', 'Brush S   cript MT', 'Comic Sans MS', cursive;
+            font-size: 13pt;
+            line-height: 1;
+            color: #333;
             display: flex;
-            align-items: center;
-            font-family: Bahnschrift, 'Segoe UI', Arial, sans-serif;
-            font-size: 24px;
+            align-items: flex-start;
+            padding: 0;
+            margin: 15px 0;
         }
 
-        .footer .address {
-            display: flex;
-            align-items: center;
-             text-align: center;
-            font-family: Bahnschrift, 'Segoe UI', Arial, sans-serif;
-            font-size: 18px;
-            padding: 0 80px;
-        }
-
-        .footer .address img {
-            height: 57px; /* Tamaño del icono de ubicación */
+        .confirmacion-reminder-card p::before {
+            content: '•';
+            color: #7E2C2C; /* Color vino tinto para el bullet */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: 5px;
             margin-right: 5px;
-        }
-
-        /* Media Queries para responsividad */
-        @media (max-width: 768px) {
-            .header, .footer {
-                flex-direction: column;
-                text-align: center;
-                padding: 15px;
-            }
-
-            .header a, .footer .address {
-                margin-top: 10px;
-            }
-
-            .footer .address {
-                text-align: center;
-            }
         }
