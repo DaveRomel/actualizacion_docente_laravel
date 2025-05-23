@@ -48,6 +48,7 @@
 .bienvenido {
     display: flex;
     justify-content: space-between;
+    margin: 0 32px;
 }
 
 .bienvenidop{
@@ -158,16 +159,18 @@
     font-family: 'Bahnschrift', sans-serif;
     font-size: 18pt;
     color: #C68C3E;
-    margin-left: 18px;
-    margin-top: -50px;
-    align-self: flex-start;
+}
+
+.editar_baja{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    margin: 0 32px;
+    top: -40px;
 }
 
 .dar_baja{
     font-family: 'Bahnschrift', sans-serif;
     font-size: 18pt;
     color: #C68C3E;
-    margin-left: 18px;
-    margin-top: -50px;
-    align-self: flex-end;
 }

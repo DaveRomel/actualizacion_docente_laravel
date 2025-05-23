@@ -49,7 +49,9 @@
                     </div>
                     <div class="temariod">Descarga aquí tu constancia una vez finalizado el curso</div>
                 </div>
-                <div class="editar_informacion">
+            </div>
+            <div class="editar_baja">
+                    <div class="editar_informacion">
                     <img src="{{ asset('images/configuracion.png') }}" alt="editar" style="width: 40px; height: 40px;">
                     <a class="temariod">Editar información</a>
                 </div>
@@ -57,7 +59,7 @@
                     <img src="{{ asset('images/baja.png') }}" alt="baja" style="width: 40px; height: 40px;">
                     <a class="temariod">Dar de baja</a>
                 </div>
-            </div>
+                </div>
 </div>
 
 @endsection
