@@ -43,10 +43,10 @@ Route::get('/editar', function () {
 Route::get('/iniciar_sesion', function () {
     return view('actualizacion_docente.layouts.iniciar_sesion');
 });
-
+/*
 Route::get('/editar', function () {
     return view('actualizacion_docente.layouts.editar');
-});
+});*/
 
 Route::get('/recuperar_contraseña', function () {
     return view('actualizacion_docente.layouts.cambiar_password');
@@ -69,5 +69,5 @@ Route::get('/fisica', function () {
 });
 
 Route::get('/home', function () {
-    return view('home.home');
+    return view('actualizacion_docente.home.home');
 });
