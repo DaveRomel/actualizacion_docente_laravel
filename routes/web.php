@@ -52,8 +52,11 @@ Route::get('/recuperar_contraseña', function () {
     return view('actualizacion_docente.layouts.cambiar_password');
 });
 
-Route::get('/matematicas', function () {
+Route::get('/inscripcion/matematicas', function () {
     return view('actualizacion_docente.matematicas.matematicas');
+});
+Route::get('/confirmacion/matematicas', function () {
+    return view('actualizacion_docente.matematicas.confirmacion');
 });
 
 Route::get('/inscripcion/computacion', function () {
