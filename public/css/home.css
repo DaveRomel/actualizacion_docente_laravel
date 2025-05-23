@@ -1,0 +1,128 @@
+@font-face {
+    font-family: 'Bradley Hand ITC';
+    src: url('./../fonts/BRADHITC.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Bahnschrift';
+    src: url('./../fonts/BAHNSCHRIFT.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.titles {
+    font-family: 'Impact', sans-serif;
+    font-size: 29.28pt;
+    color: white;
+}
+
+.nombres {
+    display: flex;
+}
+
+.titles a {
+    color: white;
+    /* Aplica el color blanco al enlace */
+    text-decoration: none;
+    /* Opcional: quita el subrayado */
+}
+
+.main1 {
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.bienvenido {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bienvenidop{
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 24pt;
+    color: #7E2C2C;
+}
+
+.nombrep{
+    font-family: 'gabriola', sans-serif;
+    font-size: 24pt;
+    color: #7E2C2C;
+}
+
+.cursos {
+    display: flex;
+    gap: 160px;
+}
+
+.curso {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.titulocurso {
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 25.5pt;
+    color: #7E2C2C;
+}
+
+.title1 {
+    font-family: 'Impact', sans-serif;
+    font-size: 27pt;
+    color: #7E2C2C;
+}
+
+.botonTemario {
+    width: 120px;
+    background-color: #fff;
+    border: 2px solid #7E2C2C;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.temario1 {
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 12pt;
+    color: #7E2C2C;
+    margin-top: 10px;
+}
+
+.temario{
+    display: flex
+;
+    align-items: center;
+    margin-left: -70px;
+    gap: 16px;
+}
+
+.temariod {
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 18pt;
+    color: #7E2C2C;
+}
+
+.dar_baja{
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 18pt;
+    color: #C68C3E;
+    margin-left: 18px;
+    margin-top: -50px;
+    align-self: flex-start;
+}

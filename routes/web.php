@@ -36,6 +36,10 @@ Route::get('/registro', function () {
     return view('actualizacion_docente.layouts.registro');
 });
 
+Route::get('/editar', function () {
+    return view('actualizacion_docente.layouts.editar');
+});
+
 Route::get('/iniciar_sesion', function () {
     return view('actualizacion_docente.layouts.iniciar_sesion');
 });
@@ -57,5 +61,13 @@ Route::get('/inscripcion/computacion', function () {
 });
 
 Route::get('/confirmacion/computacion', function () {
-    return view('actualizacion_docente.computacion.confirmacion');
+    return view('computacion.confirmacion');
+});
+
+Route::get('/fisica', function () {
+    return view('fisica.fisica');
+});
+
+Route::get('/home', function () {
+    return view('home.home');
 });
