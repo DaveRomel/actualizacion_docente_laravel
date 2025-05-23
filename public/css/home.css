@@ -126,6 +126,7 @@
 }
 
 .botonTemario {
+    margin-top: 40px;
     width: 100px;
     background-color: #fff;
     border: 2px solid #7E2C2C;
@@ -136,7 +137,18 @@
     align-items: center;
     padding: 12px;
 }
-
+.botonConstancia{
+    margin-top: 50px;
+    width: 100px;
+    background-color: #fff;
+    border: 2px solid #7E2C2C;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+}
 .temario1 {
     font-family: 'Bahnschrift', sans-serif;
     font-size: 12pt;
@@ -151,6 +163,18 @@
 }
 
 .temariod {
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 18pt;
+    color: #7E2C2C;
+}
+.constanciatxt {
+    margin-top: 50px;
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 18pt;
+    color: #7E2C2C;
+}
+.constanciaText{
+    margin-top: 50px;
     font-family: 'Bahnschrift', sans-serif;
     font-size: 18pt;
     color: #7E2C2C;

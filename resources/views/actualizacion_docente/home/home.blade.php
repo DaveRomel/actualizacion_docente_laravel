@@ -16,7 +16,6 @@
             </div>
         </div>
         <div class="container1">
-            <h2 class="title1">Actualización docente educación media superior</h2>
             <div class="cursos">
                 <div class="curso">
                     <a href="{{ route('inscripcion_matematicas') }}">
@@ -63,7 +62,7 @@
                     <img src="{{ asset('images/descargar constancia.png') }}" alt="descarga temario"
                         style="width: 30px; height: 30px;">
                 </div>
-                <div class="temariod">Descarga aquí tu constancia una vez finalizado el curso</div>
+                <div class="constanciatxt">Descarga aquí tu constancia una vez finalizado el curso</div>
             </div>
         </div>
         <div class="editar_baja">
