@@ -14,7 +14,7 @@
     
             <div class="reminder-card">
                <h2><span>Recuerda que:</span> <span>5/20</sapn></h2>
-                <p>Solo puedes cambiar de curso si hay disponibilidad.</p>
+                <p>Sólo puedes cambiar de curso si hay disponibilidad.</p>
                 <p>Este curso tiene un cupo máximo para 20 participantes </p>
             </div>
         </div>
