@@ -16,7 +16,6 @@
     padding: 1.5rem;
     width: 340px;
     height: calc(100vh - 174px);
-    max-height: 450px;
     display: block;
     margin: 0 auto 0 auto;
     display: flex;
