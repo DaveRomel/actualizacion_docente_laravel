@@ -1,4 +1,11 @@
 @extends('actualizacion_docente.welcome')
+@section('header_primero')
+    <a class="barra-nav" href="{{ route('principal') }}">Inicio</a>
+@endsection
+
+@section('header_sesion')
+    <a class="barra-nav" href="{{ route('index') }}">Cerrar sesión</a>
+@endsection
 @section('contenido')
     
         <div class="content-area">

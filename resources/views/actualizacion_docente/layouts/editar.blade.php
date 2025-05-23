@@ -1,17 +1,17 @@
 @extends('actualizacion_docente.welcome')
-<!-- 
-COSAS QUE VARIAN PERO NO SE PUEDEN CAMBIAR:
-head:
-    <title>Actualizar Información</title>
-body:
-    <header>
-        <nav>
-            <div><a class="barra-nav" href="#">Inicio</a></div>
-        </nav>
-    </header>
--->
-@section('contenido')
 
+@extends('actualizacion_docente.welcome')
+
+@section('header_primero')
+    <a class="barra-nav" href="#">Actualización Docente</a>
+@endsection
+
+@section('header_sesion')
+    <a class="barra-nav" href="{{ route('registrarse') }}">Regístrate</a><a> / </a><a class="barra-nav" href="{{ route('iniciar_sesion') }}">Iniciar sesión</a>
+@endsection
+
+
+@section('contenido')
 <div class="contenedor-formulario" style="max-height: 450px;">
     <img src="{{ asset('images/registro.png') }}" alt="Icono editar" style="width: 80px; height: 80px;">
     <br>

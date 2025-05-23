@@ -1,4 +1,16 @@
 @extends('actualizacion_docente.welcome')
+
+@extends('actualizacion_docente.welcome')
+
+@section('header_primero')
+    <a class="barra-nav" href="#">Actualización Docente</a>
+@endsection
+
+@section('header_sesion')
+    <a class="barra-nav" href="{{ route('registrarse') }}">Regístrate</a>
+@endsection
+
+
 @section('contenido')
 
 <div class="contenedor-formulario-inicio-sesion" style="max-height: 450px;">
