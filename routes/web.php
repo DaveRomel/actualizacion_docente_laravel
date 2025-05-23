@@ -61,7 +61,7 @@ Route::get('/inscripcion/computacion', function () {
 });
 
 Route::get('/confirmacion/computacion', function () {
-    return view('computacion.confirmacion');
+    return view('actualizacion_docente.computacion.confirmacion');
 });
 
 Route::get('/fisica', function () {
