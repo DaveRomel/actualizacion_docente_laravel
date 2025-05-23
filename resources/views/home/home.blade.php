@@ -17,7 +17,7 @@
     $datos = json_decode($respuesta, true);
 
     $nombre ="Juan Pérez Pérez";// $datos["name"];
-    $status = 1; //$datos["status"];
+    $status = 0; //$datos["status"];
     $procedencia = "Computacion"//$datos["procedencia"];
 ?>
 
@@ -42,7 +42,7 @@
                 <h2 class="title1">Actualización docente educacion media superior</h2>
                 <div class="cursos">
                     <div class="curso">
-                        <img src="{{ asset('images/matematicas.png') }}" alt="computacion" style="width: 146px; height: 146px;">
+                        <div class="img-hover-m"></div>
                         <div class="titulocurso">Matemáticas</div>
                         <div class="botonTemario">
                             <div class="temario1">Temario</div>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="curso">
-                        <img src="{{ asset('images/fisica.png') }}" alt="computacion" style="width: 146px; height: 146px;">
+                        <div class="img-hover-f"></div>
                         <div class="titulocurso">Física</div>
                         <div class="botonTemario">
                             <div class="temario1">Temario</div>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="curso">
-                        <img src="{{ asset('images/computación.png') }}" alt="computacion" style="width: 146px; height: 146px;">
+                        <div class="img-hover-c"></div>
                         <div class="titulocurso">Computación</div>
                         <div class="botonTemario">
                             <div class="temario1">Temario</div>

@@ -62,6 +62,45 @@
     color: #7E2C2C;
 }
 
+.img-hover-m {
+    width: 146px;
+    height: 146px;
+    background-image: url('../images/matematicas.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+}
+
+.img-hover-m:hover {
+    background-image: url('../images/Matematicas-\ gris.png');
+}
+
+.img-hover-f {
+    width: 146px;
+    height: 146px;
+    background-image: url('../images/fisica.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+}
+
+.img-hover-f:hover {
+    background-image: url('../images/fisica_gris.png');
+}
+
+.img-hover-c {
+    width: 146px;
+    height: 146px;
+    background-image: url('../images/computación.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+}
+
+.img-hover-c:hover {
+    background-image: url('../images/computacion_gris.png');
+}
+
 .cursos {
     display: flex;
     gap: 160px;

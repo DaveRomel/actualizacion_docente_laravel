@@ -17,7 +17,7 @@
     $datos = json_decode($respuesta, true);
 
     $nombre ="string"; //$datos["name"];
-    $status = 1; //$datos["status"];
+    $status = 0; //$datos["status"];
     $procedencia = "Instituto 1"//$datos["procedencia"];
 ?>
 @extends('actualizacion_docente.welcome')
