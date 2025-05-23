@@ -14,6 +14,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/computacion.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/inicio-sesion.css') }}">
         <link rel="stylesheet" href="{{ asset('css/registro-editar.css') }}">
 
     </head>

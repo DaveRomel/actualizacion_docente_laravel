@@ -9,11 +9,11 @@
 }
 
 /* Estilo para el contenedor del formulario Registrar y Editar */
-.contenedor-formulario {
+.contenedor-formulario-inicio-sesion {
     background-color: white;
     border: 2px solid #C68C3E;/* dorado */
     border-radius: 30px;
-    padding: 1.5rem;
+    padding: 3rem;
     width: 340px;
     height: calc(100vh - 174px);
     display: block;
@@ -24,7 +24,7 @@
 }
 
 /* Estilo para el titulo "Registro" y "Editar información" */
-.titulo-registro {
+.titulo-iniciar-sesion {
     font-family: Impact;
     font-size: 22pt;
     color: #7E2C2C;
@@ -34,22 +34,25 @@
 input {
     width: 250px;
     font-family: Gabriola;
-    font-size: 12pt;
     background: transparent;
     border: none;
     border-bottom: 2px solid #7E2C2C;
     outline: none;
+    
 }
-
+.imput-inicio-sesion{
+    font-size: 18pt;
+}
 /* Estilo del placeholder */
 input::placeholder {
     color: #7E2C2C;
     font-family: Gabriola;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .form-group {
     margin-bottom: 10px;
+    font-size: 18pt;
 }
 
 /* Estilo para el botón */
@@ -66,6 +69,7 @@ input::placeholder {
     display: block;
     margin: 0 auto;
     margin-top: 21px;
+    
 }
 
 .btn-registrarme:hover {

@@ -3,22 +3,24 @@
 
 
 
-<div class="contenedor-formulario" style="max-height: 350px;">
-    <img src="{{ asset('images/inicio_sesion.png') }}" alt="Icono editar" style="width: 40px; height: 40px;">
+<div class="contenedor-formulario-inicio-sesion" style="max-height: 450px;">
+    <img src="{{ asset('images/inicio_sesion.png') }}" alt="Icono editar" style="width: 100px; height: 100px;">
+    <br>
     <div>
-        <div class="titulo-registro"><strong>Iniciar Sesión</strong></div>
+        <div class="titulo-iniciar-sesion"><strong>Iniciar Sesión</strong></div>
     </div>
+    <br>
     <form action="#" method="POST">
         @csrf
 
-        <div class="form-group">
-            <input type="email" name="correo" placeholder="Correo electrónico" required>
+        <div class="form-group-inicio-sesion">
+            <input class="imput-inicio-sesion" type="email" name="correo" placeholder="Correo electrónico" required>
         </div>
-
-        <div class="form-group">
-            <input type="text" name="contraseña" placeholder="Contraseña" required>
+        <br>
+        <div class="form-group-inicio-sesion">
+            <input class="imput-inicio-sesion" type="text" name="contraseña" placeholder="Contraseña" required>
         </div>
-
+        <br>
         <button type="submit" class="btn-registrarme">Iniciar Sesión</button>
     </form>
 </div>
