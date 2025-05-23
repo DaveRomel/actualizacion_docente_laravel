@@ -13,8 +13,8 @@ body:
 -->
 @section('contenido')
 
-<div class="contenedor-formulario">
-    <img src="{{ asset('images/registro.png') }}" alt="Icono registro" style="width: 80px; height: 80px;">
+<div class="contenedor-formulario" style="max-height: 450px;">
+    <img src="{{ asset('images/registro.png') }}" alt="Icono registro" style="width: 40px; height: 40px;">
     <div>
         <div class="titulo-registro"><strong>Registro</strong></div>
     </div>

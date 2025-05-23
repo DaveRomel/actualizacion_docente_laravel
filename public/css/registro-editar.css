@@ -15,22 +15,24 @@
     border-radius: 30px;
     padding: 1.5rem;
     width: 340px;
-    height: auto;
+    height: calc(100vh - 174px);
     display: block;
     margin: 0 auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Estilo para el titulo "Registro" y "Editar información" */
 .titulo-registro {
     font-family: Impact;
-    font-size: 32pt;
+    font-size: 22pt;
     color: #7E2C2C;
 }
 
 /* Estilo para los inputs */
 input {
     width: 250px;
-    padding: 4px 0; /* solo espacio arriba y abajo */
     font-family: Gabriola;
     font-size: 12pt;
     background: transparent;

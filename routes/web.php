@@ -28,10 +28,6 @@ Route::middleware('auth')-> group(function(){
     
 });
 */
-Route::get('/matematicas', function () {
-    return view('matematicas.matematicas');
-});
-
 Route::get('/', function () {
     return view('actualizacion_docente.layouts.index');
 });
@@ -45,18 +41,27 @@ Route::get('/editar', function () {
 });
 
 Route::get('/iniciar_sesion', function () {
-    return view('actualizacion_docente.iniciar_sesion');
+    return view('actualizacion_docente.layouts.iniciar_sesion');
+});
+
+Route::get('/editar', function () {
+    return view('actualizacion_docente.layouts.editar');
 });
 
 Route::get('/recuperar_contraseña', function () {
-    return view('actualizacion_docente.recuperar_contraseña');
+    return view('actualizacion_docente.layouts.cambiar_password');
 });
+
+Route::get('/matematicas', function () {
+    return view('actualizacion_docente.matematicas.matematicas');
+});
+
 Route::get('/inscripcion/computacion', function () {
-    return view('computacion.principal');
+    return view('actualizacion_docente.computacion.principal');
 });
 
 Route::get('/confirmacion/computacion', function () {
-    return view('computacion.confirmacion');
+    return view('actualizacion_docente.computacion.confirmacion');
 });
 
 Route::get('/fisica', function () {

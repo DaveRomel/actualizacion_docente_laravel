@@ -17,11 +17,11 @@
                 <p>Si no se apertura un curso puedes darte de baja y elegir otro</p>
                 <p>La fecha límite de registro es el 2 de Julio 2025</p>
             </div>
-        </div>
-
-        <div class="baja">
-            <img src="{{ asset('images/Baja.png') }}" alt="Icono baja" class="icon" style="height:40px">
-            <p class="textoBaja"> Darse de baja </p>
-
+            
+                    <div class="baja">
+                        <img src="{{ asset('images/Baja.png') }}" alt="Icono baja" class="icon" style="height:40px">
+                        <p class="textoBaja"> Darse de baja </p>
+            
+                    </div>
         </div>
 @endsection
