@@ -64,8 +64,12 @@ Route::get('/confirmacion/computacion', function () {
     return view('actualizacion_docente.computacion.confirmacion');
 });
 
-Route::get('/fisica', function () {
-    return view('fisica.fisica');
+Route::get('/inscripcion/fisica', function () {
+    return view('actualizacion_docente.fisica.fisica');
+});
+
+Route::get('/confirmacion/fisica', function () {
+    return view('actualizacion_docente.fisica.confirmacion');
 });
 
 Route::get('/home', function () {

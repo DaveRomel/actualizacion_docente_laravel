@@ -62,7 +62,7 @@
                         <div class="titulocurso">Computación</div>
                         <div class="botonTemario">
                             <div class="temario1">Temario</div>
-                            <img src="{{ asset('images/descarga.png') }}" alt="computacion" style="width: 60px; height: 60px; margin-bottom: 10px;">
+                            <img src="{{ asset('images/descarga.png') }}" alt="computacion" style="width: 50px; height: 50px; margin-bottom: 10px;">
                         </div>
                     </div>
                 </div>
