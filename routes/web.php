@@ -55,6 +55,7 @@ Route::get('/recuperar_contraseña', function () {
 Route::get('/matematicas/inscripcion/', function () {
     return view('actualizacion_docente.matematicas.matematicas');
 })->name('inscripcion_matematicas');
+
 Route::get('/matematicas/confirmacion/', function () {
     return view('actualizacion_docente.matematicas.confirmacion');
 })->name('confirmacion_matematicas');
@@ -75,6 +76,6 @@ Route::get('/fisica/confirmacion', function () {
     return view('actualizacion_docente.fisica.confirmacion');
 })->name('confirmacion_fisica');
 
-Route::get('/home', function () {
+Route::get('/principal', function () {
     return view('actualizacion_docente.home.home');
 })->name('principal');

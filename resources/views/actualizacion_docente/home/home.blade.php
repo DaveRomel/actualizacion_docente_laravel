@@ -25,10 +25,11 @@
             </div>
         </div>
         <div class="container1">
-            <h2 class="title1">Actualización docente educación media superior</h2>
             <div class="cursos">
                 <div class="curso">
-                    <div class="img-hover-m"></div>
+                    <a href="{{ route('inscripcion_matematicas') }}">
+                        <div class="img-hover-m"></div>
+                    <a>
                     <div class="titulocurso">Matemáticas</div>
                     <a href="{{ asset('temarios/Programa_Matematicas.pdf') }}" download>
                         <div class="botonTemario" style="cursor: pointer;">
@@ -39,7 +40,9 @@
                     </a>
                 </div>
                 <div class="curso">
-                    <div class="img-hover-f"></div>
+                     <a href="{{ route('inscripcion_fisica') }}">
+                        <div class="img-hover-f"></div>
+                    <a>
                     <div class="titulocurso">Física</div>
                     <a href="{{ asset('temarios/Programa_Fisica.pdf') }}" download>
                         <div class="botonTemario" style="cursor: pointer;">
@@ -50,7 +53,9 @@
                     </a>
                 </div>
                 <div class="curso">
-                    <div class="img-hover-c"></div>
+                     <a href="{{ route('inscripcion_computacion') }}">
+                        <div class="img-hover-c"></div>
+                    <a>
                     <div class="titulocurso">Computación</div>
                     <a href="{{ asset('temarios/Programa_Computacion.pdf') }}" download>
                         <div class="botonTemario" style="cursor: pointer;">
@@ -66,7 +71,7 @@
                     <img src="{{ asset('images/descargar constancia.png') }}" alt="descarga temario"
                         style="width: 30px; height: 30px;">
                 </div>
-                <div class="temariod">Descarga aquí tu constancia una vez finalizado el curso</div>
+                <div class="constanciatxt">Descarga aquí tu constancia una vez finalizado el curso</div>
             </div>
         </div>
         <div class="editar_baja">
