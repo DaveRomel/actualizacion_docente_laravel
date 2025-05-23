@@ -14,12 +14,12 @@
                         <div class="bienvenidop">Estatus: </div>
                         <div class="nombrep">Inscrito</div>
                     </div>
-                </div>
+            </div>
             <div class="container1">
                 <h2 class="title1">Actualización docente educación media superior</h2>
                 <div class="cursos">
                     <div class="curso">
-                        <div class="img-hover-m"></div>
+                        <a href="{{ route('inscripcion_matematicas') }}"><div class="img-hover-m"></div></a>
                         <div class="titulocurso">Matemáticas</div>
                         <div class="botonTemario">
                             <div class="temario1">Temario</div>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="curso">
-                        <div class="img-hover-f"></div>
+                        <a href="{{ route('inscripcion_fisica') }}"><div class="img-hover-f"></div></a>
                         <div class="titulocurso">Física</div>
                         <div class="botonTemario">
                             <div class="temario1">Temario</div>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="curso">
-                        <div class="img-hover-c"></div>
+                        <a href="{{ route('inscripcion_computacion') }}"><div class="img-hover-c"></div></a>
                         <div class="titulocurso">Computación</div>
                         <div class="botonTemario">
                             <div class="temario1">Temario</div>
