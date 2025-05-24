@@ -34,7 +34,7 @@
                 <p>Institución: {{$currentUser['procedencia']}}</p>
                 <form action="{{ url('/inscribir-usuario/' . $currentUser['id'] .'/2') }}" method="post">
                     @csrf
-                <button class="{{ $contagem_inscritos >= 25 || $currentUser['status'] != 0 ? 'disabled' : '' }}" {{ $contagem_inscritos == 30 ? 'disabled' : '' }}>
+                <button class="{{ $contagem_inscritos >= 20 || $currentUser['status'] != 0 ? 'disabled' : '' }}" {{ $contagem_inscritos == 20 ? 'disabled' : '' }}>
                     Inscribirme
                 </button>
                 </form>
