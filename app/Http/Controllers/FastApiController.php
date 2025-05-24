@@ -96,7 +96,7 @@ class FastApiController extends Controller
         if ($response->successful()) {
             $responseData = $response->json();
             if (!isset($responseData['access_token'])) {
-                return back()->withErrors(['login' => 'Token de acesso no recibido de la API.'])->withInput();
+                return back()->withErrors(['iniciar_sesion' => 'Token de acesso no recibido de la API.'])->withInput();
             }
             $accessToken = $responseData['access_token'];
             // Guardar el token en la sesión
@@ -109,12 +109,12 @@ class FastApiController extends Controller
             return redirect('/principal'); // Cambia esta ruta según tu flujo
         } else {
             session()->forget('api_token');
-            return back()->withErrors(['login' => 'No fue posible obtener los datos del usuario']);
+            return back()->withErrors(['iniciar_sesion' => 'No fue posible obtener los datos del usuario']);
         }
             // Redirigir al dashboard o vista principal
             //showUserProfile($request);
         } else {
-            return back()->withErrors(['login' => 'Credenciales incorrectas.'])->withInput();
+            return back()->withErrors(['iniciar_sesion' => 'Credenciales incorrectas.'])->withInput();
         }
     }
 
@@ -139,6 +139,7 @@ class FastApiController extends Controller
     public function logout(Request $request)
     {
         $request -> session()->forget('api_token');
+        $request -> session()->forget('current_user_data');
         //$request->session()->invalidate();
         //$request->session()->regenerateToken();
         return redirect('/');

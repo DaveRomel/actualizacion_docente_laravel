@@ -17,6 +17,12 @@
     @csrf
     </form>
 @endsection
+
+@if (session()->has('current_user_data'))
+    @php
+        $currentUser = session('current_user_data')
+    @endphp
+@endif
 @section('contenido')
     
         <div class="content-area">
@@ -25,8 +31,8 @@
             <div class="confirmacion-card">
                 <img src="{{ asset('images/reactivo_inscrito.png') }}" alt="Icono Diploma" class="icon">
                 <h2>Inscrito a Física</h2>
-                <p>Nombre: Juan Perez</p>
-                <p>Institución: Instituto 1234</p>
+                <p>Nombre: {{$currentUser['name']}}</p>
+                <p>Institución: {{$currentUser['procedencia']}}</p>
             </div>
     
             <div class="confirmacion-reminder-card">

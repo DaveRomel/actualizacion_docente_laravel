@@ -1,7 +1,5 @@
 @extends('actualizacion_docente.welcome')
 
-@extends('actualizacion_docente.welcome')
-
 @section('header_primero')
     <a class="barra-nav" href="#">Actualización Docente</a>
 @endsection
@@ -12,6 +10,12 @@
 
 
 @section('contenido')
+
+@if (session()->has('error'))
+    <div class="custom-alert-error">
+        {{ session('error') }}
+    </div>
+@endif
 
 <div class="contenedor-formulario-inicio-sesion" style="max-height: 450px;">
     <img src="{{ asset('images/inicio_sesion.png') }}" alt="Icono editar" style="width: 80px; height: 80px;">

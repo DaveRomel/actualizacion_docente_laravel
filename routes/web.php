@@ -78,7 +78,7 @@ Route::get('/fisica/confirmacion', function () {
 
 Route::get('/principal', function () {
     return view('actualizacion_docente.home.home');
-})->name('principal');
+})->name('principal')->middleware('ensure.api.data');
 
 Route::post('/login', [FastApiController::class, 'login']);
 Route::post('/logout', [FastApiController::class, 'logout'])->name('logout');

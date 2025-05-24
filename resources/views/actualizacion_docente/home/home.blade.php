@@ -35,6 +35,7 @@
         $materiaActual = 'Matemáticas';
     }
 @endphp
+
 @section('contenido')
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/impact" rel="stylesheet">

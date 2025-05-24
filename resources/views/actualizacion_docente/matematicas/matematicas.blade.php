@@ -17,6 +17,11 @@
     @csrf
     </form>
 @endsection
+@if (session()->has('current_user_data'))
+    @php
+        $currentUser = session('current_user_data')
+    @endphp
+@endif
 @section('contenido')
     
         <div class="content-area">
@@ -25,8 +30,8 @@
             <div class="inscription-card">
                 <img src="{{ asset('images/inscripción_matematicas.png') }}" alt="Icono Diploma" class="icon"> {{-- Asegúrate de tener un icono apropiado --}}
                 <h2>Inscripción - Matemáticas</h2>
-                <p>Nombre:Juan Perez</p>
-                <p>Institución: Instituto 1234</p>
+                <p>Nombre: {{$currentUser['name']}}</p>
+                <p>Institución: {{$currentUser['procedencia']}}</p>
                 <button>Inscribirme</button>
             </div>
     

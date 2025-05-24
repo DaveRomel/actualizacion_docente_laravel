@@ -75,3 +75,15 @@ input::placeholder {
 .btn-registrarme:hover {
     background-color: #661f1f;
 }
+/* public/css/estilos.css */
+.custom-alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 5px 30px;
+    width: fit-content;
+    margin: -15px auto 5px auto;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
