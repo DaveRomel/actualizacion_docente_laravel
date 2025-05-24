@@ -38,7 +38,7 @@ Route::get('/registrarse', function () {
 
 Route::get('/editar', function () {
     return view('actualizacion_docente.layouts.editar');
-})->name('editar');
+})->name('editar')->middleware('ensure.api.data');
 
 Route::get('/iniciar_sesion', function () {
     return view('actualizacion_docente.layouts.iniciar_sesion');
@@ -54,27 +54,27 @@ Route::get('/recuperar_contraseña', function () {
 
 Route::get('/matematicas/inscripcion/', function () {
     return view('actualizacion_docente.matematicas.matematicas');
-})->name('inscripcion_matematicas');
+})->name('inscripcion_matematicas')->middleware('ensure.api.data');
 
 Route::get('/matematicas/confirmacion/', function () {
     return view('actualizacion_docente.matematicas.confirmacion');
-})->name('confirmacion_matematicas');
+})->name('confirmacion_matematicas')->middleware('ensure.api.data');
 
 Route::get('/computacion/inscripcion', function () {
     return view('actualizacion_docente.computacion.computacion');
-})->name('inscripcion_computacion');
+})->name('inscripcion_computacion')->middleware('ensure.api.data');
 
 Route::get('/computacion/confirmacion', function () {
     return view('actualizacion_docente.computacion.confirmacion');
-})->name('confirmacion_computacion');
+})->name('confirmacion_computacion')->middleware('ensure.api.data');
 
 Route::get('/fisica/inscripcion', function () {
     return view('actualizacion_docente.fisica.fisica');
-})->name('inscripcion_fisica');
+})->name('inscripcion_fisica')->middleware('ensure.api.data');
 
 Route::get('/fisica/confirmacion', function () {
     return view('actualizacion_docente.fisica.confirmacion');
-})->name('confirmacion_fisica');
+})->name('confirmacion_fisica')->middleware('ensure.api.data');
 
 Route::get('/principal', function () {
     return view('actualizacion_docente.home.home');
