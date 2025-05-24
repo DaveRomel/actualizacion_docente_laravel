@@ -42,7 +42,7 @@
             </div>
             <form id="form-baja"  class="baja" action="{{ url('/eliminar-inscripcion/' . $currentUser['id']) }}" method="POST" style="display: inline;">
                 @csrf
-                @method('DELETE')
+                @method('PUT')
                 <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
                     <div class="baja">
                         <img src="{{ asset('images/Baja.png') }}" alt="Icono baja" class="icon" style="height:40px">
