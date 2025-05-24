@@ -1,16 +1,16 @@
 @extends('actualizacion_docente.welcome')
-<!-- 
-COSAS QUE VARIAN PERO NO SE PUEDEN CAMBIAR:
-head:
-    <title>Registro Docente</title>
-body:
-    <header>
-        <nav>
-            <div><a class="barra-nav" href="#">Inicio</a></div>
-            <div><a class="barra-nav" href="#">Iniciar sesión</a></div>
-        </nav>
-    </header>
--->
+
+@extends('actualizacion_docente.welcome')
+
+@section('header_primero')
+    <a class="barra-nav" href="#">Actualización Docente</a>
+@endsection
+
+@section('header_sesion')
+    <a class="barra-nav" href="{{ route('iniciar_sesion') }}">Iniciar sesión</a>
+@endsection
+
+
 @section('contenido')
 
 <div class="contenedor-formulario" style="max-height: 450px;">
