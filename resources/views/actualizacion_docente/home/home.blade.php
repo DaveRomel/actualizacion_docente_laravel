@@ -107,11 +107,18 @@
             </div>
             </a>
             @if($currentUser['status']!=0)
-            <a class="temariod">
-            <div class="dar_baja">
-                <img src="{{ asset('images/baja.png') }}" alt="baja" style="width: 40px; height: 40px;">
-                Darse de baja<br/> de {{$materiaActual}}
-            </div></a>
+            <form id="form-baja" action="{{ url('/eliminar-inscripcion/' . $currentUser['id']) }}" method="POST" style="display: inline;">
+                @csrf
+                @method('DELETE')
+                
+                <button type="submit" class="temariod" style="background: none; border: none; padding: 0; cursor: pointer;">
+                    <div class="dar_baja">
+                        <img src="{{ asset('images/baja.png') }}" alt="baja" style="width: 40px; height: 40px;">
+                        Darse de baja<br/> de {{ $materiaActual }}
+                    </div>
+                </button>
+            </form>
+
             @endif
         </div>
     </div>
