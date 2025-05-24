@@ -24,7 +24,7 @@
         <div class="titulo-registro"><strong>Editar información</strong></div>
     </div>
     <br>
-    <form action="{{ url('/api/actualizar-usuario/' . $currentUser['id']) }}" method="POST">
+    <form action="{{ url('/actualizar-usuario/' . $currentUser['id']) }}" method="POST">
         @csrf
         @method('PUT')
 

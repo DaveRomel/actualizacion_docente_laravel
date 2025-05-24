@@ -16,7 +16,6 @@ use App\Http\Controllers\FastApiController;
 */
 
 Route::post('/crear-usuario', [FastApiController::class, 'createUser']);
-Route::put('/actualizar-usuario/{user_id}', [FastApiController::class, 'updateUser']);
 Route::put('/cambiar-estado-usuario/{status}/{user_id}', [FastApiController::class, 'changeUserStatus']);
 Route::post('/recuperar-password', [FastApiController::class, 'recuperarPassword']);
 Route::put('/cambiar-contrasena', [FastApiController::class, 'cambiarContrasena']);
