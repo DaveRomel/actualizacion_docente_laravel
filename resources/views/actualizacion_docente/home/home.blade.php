@@ -44,11 +44,11 @@
     <div class="main1">
         <div class="bienvenido">
             <div class="nombres">
-                <div class="bienvenidop">Bienvenido/a: </div>
+                <div class="bienvenidop">Bienvenido/a:&nbsp;</div>
                 <div class="nombrep">{{$currentUser['name']}}</div>
             </div>
             <div class="nombres">
-                <div class="bienvenidop">Inscrito a: </div>
+                <div class="bienvenidop">Inscrito a:&nbsp;</div>
                 <div class="nombrep">{{$materiaActual}}</div>
             </div>
         </div>
