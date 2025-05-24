@@ -61,8 +61,7 @@
                     <a href="{{ asset('temarios/Programa_Matematicas.pdf') }}" download>
                         <div class="botonTemario" style="cursor: pointer;">
                             <div class="temario1">Temario</div>
-                            <img src="{{ asset('images/descarga temario.png') }}" alt="computacion"
-                                style="width: 30px; height: 30px; margin-bottom: 10px;">
+                            <div class="img-hover-t"></div>
                         </div>
                     </a>
                 </div>
@@ -74,8 +73,7 @@
                     <a href="{{ asset('temarios/Programa_Fisica.pdf') }}" download>
                         <div class="botonTemario" style="cursor: pointer;">
                             <div class="temario1">Temario</div>
-                            <img src="{{ asset('images/descarga temario.png') }}" alt="computacion"
-                                style="width: 30px; height: 30px; margin-bottom: 10px;">
+                            <div class="img-hover-t"></div>
                         </div>
                     </a>
                 </div>
@@ -87,8 +85,7 @@
                     <a href="{{ asset('temarios/Programa_Computacion.pdf') }}" download>
                         <div class="botonTemario" style="cursor: pointer;">
                             <div class="temario1">Temario</div>
-                            <img src="{{ asset('images/descarga temario.png') }}" alt="computacion"
-                                style="width: 30px; height: 30px; margin-bottom: 10px;">
+                            <div class="img-hover-t"></div>
                         </div>
                     </a>
                 </div>
@@ -102,15 +99,18 @@
             </div>
         </div>
         <div class="editar_baja">
+             <a class="temariod" href="{{route('editar')}}">
             <div class="editar_informacion">
                 <img src="{{ asset('images/configuracion.png') }}" alt="editar" style="width: 40px; height: 40px;">
-                <a class="temariod" href="{{route('editar')}}">Editar<br/> información</a>
+               Editar<br/> información
             </div>
+            </a>
             @if($currentUser['status']!=0)
+            <a class="temariod">
             <div class="dar_baja">
                 <img src="{{ asset('images/baja.png') }}" alt="baja" style="width: 40px; height: 40px;">
-                <a class="temariod">Darse de baja<br/> de {{$materiaActual}}</a>
-            </div>
+                Darse de baja<br/> de {{$materiaActual}}
+            </div></a>
             @endif
         </div>
     </div>
