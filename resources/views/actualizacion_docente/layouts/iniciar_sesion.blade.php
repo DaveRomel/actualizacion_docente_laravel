@@ -20,19 +20,19 @@
         <div class="titulo-iniciar-sesion"><strong>Iniciar Sesión</strong></div>
     </div>
     <br>
-    <form action="#" method="POST">
+    <form action="{{ url('/api/login') }}" method="POST">
         @csrf
-
         <div class="form-group-inicio-sesion">
-            <input class="imput-inicio-sesion" type="email" name="correo" placeholder="Correo electrónico" required>
+            <input class="imput-inicio-sesion" type="text" name="username" placeholder="Correo electrónico" required>
         </div>
         <br>
         <div class="form-group-inicio-sesion">
-            <input class="imput-inicio-sesion" type="text" name="contraseña" placeholder="Contraseña" required>
+            <input class="imput-inicio-sesion" type="password" name="password" placeholder="Contraseña" required>
         </div>
         <br>
         <button type="submit" class="btn-registrarme">Iniciar Sesión</button>
     </form>
+
 </div>
 
 

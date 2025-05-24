@@ -81,7 +81,7 @@ class FastApiController extends Controller
     // Login y obtener token
     public function login(Request $request)
     {
-        $response = Http::asForm()->post("{$this->baseUrl}/token", [
+        $response = Http::asForm()->post("http://192.168.254.12:4000/token", [
             'username' => $request->input('username'),
             'password' => $request->input('password'),
         ]);
@@ -91,7 +91,7 @@ class FastApiController extends Controller
             session(['api_token' => $response['access_token']]);
 
             // Redirigir al dashboard o vista principal
-            return redirect('/dashboard'); // Cambia esta ruta según tu flujo
+            return redirect('/principal'); // Cambia esta ruta según tu flujo
         } else {
             return back()->withErrors(['login' => 'Credenciales incorrectas.'])->withInput();
         }
