@@ -114,4 +114,13 @@ class FastApiController extends Controller
         return response()->json($response->json(), $response->status());
     }
 
+    //Cerrar sesión
+    public function logout(Request $request)
+    {
+        $request -> session()->forget('api_token');
+        //$request->session()->invalidate();
+        //$request->session()->regenerateToken();
+        return redirect('/');
+    }
+
 }

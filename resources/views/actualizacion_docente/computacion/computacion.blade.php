@@ -5,9 +5,19 @@
 @endsection
 
 @section('header_sesion')
-    <a class="barra-nav" href="{{ route('index') }}">Cerrar sesión</a>
-@endsection
+    @if (session()->has('api_token'))
+    <a class="barra-nav" href="{{ route('logout') }}"
+   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+    Cerrar sesión
+    </a>
+    @else
+    <a class="barra-nav" href="{{ route('registrarse') }}">Regístrate</a><a> / </a><a class="barra-nav" href="{{ route('iniciar_sesion') }}">Iniciar sesión</a>
+    @endif
 
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+    </form>
+@endsection
 
 @section('contenido')
     

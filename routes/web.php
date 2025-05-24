@@ -81,3 +81,4 @@ Route::get('/principal', function () {
 })->name('principal');
 
 Route::post('/login', [FastApiController::class, 'login']);
+Route::post('/logout', [FastApiController::class, 'logout'])->name('logout');
