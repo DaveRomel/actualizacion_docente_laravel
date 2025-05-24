@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\FastApiController;
 use Illuminate\Support\Facades\Route;
+use App\Providers\ViewServiceProvider;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

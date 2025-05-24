@@ -21,12 +21,13 @@ Route::post('/recuperar-password', [FastApiController::class, 'recuperarPassword
 Route::put('/cambiar-contrasena', [FastApiController::class, 'cambiarContrasena']);
 Route::post('/inscribir-usuario/{usuario_id}/{materia_id}', [FastApiController::class, 'inscribirUsuario']);
 Route::get('/ver-inscripciones/{materia_id}', [FastApiController::class, 'verInscripcionesPorMateria']);
-Route::get('/contar-inscritos/{materia_id}', [FastApiController::class, 'contarInscritos']);
+//Route::get('/contar-inscritos/{materia_id}', [FastApiController::class, 'contarInscritos']);  Implementado en web.php
 Route::delete('/eliminar-inscripcion/{usuario_id}', [FastApiController::class, 'eliminarInscripcion']);
 Route::get('/usuario-actual', [FastApiController::class, 'getCurrentUser']);
-Route::get('/usuario-items', [FastApiController::class, 'getUserItems']);
+//Route::get('/usuario-items', [FastApiController::class, 'getUserItems']);  //La ruta que no sirve para nada
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+

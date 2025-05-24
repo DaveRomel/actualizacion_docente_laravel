@@ -1,16 +1,19 @@
         /* Estilos específicos para esta vista, idealmente deberían ir en un archivo CSS */
         .main-container {
             display: flex;
-            flex-direction: column; /* Apila los elementos verticalmente */
-            max-height: 100vh; /* El contenedor principal debe ocupar al menos el 100% del viewport height */
-        }    
-        
-        .content-area{
-            display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
+            flex-direction: column;
+            /* Apila los elementos verticalmente */
+            max-height: 100vh;
+            /* El contenedor principal debe ocupar al menos el 100% del viewport height */
         }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
         h1.main-title {
             color: #7E2C2C;
             font-size: 23pt;
@@ -40,7 +43,7 @@
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             color: #7E2C2C;
             line-height: 1;
-            
+
         }
 
         .inscription-card p {
@@ -49,12 +52,13 @@
             margin: 1px;
             font-family: Gabriola;
             line-height: 1;
-            
+
         }
 
         .inscription-card button {
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-            background-color: #7E2C2C; /* Color vino tinto */
+            background-color: #7E2C2C;
+            /* Color vino tinto */
             color: white;
             border: none;
             padding: 2px 50px;
@@ -62,6 +66,17 @@
             cursor: pointer;
             font-size: 15pt;
             margin-top: 10px;
+        }
+
+        .inscription-card button.disabled {
+            background-color: #b0b0b0;
+            /* Gris */
+            color: #666;
+            /* Color del texto más tenue */
+            cursor: not-allowed;
+            /* Cambia el cursor para indicar que está deshabilitado */
+            opacity: 0.7;
+            /* Reduce la opacidad para dar un efecto visual */
         }
 
 
@@ -73,34 +88,39 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             width: 457px;
             height: 105px;
-           padding-top: 15px;
+            padding-top: 15px;
         }
 
         .reminder-card h2 {
-    font-family: Bahnschrift, 'Segoe UI', Arial, sans-serif;
-    font-size: 16pt;
-    color: #C68C3E;
-    margin: 0 auto;
-    /* Remover text-align: center; daqui, pois o flexbox vai controlar */
-    display: flex;
-    justify-content: space-between; /* Distribui o espaço entre os itens */
-    align-items: baseline;
-}
+            font-family: Bahnschrift, 'Segoe UI', Arial, sans-serif;
+            font-size: 16pt;
+            color: #C68C3E;
+            margin: 0 auto;
+            /* Remover text-align: center; daqui, pois o flexbox vai controlar */
+            display: flex;
+            justify-content: space-between;
+            /* Distribui o espaço entre os itens */
+            align-items: baseline;
+        }
 
-/* Centraliza o primeiro span (o texto "Recuerda que:") */
-.reminder-card h2 span:first-child {
-    flex-grow: 1; /* Permite que este span cresça para centralizar */
-    text-align: center; /* Centraliza o texto dentro dele */
-}
+        /* Centraliza o primeiro span (o texto "Recuerda que:") */
+        .reminder-card h2 span:first-child {
+            flex-grow: 1;
+            /* Permite que este span cresça para centralizar */
+            text-align: center;
+            /* Centraliza o texto dentro dele */
+        }
 
-/* O segundo span (o "5/30") já está alinhado à direita pelo space-between */
-.reminder-card h2 span:last-child {
-    /* Não precisa de margin-left: auto; aqui com justify-content: space-between; */
-    flex-shrink: 0; /* Impede que ele encolha */
-    text-align: right; /* Garante que o texto esteja alinhado à direita dentro do span */
-     color: #7E2C2C;
-     margin-right: 25px;
-}
+        /* O segundo span (o "5/30") já está alinhado à direita pelo space-between */
+        .reminder-card h2 span:last-child {
+            /* Não precisa de margin-left: auto; aqui com justify-content: space-between; */
+            flex-shrink: 0;
+            /* Impede que ele encolha */
+            text-align: right;
+            /* Garante que o texto esteja alinhado à direita dentro do span */
+            color: #7E2C2C;
+            margin-right: 25px;
+        }
 
         .reminder-card p {
             font-family: 'Bradley Hand ITC', 'Bradley Hand', 'Brush S   cript MT', 'Comic Sans MS', cursive;
@@ -115,7 +135,8 @@
 
         .reminder-card p::before {
             content: '•';
-            color: #7E2C2C; /* Color vino tinto para el bullet */
+            color: #7E2C2C;
+            /* Color vino tinto para el bullet */
             font-weight: bold;
             display: inline-block;
             width: 1em;
@@ -123,14 +144,13 @@
             margin-right: 5px;
         }
 
-        .baja
-        {
+        .baja {
             margin-top: -70px;
-    align-self: flex-start;
-    display: flex;
+            align-self: flex-start;
+            display: flex;
         }
-        .textoBaja
-        {
+
+        .textoBaja {
             padding: 5px 10px;
             font-size: 15pt;
             color: #C68C3E;
@@ -158,7 +178,7 @@
             font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             color: #7E2C2C;
             line-height: 1;
-            
+
         }
 
         .confirmacion-card p {
@@ -167,9 +187,10 @@
             margin: 1px;
             font-family: Gabriola;
             line-height: 1;
-            
+
         }
-         .confirmacion-reminder-card {
+
+        .confirmacion-reminder-card {
             background-color: #fff;
             border: 1px solid #C68C3E;
             border-radius: 20px;
@@ -178,34 +199,39 @@
             width: 561px;
             height: auto;
             padding-bottom: 10px;
-           padding-top: 15px;
+            padding-top: 15px;
         }
 
         .confirmacion-reminder-card h2 {
-    font-family: Bahnschrift, 'Segoe UI', Arial, sans-serif;
-    font-size: 16pt;
-    color: #C68C3E;
-    margin: 0 auto;
-    /* Remover text-align: center; daqui, pois o flexbox vai controlar */
-    display: flex;
-    justify-content: space-between; /* Distribui o espaço entre os itens */
-    align-items: baseline;
-}
+            font-family: Bahnschrift, 'Segoe UI', Arial, sans-serif;
+            font-size: 16pt;
+            color: #C68C3E;
+            margin: 0 auto;
+            /* Remover text-align: center; daqui, pois o flexbox vai controlar */
+            display: flex;
+            justify-content: space-between;
+            /* Distribui o espaço entre os itens */
+            align-items: baseline;
+        }
 
-/* Centraliza o primeiro span (o texto "Recuerda que:") */
-.confirmacion-reminder-card h2 span:first-child {
-    flex-grow: 1; /* Permite que este span cresça para centralizar */
-    text-align: center; /* Centraliza o texto dentro dele */
-}
+        /* Centraliza o primeiro span (o texto "Recuerda que:") */
+        .confirmacion-reminder-card h2 span:first-child {
+            flex-grow: 1;
+            /* Permite que este span cresça para centralizar */
+            text-align: center;
+            /* Centraliza o texto dentro dele */
+        }
 
-/* O segundo span (o "5/30") já está alinhado à direita pelo space-between */
-.confirmacion-reminder-card h2 span:last-child {
-    /* Não precisa de margin-left: auto; aqui com justify-content: space-between; */
-    flex-shrink: 0; /* Impede que ele encolha */
-    text-align: right; /* Garante que o texto esteja alinhado à direita dentro do span */
-     color: #7E2C2C;
-     margin-right: 25px;
-}
+        /* O segundo span (o "5/30") já está alinhado à direita pelo space-between */
+        .confirmacion-reminder-card h2 span:last-child {
+            /* Não precisa de margin-left: auto; aqui com justify-content: space-between; */
+            flex-shrink: 0;
+            /* Impede que ele encolha */
+            text-align: right;
+            /* Garante que o texto esteja alinhado à direita dentro do span */
+            color: #7E2C2C;
+            margin-right: 25px;
+        }
 
         .confirmacion-reminder-card p {
             font-family: 'Bradley Hand ITC', 'Bradley Hand', 'Brush S   cript MT', 'Comic Sans MS', cursive;
@@ -220,7 +246,8 @@
 
         .confirmacion-reminder-card p::before {
             content: '•';
-            color: #7E2C2C; /* Color vino tinto para el bullet */
+            color: #7E2C2C;
+            /* Color vino tinto para el bullet */
             font-weight: bold;
             display: inline-block;
             width: 1em;

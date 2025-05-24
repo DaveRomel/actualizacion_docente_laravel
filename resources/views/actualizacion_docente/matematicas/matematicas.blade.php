@@ -34,12 +34,14 @@
                 <p>Institución: {{$currentUser['procedencia']}}</p>
                 <form action="{{ url('/inscribir-usuario/' . $currentUser['id'] .'/3') }}" method="post">
                     @csrf
-                    <button type="submit">Inscribirme</button>
+                <button class="{{ $contagem_inscritos >= 25 || $currentUser['status'] != 0 ? 'disabled' : '' }}" {{ $contagem_inscritos == 30 ? 'disabled' : '' }}>
+                    Inscribirme
+                </button>
                 </form>
             </div>
     
             <div class="reminder-card">
-               <h2><span>Recuerda que:</span> <span>5/25</sapn></h2>
+               <h2><span>Recuerda que:</span> <span>{{ $contagem_inscritos }}/25</sapn></h2>
                 <p>Solo puedes cambiar de curso si hay disponibilidad.</p>
                 <p>Este curso tiene un cupo máximo para 25 participantes </p>
             </div>

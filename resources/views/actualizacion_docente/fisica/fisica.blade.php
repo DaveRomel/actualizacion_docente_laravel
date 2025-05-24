@@ -32,11 +32,16 @@
                 <h2>Inscripción - Física</h2>
                 <p>Nombre: {{$currentUser['name']}}</p>
                 <p>Institución: {{$currentUser['procedencia']}}</p>
-                <button>Inscribirme</button>
+                <form action="{{ url('/inscribir-usuario/' . $currentUser['id'] .'/2') }}" method="post">
+                    @csrf
+                <button class="{{ $contagem_inscritos >= 25 || $currentUser['status'] != 0 ? 'disabled' : '' }}" {{ $contagem_inscritos == 30 ? 'disabled' : '' }}>
+                    Inscribirme
+                </button>
+                </form>
             </div>
     
             <div class="reminder-card">
-               <h2><span>Recuerda que:</span> <span>5/20</sapn></h2>
+               <h2><span>Recuerda que:</span> <span>{{ $contagem_inscritos }}/20</sapn></h2>
                 <p>Sólo puedes cambiar de curso si hay disponibilidad.</p>
                 <p>Este curso tiene un cupo máximo para 20 participantes </p>
             </div>
