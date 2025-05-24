@@ -38,9 +38,8 @@
                 <div class="nombrep">{{$currentUser['name']}}</div>
             </div>
             <div class="nombres">
-                <div class="bienvenidop">Estatus: </div>
-                
-                <div class="nombrep">Inscrito</div>
+                <div class="bienvenidop">Inscrito a: </div>
+                <div class="nombrep">Ninguno</div>
             </div>
         </div>
         <div class="container1">
