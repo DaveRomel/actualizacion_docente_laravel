@@ -35,9 +35,12 @@
                 <h2>Inscripción - Computación</h2>
                 <p>Nombre: {{$currentUser['name']}}</p>
                 <p>Institución: {{$currentUser['procedencia']}}</p>
+                <form action="{{ url('/inscribir-usuario/' . $currentUser['id'] .'/1') }}" method="post">
+                    @csrf
                 <button class="{{ $contagem_inscritos >= 25 || $currentUser['status'] != 0 ? 'disabled' : '' }}" {{ $contagem_inscritos == 30 ? 'disabled' : '' }}>
                     Inscribirme
                 </button>
+                </form>
             </div>
     
             <div class="reminder-card">
