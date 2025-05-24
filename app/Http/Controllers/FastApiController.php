@@ -66,9 +66,24 @@ class FastApiController extends Controller
     // Inscribir usuario
     public function inscribirUsuario(Request $request, $usuario_id, $materia_id)
     {
-        $token = $request->bearerToken();
+        $token = session('api_token');
         $response = Http::withToken($token)->post("{$this->baseUrl}/inscripcion/{$usuario_id}/{$materia_id}");
-        return response()->json($response->json(), $response->status());
+        if ($response->successful()){
+            switch ($materia_id) {
+                case 1:
+                    return redirect('/computacion/confirmacion');
+                    break;
+                
+                case 2:
+                    return redirect('/fisica/confirmacion');
+                    break;
+
+                default:
+                    return redirect('/matematicas/confirmacion');
+                    break;
+            }
+        }
+        //return response()->json($response->json(), $response->status());
     }
 
     // Ver inscripciones por materia
