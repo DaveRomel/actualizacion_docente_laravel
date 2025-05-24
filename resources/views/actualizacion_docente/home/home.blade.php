@@ -25,7 +25,16 @@
     @endphp
 @endif
 
-
+@php
+    $materiaActual = 'Ninguno';
+    if ($currentUser['status'] == 1) {
+        $materiaActual = 'Computación';
+    } elseif ($currentUser['status'] == 2) {
+        $materiaActual = 'Física';
+    } elseif ($currentUser['status'] == 3) {
+        $materiaActual = 'Matemáticas';
+    }
+@endphp
 @section('contenido')
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/impact" rel="stylesheet">
@@ -39,15 +48,7 @@
             </div>
             <div class="nombres">
                 <div class="bienvenidop">Inscrito a: </div>
-                @if($currentUser['status']==0)
-                <div class="nombrep">Ninguno</div>
-                @elseif($currentUser['status'] == 1)
-                <div class="nombrep">Computación</div>
-                @elseif($currentUser['status'] == 2)
-                <div class="nombrep">Física</div>
-                @elseif($currentUser['status'] == 3)
-                <div class="nombrep">Matemáticas</div>
-                @endif
+                <div class="nombrep">{{$materiaActual}}</div>
             </div>
         </div>
         <div class="container1">
@@ -103,12 +104,14 @@
         <div class="editar_baja">
             <div class="editar_informacion">
                 <img src="{{ asset('images/configuracion.png') }}" alt="editar" style="width: 40px; height: 40px;">
-                <a class="temariod">Editar información</a>
+                <a class="temariod" href="{{route('editar')}}">Editar<br/> información</a>
             </div>
+            @if($currentUser['status']!=0)
             <div class="dar_baja">
                 <img src="{{ asset('images/baja.png') }}" alt="baja" style="width: 40px; height: 40px;">
-                <a class="temariod">Dar de baja</a>
+                <a class="temariod">Darse de baja<br/> de {{$materiaActual}}</a>
             </div>
+            @endif
         </div>
     </div>
 
