@@ -18,7 +18,7 @@
     <div>
         <div class="titulo-registro"><strong>Registro</strong></div>
     </div>
-    <form action="#" method="POST">
+    <form action="{{ url('/api/crear-usuario') }}" method="POST">
         @csrf
 
         <div class="form-group">
