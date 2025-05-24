@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\FastApiController;
 use Illuminate\Support\Facades\Route;
+use App\Providers\ViewServiceProvider;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,3 +84,5 @@ Route::get('/principal', function () {
 Route::post('/login', [FastApiController::class, 'login']);
 Route::post('/logout', [FastApiController::class, 'logout'])->name('logout');
 Route::put('/actualizar-usuario/{user_id}', [FastApiController::class, 'updateUser']);
+Route::get('/contar-inscritos/{materia_id}', [FastApiController::class, 'contarInscritos']);
+
