@@ -39,7 +39,15 @@
             </div>
             <div class="nombres">
                 <div class="bienvenidop">Inscrito a: </div>
+                @if($currentUser['status']==0)
                 <div class="nombrep">Ninguno</div>
+                @elseif($currentUser['status'] == 1)
+                <div class="nombrep">Computación</div>
+                @elseif($currentUser['status'] == 2)
+                <div class="nombrep">Física</div>
+                @elseif($currentUser['status'] == 3)
+                <div class="nombrep">Matemáticas</div>
+                @endif
             </div>
         </div>
         <div class="container1">

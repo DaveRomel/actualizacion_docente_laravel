@@ -89,7 +89,7 @@ class FastApiController extends Controller
         if ($response->successful()) {
             $responseData = $response->json();
             if (!isset($responseData['access_token'])) {
-                return back()->withErrors(['login' => 'Token de acesso não recebido da API.'])->withInput();
+                return back()->withErrors(['login' => 'Token de acesso no recibido de la API.'])->withInput();
             }
             $accessToken = $responseData['access_token'];
             // Guardar el token en la sesión
@@ -99,12 +99,10 @@ class FastApiController extends Controller
 
             if ($userResponse->successful()) {
             session(['current_user_data' => $userResponse->json()]);
-            // Redirecionar para o dashboard ou página inicial
             return redirect('/principal'); // Cambia esta ruta según tu flujo
         } else {
-            // Lidar com erro ao buscar dados do usuário
-            session()->forget('api_token'); // Limpar token se não conseguir dados do usuário
-            return back()->withErrors(['login' => 'Não foi possível obter os dados do usuário após o login.']);
+            session()->forget('api_token');
+            return back()->withErrors(['login' => 'No fue posible obtener los datos del usuario']);
         }
             // Redirigir al dashboard o vista principal
             //showUserProfile($request);
