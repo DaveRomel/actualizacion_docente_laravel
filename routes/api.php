@@ -17,8 +17,6 @@ use App\Http\Controllers\FastApiController;
 
 Route::post('/crear-usuario', [FastApiController::class, 'createUser']);
 Route::put('/cambiar-estado-usuario/{status}/{user_id}', [FastApiController::class, 'changeUserStatus']);
-Route::post('/recuperar-password', [FastApiController::class, 'recuperarPassword']);
-Route::put('/cambiar-contrasena', [FastApiController::class, 'cambiarContrasena']);
 Route::post('/inscribir-usuario/{usuario_id}/{materia_id}', [FastApiController::class, 'inscribirUsuario']);
 Route::get('/ver-inscripciones/{materia_id}', [FastApiController::class, 'verInscripcionesPorMateria']);
 //Route::get('/contar-inscritos/{materia_id}', [FastApiController::class, 'contarInscritos']);  Implementado en web.php

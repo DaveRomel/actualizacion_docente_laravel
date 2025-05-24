@@ -49,17 +49,18 @@ class FastApiController extends Controller
 
     // Recuperar contraseña
     public function recuperarPassword(Request $request)
-    {
-        $response = Http::post("{$this->baseUrl}/recuperar", [
-            'email' => $request->input('email')
-        ]);
-        return response()->json($response->json(), $response->status());
+    {   $correo = $request->input('email');
+        $response = Http::post("{$this->baseUrl}/recuperar?email={$correo}");
+        session(['correo' => $correo]);
+        return redirect('/recuperar_contraseña');
     }
 
     // Cambiar contraseña
     public function cambiarContrasena(Request $request)
     {
+        session()->forget('correo');
         $response = Http::put("{$this->baseUrl}/cambiar_contrasena", $request->all());
+        return redirect('/iniciar_sesion');
         return response()->json($response->json(), $response->status());
     }
 

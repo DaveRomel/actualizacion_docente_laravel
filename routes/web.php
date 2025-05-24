@@ -49,6 +49,10 @@ Route::get('/editar', function () {
     return view('actualizacion_docente.layouts.editar');
 });*/
 
+Route::get('/cambiar_contrasena', function () {
+    return view('actualizacion_docente.layouts.enviar_correo');
+})->name('cambiar_contrasena');
+
 Route::get('/recuperar_contraseña', function () {
     return view('actualizacion_docente.layouts.cambiar_password');
 })->name('recuperar_contraseña');
@@ -86,3 +90,5 @@ Route::post('/logout', [FastApiController::class, 'logout'])->name('logout');
 Route::put('/actualizar-usuario/{user_id}', [FastApiController::class, 'updateUser']);
 Route::post('/inscribir-usuario/{usuario_id}/{materia_id}', [FastApiController::class, 'inscribirUsuario']);
 Route::delete('/eliminar-inscripcion/{usuario_id}', [FastApiController::class, 'eliminarInscripcion']);
+Route::post('/recuperar-password', [FastApiController::class, 'recuperarPassword']);
+Route::put('/cambiar-contrasena', [FastApiController::class, 'cambiarContrasena']);

@@ -37,7 +37,7 @@
         <button type="submit" class="btn-registrarme">Iniciar Sesión</button>
     </form>
 
-    <a href="http://" class="pass_olvidado" style="color: #7E2C2C; font-style: italic;">Olvidaste tu contraseña</a>
+    <a href="{{ route('cambiar_contrasena') }}" class="pass_olvidado" style="color: #7E2C2C; font-style: italic;">Olvidaste tu contraseña</a>
 
 
 
