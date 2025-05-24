@@ -69,18 +69,22 @@ class FastApiController extends Controller
         $token = session('api_token');
         $response = Http::withToken($token)->post("{$this->baseUrl}/inscripcion/{$usuario_id}/{$materia_id}");
         if ($response->successful()){
-            switch ($materia_id) {
-                case 1:
-                    return redirect('/computacion/confirmacion');
-                    break;
-                
-                case 2:
-                    return redirect('/fisica/confirmacion');
-                    break;
+            $userResponse = Http::withToken($token)->get("http://192.168.254.12:4000/users/me/");
+            if ($userResponse->successful()) {
+                session(['current_user_data' => $userResponse->json()]);
+                switch ($materia_id) {
+                    case 1:
+                        return redirect('/computacion/confirmacion');
+                        break;
+                    
+                    case 2:
+                        return redirect('/fisica/confirmacion');
+                        break;
 
-                default:
-                    return redirect('/matematicas/confirmacion');
-                    break;
+                    default:
+                        return redirect('/matematicas/confirmacion');
+                        break;
+                }
             }
         }
         //return response()->json($response->json(), $response->status());
