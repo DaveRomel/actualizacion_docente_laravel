@@ -12,8 +12,15 @@ class FastApiController extends Controller
     // Crear usuario
     public function createUser(Request $request)
     {
-        $response = Http::post("{$this->baseUrl}/user", $request->all());
-        return response()->json($response->json(), $response->status());
+        $data = [
+            'name'   => $request->input('nombre'),
+            'celular' => $request->input('telefono'),
+            'procedencia'  => $request->input('escuela'),
+            'email'    => $request->input('correo'),
+            'user_passw' => $request->input('contrasena'),
+        ];
+        $response = Http::post("{$this->baseUrl}/user", $data);
+        return redirect('/iniciar_sesion');
     }
 
     // Actualizar usuario
