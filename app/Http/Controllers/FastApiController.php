@@ -109,7 +109,7 @@ class FastApiController extends Controller
     public function eliminarInscripcion(Request $request, $usuario_id)
     {
         $token = session('api_token');
-        $response = Http::withToken($token)->delete("{$this->baseUrl}/inscripcion/{$usuario_id}");
+        $response = Http::withToken($token)->put("{$this->baseUrl}/inscripcion/{$usuario_id}");
         if ($response->successful()){
             $userResponse = Http::withToken($token)->get("http://192.168.254.12:4000/users/me/");
             if ($userResponse->successful()) {

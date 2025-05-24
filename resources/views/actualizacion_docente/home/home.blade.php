@@ -109,7 +109,7 @@
             @if($currentUser['status']!=0)
             <form id="form-baja" action="{{ url('/eliminar-inscripcion/' . $currentUser['id']) }}" method="POST" style="display: inline;">
                 @csrf
-                @method('DELETE')
+                @method('PUT')
                 
                 <button type="submit" class="temariod" style="background: none; border: none; padding: 0; cursor: pointer;">
                     <div class="dar_baja">
