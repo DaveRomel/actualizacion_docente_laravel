@@ -82,3 +82,4 @@ Route::get('/principal', function () {
 
 Route::post('/login', [FastApiController::class, 'login']);
 Route::post('/logout', [FastApiController::class, 'logout'])->name('logout');
+Route::put('/actualizar-usuario/{user_id}', [FastApiController::class, 'updateUser']);

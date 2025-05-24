@@ -26,8 +26,16 @@ class FastApiController extends Controller
     // Actualizar usuario
     public function updateUser(Request $request, $user_id)
     {
-        $token = $request->bearerToken(); // O consigue el token desde otra fuente
+        $token = $token = session('api_token');
         $response = Http::withToken($token)->put("{$this->baseUrl}/user/{$user_id}", $request->all());
+        // Guardar el token en la sesión
+        $userResponse = Http::withToken($token)->get("http://192.168.254.12:4000/users/me/");
+
+
+        if ($userResponse->successful()) {
+            session(['current_user_data' => $userResponse->json()]);
+            return redirect('/principal');
+        }
         return response()->json($response->json(), $response->status());
     }
 
