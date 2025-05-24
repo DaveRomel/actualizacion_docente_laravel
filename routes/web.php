@@ -79,3 +79,5 @@ Route::get('/fisica/confirmacion', function () {
 Route::get('/principal', function () {
     return view('actualizacion_docente.home.home');
 })->name('principal');
+
+Route::post('/login', [FastApiController::class, 'login']);

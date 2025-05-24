@@ -20,7 +20,7 @@
         <div class="titulo-iniciar-sesion"><strong>Iniciar Sesión</strong></div>
     </div>
     <br>
-    <form action="{{ url('/api/login') }}" method="POST">
+    <form action="{{ url('/login') }}" method="POST">
         @csrf
         <div class="form-group-inicio-sesion">
             <input class="imput-inicio-sesion" type="text" name="username" placeholder="Correo electrónico" required>

@@ -24,7 +24,6 @@ Route::post('/inscribir-usuario/{usuario_id}/{materia_id}', [FastApiController::
 Route::get('/ver-inscripciones/{materia_id}', [FastApiController::class, 'verInscripcionesPorMateria']);
 Route::get('/contar-inscritos/{materia_id}', [FastApiController::class, 'contarInscritos']);
 Route::delete('/eliminar-inscripcion/{usuario_id}', [FastApiController::class, 'eliminarInscripcion']);
-Route::post('/login', [FastApiController::class, 'login']);
 Route::get('/usuario-actual', [FastApiController::class, 'getCurrentUser']);
 Route::get('/usuario-items', [FastApiController::class, 'getUserItems']);
 
