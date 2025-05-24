@@ -59,7 +59,8 @@
 
 .nombrep{
     font-family: 'gabriola', sans-serif;
-    font-size: 23pt;
+    font-size: 30pt;
+    margin-top: -8px;
     color: #7E2C2C;
 }
 
