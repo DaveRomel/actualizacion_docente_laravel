@@ -19,6 +19,13 @@
     </form>
 @endsection
 
+@if (session()->has('current_user_data'))
+    @php
+        $currentUser = session('current_user_data')
+    @endphp
+@endif
+
+
 @section('contenido')
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/impact" rel="stylesheet">
@@ -28,7 +35,7 @@
         <div class="bienvenido">
             <div class="nombres">
                 <div class="bienvenidop">Bienvenido/a: </div>
-                <div class="nombrep">Nombre</div>
+                <div class="nombrep">{{$currentUser['name']}}</div>
             </div>
             <div class="nombres">
                 <div class="bienvenidop">Inscrito a: </div>

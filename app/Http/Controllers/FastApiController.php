@@ -87,11 +87,27 @@ class FastApiController extends Controller
         ]);
 
         if ($response->successful()) {
+            $responseData = $response->json();
+            if (!isset($responseData['access_token'])) {
+                return back()->withErrors(['login' => 'Token de acesso não recebido da API.'])->withInput();
+            }
+            $accessToken = $responseData['access_token'];
             // Guardar el token en la sesión
-            session(['api_token' => $response['access_token']]);
+            session(['api_token' => $accessToken]);
+            $userResponse = Http::withToken($accessToken)->get("http://192.168.254.12:4000/users/me/");
 
-            // Redirigir al dashboard o vista principal
+
+            if ($userResponse->successful()) {
+            session(['current_user_data' => $userResponse->json()]);
+            // Redirecionar para o dashboard ou página inicial
             return redirect('/principal'); // Cambia esta ruta según tu flujo
+        } else {
+            // Lidar com erro ao buscar dados do usuário
+            session()->forget('api_token'); // Limpar token se não conseguir dados do usuário
+            return back()->withErrors(['login' => 'Não foi possível obter os dados do usuário após o login.']);
+        }
+            // Redirigir al dashboard o vista principal
+            //showUserProfile($request);
         } else {
             return back()->withErrors(['login' => 'Credenciales incorrectas.'])->withInput();
         }
