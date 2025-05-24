@@ -89,6 +89,22 @@
     background-image: url('../images/fisica_gris.png');
 }
 
+.img-hover-t
+{
+    width: 30px;
+    height: 33px;
+    margin-bottom: 7px;
+    background-image: url('../images/descarga temario.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+}
+.botonTemario:hover .img-hover-t
+{
+    background-image: url('../images/descargar constancia.png');
+}
+
 .img-hover-c {
     width: 120px;
     height: 120px;
