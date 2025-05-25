@@ -55,7 +55,11 @@
         <div class="container1">
             <div class="cursos">
                 <div class="curso">
-                    <a href="{{ route('inscripcion_matematicas') }}">
+                    @if($currentUser['status'] == 3)
+                        <a href="{{ route('confirmacion_matematicas') }}">
+                    @else
+                        <a href="{{ route('inscripcion_matematicas') }}">
+                    @endif
                         <div class="img-hover-m"></div>
                     <a>
                     <div class="titulocurso">Matemáticas</div>
@@ -67,7 +71,12 @@
                     </a>
                 </div>
                 <div class="curso">
-                     <a href="{{ route('inscripcion_fisica') }}">
+                    @if($currentUser['status'] == 2)
+                        <a href="{{ route('confirmacion_fisica') }}">
+                    @else
+                       <a href="{{ route('inscripcion_fisica') }}">
+                    @endif
+                     
                         <div class="img-hover-f"></div>
                     <a>
                     <div class="titulocurso">Física</div>
@@ -79,7 +88,12 @@
                     </a>
                 </div>
                 <div class="curso">
-                     <a href="{{ route('inscripcion_computacion') }}">
+                    @if($currentUser['status'] == 1)
+                        <a href="{{ route('confirmacion_computacion') }}">
+                    @else
+                       <a href="{{ route('inscripcion_computacion') }}">
+                    @endif
+                     
                         <div class="img-hover-c"></div>
                     <a>
                     <div class="titulocurso">Computación</div>
