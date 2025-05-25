@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 class FastApiController extends Controller
 {
-    private $baseUrl = 'http://192.168.254.12:4000/api';
+    private $baseUrl = 'http://192.168.254.12:4001/api';
 
     // Crear usuario
     public function createUser(Request $request)
@@ -29,7 +29,7 @@ class FastApiController extends Controller
         $token = session('api_token');
         $response = Http::withToken($token)->put("{$this->baseUrl}/user/{$user_id}", $request->all());
         // Guardar el token en la sesión
-        $userResponse = Http::withToken($token)->get("http://192.168.254.12:4000/users/me/");
+        $userResponse = Http::withToken($token)->get("http://192.168.254.12:4001/users/me/");
 
 
         if ($userResponse->successful()) {
@@ -70,7 +70,7 @@ class FastApiController extends Controller
         $token = session('api_token');
         $response = Http::withToken($token)->post("{$this->baseUrl}/inscripcion/{$usuario_id}/{$materia_id}");
         if ($response->successful()){
-            $userResponse = Http::withToken($token)->get("http://192.168.254.12:4000/users/me/");
+            $userResponse = Http::withToken($token)->get("http://192.168.254.12:4001/users/me/");
             if ($userResponse->successful()) {
                 session(['current_user_data' => $userResponse->json()]);
                 switch ($materia_id) {
@@ -111,7 +111,7 @@ class FastApiController extends Controller
         $token = session('api_token');
         $response = Http::withToken($token)->put("{$this->baseUrl}/inscripcion/{$usuario_id}");
         if ($response->successful()){
-            $userResponse = Http::withToken($token)->get("http://192.168.254.12:4000/users/me/");
+            $userResponse = Http::withToken($token)->get("http://192.168.254.12:4001/users/me/");
             if ($userResponse->successful()) {
                 session(['current_user_data' => $userResponse->json()]);
                 return redirect('/principal');
@@ -123,7 +123,7 @@ class FastApiController extends Controller
     // Login y obtener token
     public function login(Request $request)
     {
-        $response = Http::asForm()->post("http://192.168.254.12:4000/token", [
+        $response = Http::asForm()->post("http://192.168.254.12:4001/token", [
             'username' => $request->input('username'),
             'password' => $request->input('password'),
         ]);
@@ -136,7 +136,7 @@ class FastApiController extends Controller
             $accessToken = $responseData['access_token'];
             // Guardar el token en la sesión
             session(['api_token' => $accessToken]);
-            $userResponse = Http::withToken($accessToken)->get("http://192.168.254.12:4000/users/me/");
+            $userResponse = Http::withToken($accessToken)->get("http://192.168.254.12:4001/users/me/");
 
 
             if ($userResponse->successful()) {

@@ -113,7 +113,7 @@
                 
                 <button type="submit" class="temariod" style="background: none; border: none; padding: 0; cursor: pointer;">
                     <div class="dar_baja">
-                        <img src="{{ asset('images/baja.png') }}" alt="baja" style="width: 40px; height: 40px;">
+                        <img src="{{ asset('images/Baja.png') }}" alt="baja" style="width: 40px; height: 40px;">
                         Darse de baja<br/> de {{ $materiaActual }}
                     </div>
                 </button>

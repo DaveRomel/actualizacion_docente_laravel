@@ -28,13 +28,13 @@
             <h1 class="main-title">Actualización docente educación media superior</h1>
     
             <div class="inscription-card">
-                <img src="{{ asset('images/inscripción_matematicas.png') }}" alt="Icono Diploma" class="icon"> {{-- Asegúrate de tener un icono apropiado --}}
+                <img src="{{ asset('images/Inscripción_matematicas.png') }}" alt="Icono Diploma" class="icon"> {{-- Asegúrate de tener un icono apropiado --}}
                 <h2>Inscripción - Matemáticas</h2>
                 <p>Nombre: {{$currentUser['name']}}</p>
                 <p>Institución: {{$currentUser['procedencia']}}</p>
                 <form action="{{ url('/inscribir-usuario/' . $currentUser['id'] .'/3') }}" method="post">
                     @csrf
-                <button class="{{ $contagem_inscritos >= 25 || $currentUser['status'] != 0 ? 'disabled' : '' }}" {{ $contagem_inscritos == 25 ? 'disabled' : '' }}>
+                <button class="{{ $contagem_inscritos >= 25 || $currentUser['status'] != 0 ? 'disabled' : '' }}" {{ $contagem_inscritos => 25 || $currentUser['status'] != 0 ? 'disabled' : '' }}>
                     Inscribirme
                 </button>
                 </form>
