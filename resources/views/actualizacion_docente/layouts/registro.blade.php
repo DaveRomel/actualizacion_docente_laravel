@@ -1,7 +1,5 @@
 @extends('actualizacion_docente.welcome')
 
-@extends('actualizacion_docente.welcome')
-
 @section('header_primero')
     <a class="barra-nav" href="{{ route('index') }}">Actualización Docente</a>
 @endsection

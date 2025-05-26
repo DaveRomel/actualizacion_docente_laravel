@@ -60,8 +60,9 @@
                     @else
                         <a href="{{ route('inscripcion_matematicas') }}">
                     @endif
+                    
                         <div class="img-hover-m"></div>
-                    <a>
+                    </a>
                     <div class="titulocurso">Matemáticas</div>
                     <a href="{{ asset('temarios/Programa_Matematicas.pdf') }}" download>
                         <div class="botonTemario" style="cursor: pointer;">
@@ -78,7 +79,7 @@
                     @endif
                      
                         <div class="img-hover-f"></div>
-                    <a>
+                    </a>
                     <div class="titulocurso">Física</div>
                     <a href="{{ asset('temarios/Programa_Fisica.pdf') }}" download>
                         <div class="botonTemario" style="cursor: pointer;">
