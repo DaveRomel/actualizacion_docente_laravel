@@ -29,9 +29,13 @@ header {
     font-size: 20pt;
     color: #E1E8EC;
 }
-.barra-nav {
+.barra-nav  {
     text-align: right;
     color: #E1E8EC;
+    
+}
+a:hover {
+  color: #C68C3E; /* dorado Cambia el color del texto del enlace al pasar el mouse */
 }
 .fondo-personalizado {
     background-image: url('/images/fondo.jpg');
