@@ -147,16 +147,27 @@ class FastApiController extends Controller
      * Cambia la contraseña de un usuario.
      *
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
     public function cambiarContrasena(Request $request)
     {
         try {
             session()->forget('correo');
             $response = Http::put("{$this->baseUrl}/cambiar_contrasena", $request->all());
+
+            // Si la API externa devuelve un error (ej. 500 por código incorrecto),
+            // Laravel debe devolver un JSON con el mismo status para que el frontend lo maneje.
+            if (!$response->successful()) {
+                $errorMessage = $response->json()['message'] ?? $response->json()['detail'] ?? 'El código de verificación no es correcto.';
+                return response()->json(['message' => $errorMessage], $response->status());
+            }
+
+            // Si la operación fue exitosa, redirige al inicio de sesión.
             return redirect('/iniciar_sesion');
         } catch (Throwable $e) {
-            return response()->view('errors.generico');
+            // Si hay un error de conexión o un error inesperado en Laravel,
+            // devolvemos un 500 genérico para el frontend.
+            return response()->json(['message' => 'Error de conexión o del servidor. Por favor, intente de nuevo más tarde.'], 500);
         }
     }
 
