@@ -65,7 +65,7 @@
 <!-- Nuevo Modal para éxito de actualización de contraseña -->
 <div id="passwordSuccessModal" class="modal">
     <div class="modal-content">
-        <img src="https://placehold.co/60x60/32CD32/ffffff?text=✓" alt="Icono de éxito" class="modal-icon">
+        <img src="{{ asset('images/exito.png') }}" alt="Icono de éxito" class="modal-icon">
         <p class="modal-message">Su contraseña ha sido actualizada correctamente.</p>
         <button id="goToLoginBtn" class="modal-button">Aceptar</button>
     </div>
