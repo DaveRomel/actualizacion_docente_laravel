@@ -25,6 +25,9 @@
             <li>
                 <p>fecha <strong>límite </strong>de registro es el <strong>2 de julio de 2025.</strong></p>
             </li>
+            <li>
+                <p><a href="{{ route('video') }}"><strong>Video de como incribirse</strong></a></p>
+            </li>
         </ul>
     </div>
 </div>

@@ -44,10 +44,10 @@ Route::get('/editar', function () {
 Route::get('/iniciar_sesion', function () {
     return view('actualizacion_docente.layouts.iniciar_sesion');
 })->name('iniciar_sesion');
-/*
-Route::get('/editar', function () {
-    return view('actualizacion_docente.layouts.editar');
-});*/
+
+Route::get('/video', function () {
+    return view('actualizacion_docente.layouts.video');
+})->name('video');
 
 Route::get('/cambiar_contrasena', function () {
     return view('actualizacion_docente.layouts.enviar_correo');
