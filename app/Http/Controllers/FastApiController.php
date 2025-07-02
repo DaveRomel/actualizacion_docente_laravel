@@ -4,43 +4,81 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\JsonResponse; // Importar JsonResponse para tipado
 
 class FastApiController extends Controller
 {
-    //private $baseUrl = 'http://192.168.254.12:4001/api';
-    private $baseUrl = 'http://localhost:4000/api';
+    // private $baseUrl = 'http://192.168.254.12:4001/api';
+    /* private $baseUrl = 'http://localhost:4000/api'; */
+    private $baseUrl = 'http://192.168.0.11:4000/api';
 
-    // Crear usuario
+    /**
+     * Crea un nuevo usuario.
+     * Maneja la respuesta de la API externa y redirige o devuelve un JSON.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
     public function createUser(Request $request)
     {
+        // Prepara los datos para enviar a la API externa
         $data = [
-            'name'   => $request->input('nombre'),
-            'celular' => $request->input('telefono'),
+            'name'         => $request->input('nombre'),
+            'celular'      => $request->input('telefono'),
             'procedencia'  => $request->input('escuela'),
-            'email'    => $request->input('correo'),
-            'user_passw' => $request->input('contrasena'),
+            'email'        => $request->input('correo'),
+            'user_passw'   => $request->input('contrasena'),
         ];
+
+        // Realiza la petición POST a la API externa
         $response = Http::post("{$this->baseUrl}/user", $data);
-        return redirect('/iniciar_sesion');
+
+        // Verifica el código de estado de la respuesta de la API externa
+        if ($response->status() === 400) {
+            // Si el correo ya está registrado (código 400), devuelve una respuesta JSON
+            // con el mensaje y el código 400 para que el frontend lo maneje.
+            return response()->json(['message' => 'El correo electrónico ya ha sido registrado.'], 400);
+        } elseif ($response->successful()) {
+            // Si la creación del usuario fue exitosa (código 2xx), redirige a la página de inicio de sesión.
+            return redirect('/iniciar_sesion');
+        } else {
+            // Si hay otro tipo de error de la API externa, devuelve una respuesta JSON
+            // con un mensaje genérico de error y el código de estado original.
+            // Puedes personalizar este mensaje de error si la API externa proporciona detalles.
+            return response()->json(['message' => 'Error al registrar el usuario. Por favor, intente de nuevo.'], $response->status());
+        }
     }
 
-    // Actualizar usuario
+    /**
+     * Actualiza un usuario existente.
+     *
+     * @param Request $request
+     * @param int $user_id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
     public function updateUser(Request $request, $user_id)
     {
         $token = session('api_token');
         $response = Http::withToken($token)->put("{$this->baseUrl}/user/{$user_id}", $request->all());
-        // Guardar el token en la sesión
-        $userResponse = Http::withToken($token)->get("http://localhost:4000/users/me/");
 
-
-        if ($userResponse->successful()) {
-            session(['current_user_data' => $userResponse->json()]);
-            return redirect('/principal');
+        if ($response->successful()) {
+            $userResponse = Http::withToken($token)->get("http://192.168.0.11:4000/users/me/");
+            if ($userResponse->successful()) {
+                session(['current_user_data' => $userResponse->json()]);
+                return redirect('/principal');
+            }
         }
         return response()->json($response->json(), $response->status());
     }
 
-    // Cambiar estado del usuario
+    /**
+     * Cambia el estado de un usuario.
+     *
+     * @param Request $request
+     * @param string $status
+     * @param int $user_id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function changeUserStatus(Request $request, $status, $user_id)
     {
         $token = $request->bearerToken();
@@ -48,37 +86,55 @@ class FastApiController extends Controller
         return response()->json($response->json(), $response->status());
     }
 
-    // Recuperar contraseña
+    /**
+     * Recupera la contraseña de un usuario.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function recuperarPassword(Request $request)
-    {   $correo = $request->input('email');
+    {
+        $correo = $request->input('email');
         $response = Http::post("{$this->baseUrl}/recuperar?email={$correo}");
         session(['correo' => $correo]);
         return redirect('/recuperar_contraseña');
     }
 
-    // Cambiar contraseña
+    /**
+     * Cambia la contraseña de un usuario.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
     public function cambiarContrasena(Request $request)
     {
         session()->forget('correo');
         $response = Http::put("{$this->baseUrl}/cambiar_contrasena", $request->all());
         return redirect('/iniciar_sesion');
-        return response()->json($response->json(), $response->status());
+        // return response()->json($response->json(), $response->status()); // Esta línea nunca se ejecuta debido al redirect
     }
 
-    // Inscribir usuario
+    /**
+     * Inscribe un usuario a una materia.
+     *
+     * @param Request $request
+     * @param int $usuario_id
+     * @param int $materia_id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
     public function inscribirUsuario(Request $request, $usuario_id, $materia_id)
     {
         $token = session('api_token');
         $response = Http::withToken($token)->post("{$this->baseUrl}/inscripcion/{$usuario_id}/{$materia_id}");
         if ($response->successful()){
-            $userResponse = Http::withToken($token)->get("http://localhost:4000/users/me/");
+            $userResponse = Http::withToken($token)->get("http://192.168.0.11:4000/users/me/");
             if ($userResponse->successful()) {
                 session(['current_user_data' => $userResponse->json()]);
                 switch ($materia_id) {
                     case 1:
                         return redirect('/computacion/confirmacion');
                         break;
-                    
+
                     case 2:
                         return redirect('/fisica/confirmacion');
                         break;
@@ -89,30 +145,46 @@ class FastApiController extends Controller
                 }
             }
         }
-        //return response()->json($response->json(), $response->status());
+        return response()->json($response->json(), $response->status());
     }
 
-    // Ver inscripciones por materia
+    /**
+     * Ver inscripciones por materia.
+     *
+     * @param int $materia_id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function verInscripcionesPorMateria($materia_id)
     {
         $response = Http::get("{$this->baseUrl}/inscripcion/{$materia_id}");
         return response()->json($response->json(), $response->status());
     }
 
-    // Contar inscritos
+    /**
+     * Contar inscritos por materia.
+     *
+     * @param int $materia_id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function contarInscritos($materia_id)
     {
         $response = Http::get("{$this->baseUrl}/inscripcion/contar_inscritos_por_materia/{$materia_id}");
         return response()->json($response->json(), $response->status());
     }
 
-    // Eliminar inscripción
+    /**
+     * Eliminar una inscripción.
+     *
+     * @param Request $request
+     * @param int $usuario_id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
     public function eliminarInscripcion(Request $request, $usuario_id)
     {
         $token = session('api_token');
         $response = Http::withToken($token)->put("{$this->baseUrl}/inscripcion/{$usuario_id}");
         if ($response->successful()){
-            $userResponse = Http::withToken($token)->get("http://localhost:4000/users/me/");
+            $userResponse = Http::withToken($token)->get("http://192.168.0.11:4000/users/me/");
             if ($userResponse->successful()) {
                 session(['current_user_data' => $userResponse->json()]);
                 return redirect('/principal');
@@ -121,10 +193,15 @@ class FastApiController extends Controller
         return response()->json($response->json(), $response->status());
     }
 
-    // Login y obtener token
+    /**
+     * Realiza el login y obtiene el token de acceso.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function login(Request $request)
     {
-        $response = Http::asForm()->post("http://localhost:4000/token", [
+        $response = Http::asForm()->post("http://192.168.0.11:4000/token", [
             'username' => $request->input('username'),
             'password' => $request->input('password'),
         ]);
@@ -132,30 +209,33 @@ class FastApiController extends Controller
         if ($response->successful()) {
             $responseData = $response->json();
             if (!isset($responseData['access_token'])) {
-                return back()->withErrors(['iniciar_sesion' => 'Token de acesso no recibido de la API.'])->withInput();
+                return back()->withErrors(['iniciar_sesion' => 'Token de acceso no recibido de la API.'])->withInput();
             }
             $accessToken = $responseData['access_token'];
-            // Guardar el token en la sesión
             session(['api_token' => $accessToken]);
-            $userResponse = Http::withToken($accessToken)->get("http://localhost:4000/users/me/");
-            print("Llego hasta aqui");
-            print_r($userResponse->json());
+            $userResponse = Http::withToken($accessToken)->get("http://192.168.0.11:4000/users/me/");
+
+            // print("Llego hasta aqui"); // Descomentar para depuración
+            // print_r($userResponse->json()); // Descomentar para depuración
+
             if ($userResponse->successful()) {
-            session(['current_user_data' => $userResponse->json()]);
-            return redirect('/principal'); // Cambia esta ruta según tu flujo
-        } else {
-            session()->forget('api_token');
-            return back()->withErrors(['iniciar_sesion' => 'No fue posible obtener los datos del usuario']);
-        }
-            // Redirigir al dashboard o vista principal
-            //showUserProfile($request);
+                session(['current_user_data' => $userResponse->json()]);
+                return redirect('/principal'); // Cambia esta ruta según tu flujo
+            } else {
+                session()->forget('api_token');
+                return back()->withErrors(['iniciar_sesion' => 'No fue posible obtener los datos del usuario']);
+            }
         } else {
             return back()->withErrors(['iniciar_sesion' => 'Credenciales incorrectas.'])->withInput();
         }
     }
 
-
-    // Obtener el usuario autenticado
+    /**
+     * Obtiene el usuario autenticado.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getCurrentUser(Request $request)
     {
         $token = $request->bearerToken();
@@ -163,7 +243,12 @@ class FastApiController extends Controller
         return response()->json($response->json(), $response->status());
     }
 
-    // Obtener ítems del usuario autenticado
+    /**
+     * Obtiene los ítems del usuario autenticado.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getUserItems(Request $request)
     {
         $token = $request->bearerToken();
@@ -171,14 +256,18 @@ class FastApiController extends Controller
         return response()->json($response->json(), $response->status());
     }
 
-    //Cerrar sesión
+    /**
+     * Cierra la sesión del usuario.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function logout(Request $request)
     {
-        $request -> session()->forget('api_token');
-        $request -> session()->forget('current_user_data');
-        //$request->session()->invalidate();
-        //$request->session()->regenerateToken();
+        $request->session()->forget('api_token');
+        $request->session()->forget('current_user_data');
+        // $request->session()->invalidate(); // Descomentar si deseas invalidar la sesión completamente
+        // $request->session()->regenerateToken(); // Descomentar si deseas regenerar el token de sesión
         return redirect('/');
     }
-
 }

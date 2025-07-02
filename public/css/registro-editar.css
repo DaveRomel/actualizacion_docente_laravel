@@ -71,3 +71,93 @@ input::placeholder {
 .btn-registrarme:hover {
     background-color: #661f1f;
 }
+
+/* --- Estilos para el modal de validación --- */
+
+/* Estilos base para el modal (oculto por defecto) */
+.modal {
+    display: none; /* CORREGIDO: Solo display: none; para ocultarlo por defecto */
+    position: fixed; /* Posición fija para cubrir toda la pantalla */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Permite desplazamiento si el contenido es muy grande */
+    background-color: rgba(0,0,0,0.6); /* Fondo semi-transparente oscuro */
+    /* display: flex; <--- ESTA LÍNEA SE ELIMINA DE AQUÍ */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+}
+
+/* Contenido del modal */
+.modal-content {
+    background-color: white;
+    border: 2px solid #C68C3E; /* Contorno del modal con el color especificado */
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    width: 90%; /* Ancho responsivo */
+    max-width: 400px; /* Ancho máximo para el modal */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra para dar profundidad */
+    position: relative; /* Para posicionamiento de elementos internos si es necesario */
+    display: flex; /* Flexbox para organizar los elementos internos */
+    flex-direction: column; /* Elementos apilados verticalmente */
+    align-items: center; /* Centrar elementos internos */
+    gap: 20px; /* Espacio entre el icono, mensaje y botón */
+}
+
+/* Estilo para el icono dentro del modal */
+.modal-icon {
+    width: 60px; /* Tamaño del icono */
+    height: 60px;
+    margin-bottom: 10px; /* Espacio debajo del icono */
+}
+
+/* Estilo para el mensaje dentro del modal */
+.modal-message {
+    font-family: 'Gabriola', cursive; /* Fuente Gabriola, como en el CSS de registro */
+    font-size: 24pt;
+    color: #7E2C2C; /* Color del texto, como en el CSS de registro */
+    margin: 0; /* Eliminar márgenes por defecto */
+}
+
+/* Estilo para el botón dentro del modal */
+.modal-button {
+    background-color: #7E2C2C; /* Color del botón especificado */
+    color: white;
+    font-family: 'Impact', sans-serif; /* Fuente Impact, como en el CSS de registro */
+    font-size: 16pt;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+/* Efecto hover para el botón del modal */
+.modal-button:hover {
+    background-color: #661f1f; /* Color más oscuro al pasar el mouse */
+}
+
+/* Media queries para hacer el modal responsivo en diferentes tamaños de pantalla */
+@media (max-width: 768px) {
+    .modal-message {
+        font-size: 20pt; /* Reducir tamaño de fuente en pantallas medianas */
+    }
+    .modal-button {
+        font-size: 14pt;
+        padding: 8px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 20px;
+        max-width: 300px; /* Reducir ancho máximo en pantallas pequeñas */
+    }
+    .modal-icon {
+        width: 50px;
+        height: 50px;
+    }
+}
