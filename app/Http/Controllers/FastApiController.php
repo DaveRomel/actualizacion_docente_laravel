@@ -227,7 +227,7 @@ class FastApiController extends Controller
      * Realiza el login y obtiene el token de acceso.
      *
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
     public function login(Request $request)
     {
@@ -240,24 +240,36 @@ class FastApiController extends Controller
             if ($response->successful()) {
                 $responseData = $response->json();
                 if (!isset($responseData['access_token'])) {
-                    return back()->withErrors(['iniciar_sesion' => 'Token de acceso no recibido de la API.'])->withInput();
+                    // Si no se recibe el token de acceso, esto es un error del servidor o de la API externa
+                    // Cambiado de back()->withErrors a JsonResponse
+                    return response()->json(['message' => 'Token de acceso no recibido de la API.'], 500);
                 }
                 $accessToken = $responseData['access_token'];
                 session(['api_token' => $accessToken]);
+
+                // Intentar obtener los datos del usuario con el nuevo token
                 $userResponse = Http::withToken($accessToken)->get("http://192.168.0.11:4000/users/me/");
 
                 if ($userResponse->successful()) {
                     session(['current_user_data' => $userResponse->json()]);
+                    // Si el login y la obtención de datos del usuario son exitosos, redirige.
                     return redirect('/principal');
                 } else {
+                    // Si el token se obtuvo pero no se pudieron obtener los datos del usuario
                     session()->forget('api_token');
-                    return back()->withErrors(['iniciar_sesion' => 'No fue posible obtener los datos del usuario']);
+                    // Cambiado de back()->withErrors a JsonResponse
+                    return response()->json(['message' => 'No fue posible obtener los datos del usuario.'], $userResponse->status());
                 }
             } else {
-                return back()->withErrors(['iniciar_sesion' => 'Credenciales incorrectas.'])->withInput();
+                // Si la petición al endpoint /token no fue exitosa (ej. 401 Unauthorized, 400 Bad Request)
+                // Esto indica credenciales incorrectas. Devolvemos un 401 al frontend.
+                // Cambiado de back()->withErrors a JsonResponse
+                return response()->json(['message' => 'Credenciales incorrectas.'], 401);
             }
         } catch (Throwable $e) {
-            return response()->view('errors.generico');
+            // Si ocurre cualquier excepción (ej. la API no está disponible), devuelve un JSON de error
+            // en lugar de una vista genérica, para que el frontend AJAX pueda manejarlo.
+            return response()->json(['message' => 'Error de conexión o del servidor. Por favor, intente de nuevo más tarde.'], 500);
         }
     }
 
