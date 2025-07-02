@@ -92,3 +92,8 @@ Route::post('/inscribir-usuario/{usuario_id}/{materia_id}', [FastApiController::
 Route::put('/eliminar-inscripcion/{usuario_id}', [FastApiController::class, 'eliminarInscripcion']);
 Route::post('/recuperar-password', [FastApiController::class, 'recuperarPassword']);
 Route::put('/cambiar-contrasena', [FastApiController::class, 'cambiarContrasena']);
+
+
+Route::get('/error', function () {
+    abort(500, 'Soy una tetera');
+});
