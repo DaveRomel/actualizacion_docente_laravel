@@ -11,7 +11,7 @@ class FastApiController extends Controller
 {
     // private $baseUrl = 'http://192.168.254.12:4001/api';
     /* private $baseUrl = 'http://localhost:4000/api'; */
-    private $baseUrl = 'http://192.168.0.11:4000/api';
+    private $baseUrl = 'http://192.168.0.11:4000/api'; // Asegúrate de que esta URL sea correcta
 
     /**
      * Crea un nuevo usuario.
@@ -66,16 +66,43 @@ class FastApiController extends Controller
             $token = session('api_token');
             $response = Http::withToken($token)->put("{$this->baseUrl}/user/{$user_id}", $request->all());
 
-            if ($response->successful()) {
+            // Verifica el código de estado de la respuesta de la API externa
+            if ($response->status() === 400) {
+                $responseData = $response->json();
+                $errorMessage = $responseData['message'] ?? $responseData['detail'] ?? '';
+                $errorMessageLower = strtolower($errorMessage);
+
+                // Asumimos que un 400 con ciertos mensajes indica correo duplicado
+                if (
+                    (str_contains($errorMessageLower, 'correo') && str_contains($errorMessageLower, 'registrado')) ||
+                    (str_contains($errorMessageLower, 'email') && str_contains($errorMessageLower, 'exists')) ||
+                    (str_contains($errorMessageLower, 'duplicate') && str_contains($errorMessageLower, 'entry')) ||
+                    (str_contains($errorMessageLower, 'already exists')) ||
+                    (str_contains($errorMessageLower, 'ya existe'))
+                ) {
+                    // Si el mensaje indica un correo duplicado, devolvemos un 400 al frontend
+                    return response()->json(['message' => 'El correo electrónico ya ha sido registrado.'], 400);
+                } else {
+                    // Si es un 400 pero no es por correo duplicado, devolvemos el error tal cual
+                    return response()->json(['message' => 'Error al actualizar el usuario: ' . ($errorMessage ?: 'Solicitud inválida.')], 400);
+                }
+            } elseif ($response->successful()) {
                 $userResponse = Http::withToken($token)->get("http://192.168.0.11:4000/users/me/");
                 if ($userResponse->successful()) {
                     session(['current_user_data' => $userResponse->json()]);
                     return redirect('/principal');
+                } else {
+                    // Si la actualización fue exitosa pero no se pudo obtener el usuario actualizado
+                    return response()->json(['message' => 'Usuario actualizado, pero no se pudieron obtener los nuevos datos.'], $userResponse->status());
                 }
+            } else {
+                // Otros errores de la API externa
+                $errorMessage = $response->json()['message'] ?? $response->json()['detail'] ?? 'Error desconocido al actualizar el usuario.';
+                return response()->json(['message' => $errorMessage], $response->status());
             }
-            return response()->json($response->json(), $response->status());
         } catch (Throwable $e) {
-            return response()->view('errors.generico');
+            // Error de conexión o del servidor Laravel
+            return response()->json(['message' => 'Error de conexión o del servidor. Por favor, intente de nuevo más tarde.'], 500);
         }
     }
 
@@ -240,35 +267,24 @@ class FastApiController extends Controller
             if ($response->successful()) {
                 $responseData = $response->json();
                 if (!isset($responseData['access_token'])) {
-                    // Si no se recibe el token de acceso, esto es un error del servidor o de la API externa
-                    // Cambiado de back()->withErrors a JsonResponse
                     return response()->json(['message' => 'Token de acceso no recibido de la API.'], 500);
                 }
                 $accessToken = $responseData['access_token'];
                 session(['api_token' => $accessToken]);
 
-                // Intentar obtener los datos del usuario con el nuevo token
                 $userResponse = Http::withToken($accessToken)->get("http://192.168.0.11:4000/users/me/");
 
                 if ($userResponse->successful()) {
                     session(['current_user_data' => $userResponse->json()]);
-                    // Si el login y la obtención de datos del usuario son exitosos, redirige.
                     return redirect('/principal');
                 } else {
-                    // Si el token se obtuvo pero no se pudieron obtener los datos del usuario
                     session()->forget('api_token');
-                    // Cambiado de back()->withErrors a JsonResponse
                     return response()->json(['message' => 'No fue posible obtener los datos del usuario.'], $userResponse->status());
                 }
             } else {
-                // Si la petición al endpoint /token no fue exitosa (ej. 401 Unauthorized, 400 Bad Request)
-                // Esto indica credenciales incorrectas. Devolvemos un 401 al frontend.
-                // Cambiado de back()->withErrors a JsonResponse
                 return response()->json(['message' => 'Credenciales incorrectas.'], 401);
             }
         } catch (Throwable $e) {
-            // Si ocurre cualquier excepción (ej. la API no está disponible), devuelve un JSON de error
-            // en lugar de una vista genérica, para que el frontend AJAX pueda manejarlo.
             return response()->json(['message' => 'Error de conexión o del servidor. Por favor, intente de nuevo más tarde.'], 500);
         }
     }
