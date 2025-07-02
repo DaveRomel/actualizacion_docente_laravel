@@ -162,8 +162,10 @@ class FastApiController extends Controller
                 return response()->json(['message' => $errorMessage], $response->status());
             }
 
-            // Si la operación fue exitosa, redirige al inicio de sesión.
-            return redirect('/iniciar_sesion');
+            // Si la operación fue exitosa, devolvemos un JSON de éxito
+            // para que el frontend pueda mostrar el modal de éxito y luego redirigir.
+            return response()->json(['message' => 'Contraseña actualizada correctamente.'], 200);
+
         } catch (Throwable $e) {
             // Si hay un error de conexión o un error inesperado en Laravel,
             // devolvemos un 500 genérico para el frontend.
