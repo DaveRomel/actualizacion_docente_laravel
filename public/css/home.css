@@ -219,3 +219,20 @@
     font-size: 18pt;
     color: #C68C3E;
 }
+
+.curso button {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: #7E2C2C;
+    /* Color vino tinto */
+    color: white;
+    border: none;
+    padding: 2px 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15pt;
+    margin-top: 10px;
+}
+
+.curso button:hover{
+    background-color: #C68C3E;
+}
