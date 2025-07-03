@@ -39,7 +39,7 @@
                 <form id="inscriptionForm" action="{{ url('/inscribir-usuario/' . $currentUser['id'] .'/1') }}" method="post">
                     @csrf
                 {{-- PASO 1.2: Cambia el tipo de botón y añade un ID --}}
-                <button type="button" id="openModalBtn" class="{{ $contagem_inscritos >= 30 || $currentUser['status'] != 0 ? 'disabled' : '' }}" {{ $contagem_inscritos >= 30 || $currentUser['status'] != 0 ? 'disabled' : '' }}>
+                <button type="button" id="openModalBtn" class="disabled" disabled>
                     Inscribirme
                 </button>
                 </form>

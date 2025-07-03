@@ -35,7 +35,7 @@
 
                 <form id="inscriptionForm" action="{{ url('/inscribir-usuario/' . $currentUser['id'] .'/3') }}" method="post">
                     @csrf
-                 <button type="button" id="openModalBtn" class="{{ $contagem_inscritos >= 25 || $currentUser['status'] != 0 ? 'disabled' : '' }}" {{ $contagem_inscritos == 25 || $currentUser['status'] != 0 ? 'disabled' : '' }}>
+                 <button type="button" id="openModalBtn" class="disabled" disabled>
                     Inscribirme
                 </button>
                 </form>

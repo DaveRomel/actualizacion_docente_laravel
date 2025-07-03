@@ -58,7 +58,7 @@
                     @if($currentUser['status'] == 3)
                         <a href="{{ route('confirmacion_matematicas') }}">
                     @else
-                        <a href="{{ route('inscripcion_matematicas') }}">
+                        <a href="{{ route('no_inscripcion') }}">
                     @endif
                     
                         <div class="img-hover-m"></div>
@@ -69,7 +69,7 @@
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
                         </form>
                     @else
-                        <form action="{{ route('inscripcion_matematicas') }}" method="GET">
+                        <form action="{{ route('no_inscripcion') }}" method="GET">
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
                         </form>
 
@@ -85,7 +85,7 @@
                     @if($currentUser['status'] == 2)
                         <a href="{{ route('confirmacion_fisica') }}">
                     @else
-                       <a href="{{ route('inscripcion_fisica') }}">
+                       <a href="{{ route('no_inscripcion') }}">
                     @endif
                      
                         <div class="img-hover-f"></div>
@@ -96,7 +96,7 @@
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
                         </form>
                     @else
-                        <form action="{{ route('inscripcion_fisica') }}" method="GET">
+                        <form action="{{ route('no_inscripcion') }}" method="GET">
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
                         </form>
 
@@ -112,7 +112,7 @@
                     @if($currentUser['status'] == 1)
                         <a href="{{ route('confirmacion_computacion') }}">
                     @else
-                       <a href="{{ route('inscripcion_computacion') }}">
+                       <a href="{{ route('no_inscripcion') }}">
                     @endif
                      
                         <div class="img-hover-c"></div>
@@ -123,7 +123,7 @@
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
                         </form>
                     @else
-                        <form action="{{ route('inscripcion_computacion') }}" method="GET">
+                        <form action="{{ route('no_inscripcion') }}" method="GET">
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
                         </form>
 
