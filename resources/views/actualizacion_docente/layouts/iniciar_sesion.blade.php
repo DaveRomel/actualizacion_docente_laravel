@@ -5,7 +5,7 @@
 @endsection
 
 @section('header_sesion')
-    <a class="barra-nav" href="{{ route('registrarse') }}">Regístrate</a>
+    <a class="barra-nav" href="{{ route('no_inscripcion') }}">Regístrate</a>
 @endsection
 
 @section('contenido')
