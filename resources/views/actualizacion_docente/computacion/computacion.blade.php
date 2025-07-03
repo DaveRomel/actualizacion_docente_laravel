@@ -46,7 +46,7 @@
             </div>
     
             <div class="reminder-card">
-               <h2><span>Recuerda que:</span> <span>{{ $contagem_inscritos }}/30</sapn></h2>
+               <h2><span>Recuerda que:</span> <span><span id="inscritos-count">{{ $contagem_inscritos }}</span>/30 inscritos</span></h2>
                 <p>Solo puedes cambiar de curso si hay disponibilidad.</p>
                 <p>Este curso tiene un cupo máximo para 30 participantes </p>
             </div>
@@ -68,7 +68,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // --- Elementos del DOM ---
+        // --- LÓGICA DEL MODAL DE CONFIRMACIÓN ---
         const modal = document.getElementById('confirmationModal');
         const openModalBtn = document.getElementById('openModalBtn');
         const confirmBtn = document.getElementById('confirmBtn');
@@ -76,31 +76,40 @@
         const closeButton = document.querySelector('.close-button');
         const inscriptionForm = document.getElementById('inscriptionForm');
 
-        // --- Funciones para abrir y cerrar el modal ---
-        const openModal = () => modal.style.display = 'block';
-        const closeModal = () => modal.style.display = 'none';
-
-        // --- Lógica de Eventos ---
-
-        // 1. Abrir el modal al hacer clic en "Inscribirme", solo si no está deshabilitado.
         if (openModalBtn && !openModalBtn.disabled) {
-            openModalBtn.addEventListener('click', openModal);
+            openModalBtn.addEventListener('click', () => modal.style.display = 'block');
         }
-
-        // 2. Cerrar el modal al hacer clic en "Cancelar" o en la 'X'.
-        cancelBtn.addEventListener('click', closeModal);
-        closeButton.addEventListener('click', closeModal);
-
-        // 3. Cerrar el modal si se hace clic fuera de la caja de contenido.
-        window.addEventListener('click', function (event) {
+        if(cancelBtn) cancelBtn.addEventListener('click', () => modal.style.display = 'none');
+        if(closeButton) closeButton.addEventListener('click', () => modal.style.display = 'none');
+        if(confirmBtn) confirmBtn.addEventListener('click', () => inscriptionForm.submit());
+        window.addEventListener('click', (event) => {
             if (event.target == modal) {
-                closeModal();
+                modal.style.display = 'none';
             }
         });
 
-        // 4. Enviar el formulario al hacer clic en "Confirmar".
-        confirmBtn.addEventListener('click', function () {
-            inscriptionForm.submit();
-        });
+
+        // --- LÓGICA PARA ACTUALIZAR CONTADOR EN TIEMPO REAL ---
+        const reminderCard = document.querySelector('.reminder-card');
+        const countElement = document.getElementById('inscritos-count');
+
+        if (reminderCard && countElement) {
+            const materiaId = reminderCard.dataset.materiaId;
+
+            const fetchCount = () => {
+                // Llama a la ruta que apunta a tu FastApiController
+                fetch(`/materia/${materiaId}/inscritos`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.count !== undefined) {
+                        countElement.textContent = data.count;
+                    }
+                })
+                .catch(error => console.error('Error al actualizar el contador:', error));
+            };
+
+            // Llama a la función cada 5 segundos
+            setInterval(fetchCount, 5000);
+        }
     });
 </script>

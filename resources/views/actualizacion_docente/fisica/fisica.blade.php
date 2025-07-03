@@ -33,24 +33,22 @@
                 <p>Nombre: {{$currentUser['name']}}</p>
                 <p>Institución: {{$currentUser['procedencia']}}</p>
                 
-                {{-- 1. Añadir ID al formulario --}}
                 <form id="inscriptionForm" action="{{ url('/inscribir-usuario/' . $currentUser['id'] .'/2') }}" method="post">
                     @csrf
-                {{-- 2. Cambiar tipo de botón y añadir ID --}}
                 <button type="button" id="openModalBtn" class="{{ $contagem_inscritos >= 20 || $currentUser['status'] != 0 ? 'disabled' : '' }}" {{ $contagem_inscritos >= 20 || $currentUser['status'] != 0 ? 'disabled' : '' }}>
                     Inscribirme
                 </button>
                 </form>
             </div>
     
-            <div class="reminder-card">
-               <h2><span>Recuerda que:</span> <span>{{ $contagem_inscritos }}/20</sapn></h2>
+            {{-- 1. MODIFICACIÓN HTML: Se añade data-materia-id y el id al span del contador --}}
+            <div class="reminder-card" data-materia-id="2">
+               <h2><span>Recuerda que:</span> <span><span id="inscritos-count">{{ $contagem_inscritos }}</span>/20 inscritos</span></h2>
                 <p>Sólo puedes cambiar de curso si hay disponibilidad.</p>
                 <p>Este curso tiene un cupo máximo para 20 participantes </p>
             </div>
         </div>
 
-        {{-- 3. Añadir HTML del modal --}}
         <div id="confirmationModal" class="modal">
             <div class="modal-content">
                 <span class="close-button">&times;</span>
@@ -66,7 +64,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Elementos del DOM
+        // --- LÓGICA DEL MODAL (EXISTENTE) ---
         const modal = document.getElementById('confirmationModal');
         const openModalBtn = document.getElementById('openModalBtn');
         const confirmBtn = document.getElementById('confirmBtn');
@@ -74,27 +72,37 @@
         const closeButton = document.querySelector('.close-button');
         const inscriptionForm = document.getElementById('inscriptionForm');
 
-        // Funciones para abrir y cerrar el modal
-        const openModal = () => modal.style.display = 'block';
-        const closeModal = () => modal.style.display = 'none';
-
-        // Abrir el modal, solo si el botón no está deshabilitado
         if (openModalBtn && !openModalBtn.disabled) {
-            openModalBtn.addEventListener('click', openModal);
+            openModalBtn.addEventListener('click', () => modal.style.display = 'block');
         }
-
-        // Cerrar el modal
-        cancelBtn.addEventListener('click', closeModal);
-        closeButton.addEventListener('click', closeModal);
-        window.addEventListener('click', function (event) {
+        if(cancelBtn) cancelBtn.addEventListener('click', () => modal.style.display = 'none');
+        if(closeButton) closeButton.addEventListener('click', () => modal.style.display = 'none');
+        if(confirmBtn) confirmBtn.addEventListener('click', () => inscriptionForm.submit());
+        window.addEventListener('click', (event) => {
             if (event.target == modal) {
-                closeModal();
+                modal.style.display = 'none';
             }
         });
 
-        // Enviar el formulario al confirmar
-        confirmBtn.addEventListener('click', function () {
-            inscriptionForm.submit();
-        });
+        // --- 2. JAVASCRIPT: Lógica para el contador en tiempo real ---
+        const reminderCard = document.querySelector('.reminder-card');
+        const countElement = document.getElementById('inscritos-count');
+
+        if (reminderCard && countElement) {
+            const materiaId = reminderCard.dataset.materiaId; // Obtiene el "2"
+
+            const fetchCount = () => {
+                fetch(`/materia/${materiaId}/inscritos`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.count !== undefined) {
+                        countElement.textContent = data.count;
+                    }
+                })
+                .catch(error => console.error('Error al actualizar el contador:', error));
+            };
+
+            setInterval(fetchCount, 5000); // Actualiza cada 5 segundos
+        }
     });
 </script>

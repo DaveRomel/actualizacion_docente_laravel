@@ -37,7 +37,7 @@
             </div>
     
             <div class="confirmacion-reminder-card">
-                <h2><span>Recuerda que:</span> <span>{{ $contagem_inscritos }}/30</sapn></h2>
+                <h2><span>Recuerda que:</span> <span><span id="inscritos-count">{{ $contagem_inscritos }}</span>/30 inscritos</span></h2>
                 <p>Los cursos se abren con un mínimo de 10 integrantes</p>
                 <p>Si no se apertura un curso puedes darte de baja y elegir otro</p>
                 <p>La fecha límite de registro es el 2 de Julio 2025</p>
@@ -54,3 +54,30 @@
             </form>
         </div>
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // --- LÓGICA PARA ACTUALIZAR CONTADOR EN TIEMPO REAL ---
+        const reminderCard = document.querySelector('.confirmacion-reminder-card');
+        const countElement = document.getElementById('inscritos-count');
+
+        if (reminderCard && countElement) {
+            const materiaId = reminderCard.dataset.materiaId;
+
+            const fetchCount = () => {
+                // Llama a la ruta que apunta a tu FastApiController
+                fetch(`/materia/${materiaId}/inscritos`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.count !== undefined) {
+                        countElement.textContent = data.count;
+                    }
+                })
+                .catch(error => console.error('Error al actualizar el contador:', error));
+            };
+
+            // Llama a la función cada 5 segundos
+            setInterval(fetchCount, 5000);
+        }
+    });
+</script>

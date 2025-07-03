@@ -11,7 +11,7 @@ class FastApiController extends Controller
 {
     // private $baseUrl = 'http://192.168.254.12:4001/api';
     /* private $baseUrl = 'http://localhost:4000/api'; */
-    private $baseUrl = 'http://192.168.0.11:4000/api'; // Asegúrate de que esta URL sea correcta
+    private $baseUrl = 'http://192.168.0.8:4000/api'; // Asegúrate de que esta URL sea correcta
 
     /**
      * Crea un nuevo usuario.
@@ -87,7 +87,7 @@ class FastApiController extends Controller
                     return response()->json(['message' => 'Error al actualizar el usuario: ' . ($errorMessage ?: 'Solicitud inválida.')], 400);
                 }
             } elseif ($response->successful()) {
-                $userResponse = Http::withToken($token)->get("http://192.168.0.11:4000/users/me/");
+                $userResponse = Http::withToken($token)->get("http://192.168.0.8:4000/users/me/");
                 if ($userResponse->successful()) {
                     session(['current_user_data' => $userResponse->json()]);
                     return redirect('/principal');
@@ -187,7 +187,7 @@ class FastApiController extends Controller
             $token = session('api_token');
             $response = Http::withToken($token)->post("{$this->baseUrl}/inscripcion/{$usuario_id}/{$materia_id}");
             if ($response->successful()){
-                $userResponse = Http::withToken($token)->get("http://192.168.0.11:4000/users/me/");
+                $userResponse = Http::withToken($token)->get("http://192.168.0.8:4000/users/me/");
                 if ($userResponse->successful()) {
                     session(['current_user_data' => $userResponse->json()]);
                     switch ($materia_id) {
@@ -222,19 +222,40 @@ class FastApiController extends Controller
         }
     }
 
-    /**
+     /**
      * Contar inscritos por materia.
+     * Modificado para estandarizar la salida JSON para llamadas AJAX.
      *
      * @param int $materia_id
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View
+     * @return \Illuminate\Http\JsonResponse
      */
     public function contarInscritos($materia_id)
     {
         try {
-            $response = Http::get("{$this->baseUrl}/inscripcion/contar_inscritos_por_materia/{$materia_id}");
-            return response()->json($response->json(), $response->status());
+            // Es buena práctica usar el token si el endpoint lo requiere.
+            $token = session('api_token');
+            
+            // Si el endpoint no requiere token, puedes usar:
+            // $response = Http::get("{$this->baseUrl}/inscripcion/contar_inscritos_por_materia/{$materia_id}");
+            
+            $response = Http::withToken($token)->get("{$this->baseUrl}/inscripcion/contar_inscritos_por_materia/{$materia_id}");
+
+            if ($response->successful()) {
+                $data = $response->json();
+                
+                // Aseguramos que la salida sea siempre {"count": X}
+                // Esto funciona si la API devuelve solo un número o un objeto como {'count': 15}.
+                $count = is_numeric($data) ? $data : ($data['count'] ?? 'N/A');
+                
+                return response()->json(['count' => $count]);
+            } else {
+                // Si la API falla, devolvemos un JSON de error claro.
+                return response()->json(['error' => 'No se pudo obtener el conteo.'], $response->status());
+            }
+
         } catch (Throwable $e) {
-            return response()->view('errors.generico');
+            // Si hay un error de conexión, devolvemos un JSON de error.
+            return response()->json(['error' => 'Error de conexión con el servidor.'], 500);
         }
     }
 
@@ -251,7 +272,7 @@ class FastApiController extends Controller
             $token = session('api_token');
             $response = Http::withToken($token)->put("{$this->baseUrl}/inscripcion/{$usuario_id}");
             if ($response->successful()){
-                $userResponse = Http::withToken($token)->get("http://192.168.0.11:4000/users/me/");
+                $userResponse = Http::withToken($token)->get("http://192.168.0.8:4000/users/me/");
                 if ($userResponse->successful()) {
                     session(['current_user_data' => $userResponse->json()]);
                     return redirect('/principal');
@@ -272,7 +293,7 @@ class FastApiController extends Controller
     public function login(Request $request)
     {
         try {
-            $response = Http::asForm()->post("http://192.168.0.11:4000/token", [
+            $response = Http::asForm()->post("http://192.168.0.8:4000/token", [
                 'username' => $request->input('username'),
                 'password' => $request->input('password'),
             ]);
@@ -285,7 +306,7 @@ class FastApiController extends Controller
                 $accessToken = $responseData['access_token'];
                 session(['api_token' => $accessToken]);
 
-                $userResponse = Http::withToken($accessToken)->get("http://192.168.0.11:4000/users/me/");
+                $userResponse = Http::withToken($accessToken)->get("http://192.168.0.8:4000/users/me/");
 
                 if ($userResponse->successful()) {
                     session(['current_user_data' => $userResponse->json()]);

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Log;
 
 class MateriaApiService
 {
-    protected $fastApiBaseUrl = 'http://192.168.0.11:4000/api';
+    protected $fastApiBaseUrl = 'http://192.168.0.8:4000/api';
     protected $cacheDuration = 1; // Segundos
 
     public function getContagemInscritos($materia_id)

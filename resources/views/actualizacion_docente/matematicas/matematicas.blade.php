@@ -33,24 +33,22 @@
                 <p>Nombre: {{$currentUser['name']}}</p>
                 <p>Institución: {{$currentUser['procedencia']}}</p>
 
-                {{-- 1. Añadir ID al formulario --}}
                 <form id="inscriptionForm" action="{{ url('/inscribir-usuario/' . $currentUser['id'] .'/3') }}" method="post">
                     @csrf
-                {{-- 2. Cambiar tipo de botón y añadir ID --}}
                  <button type="button" id="openModalBtn" class="{{ $contagem_inscritos >= 25 || $currentUser['status'] != 0 ? 'disabled' : '' }}" {{ $contagem_inscritos == 25 || $currentUser['status'] != 0 ? 'disabled' : '' }}>
                     Inscribirme
                 </button>
                 </form>
             </div>
     
-            <div class="reminder-card">
-               <h2><span>Recuerda que:</span> <span>{{ $contagem_inscritos }}/25</sapn></h2>
+            {{-- 1. MODIFICACIÓN HTML: Se añade data-materia-id y el id al span del contador --}}
+            <div class="reminder-card" data-materia-id="3">
+               <h2><span>Recuerda que:</span> <span><span id="inscritos-count">{{ $contagem_inscritos }}</span>/25 inscritos</span></h2>
                 <p>Solo puedes cambiar de curso si hay disponibilidad.</p>
                 <p>Este curso tiene un cupo máximo para 25 participantes </p>
             </div>
         </div>
 
-        {{-- 3. Añadir HTML del modal --}}
         <div id="confirmationModal" class="modal">
             <div class="modal-content">
                 <span class="close-button">&times;</span>
@@ -63,9 +61,13 @@
             </div>
         </div>
 @endsection
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Elementos del DOM
+        console.log('Script de la página de Matemáticas cargado.');
+
+        // --- LÓGICA DEL MODAL (EXISTENTE) ---
+        // ... (el código del modal no se modifica) ...
         const modal = document.getElementById('confirmationModal');
         const openModalBtn = document.getElementById('openModalBtn');
         const confirmBtn = document.getElementById('confirmBtn');
@@ -73,27 +75,46 @@
         const closeButton = document.querySelector('.close-button');
         const inscriptionForm = document.getElementById('inscriptionForm');
 
-        // Funciones para abrir y cerrar el modal
-        const openModal = () => modal.style.display = 'block';
-        const closeModal = () => modal.style.display = 'none';
-
-        // Abrir el modal, solo si el botón no está deshabilitado
         if (openModalBtn && !openModalBtn.disabled) {
-            openModalBtn.addEventListener('click', openModal);
+            openModalBtn.addEventListener('click', () => modal.style.display = 'block');
         }
-
-        // Cerrar el modal
-        cancelBtn.addEventListener('click', closeModal);
-        closeButton.addEventListener('click', closeModal);
-        window.addEventListener('click', function (event) {
+        if(cancelBtn) cancelBtn.addEventListener('click', () => modal.style.display = 'none');
+        if(closeButton) closeButton.addEventListener('click', () => modal.style.display = 'none');
+        if(confirmBtn) confirmBtn.addEventListener('click', () => inscriptionForm.submit());
+        window.addEventListener('click', (event) => {
             if (event.target == modal) {
-                closeModal();
+                modal.style.display = 'none';
             }
         });
 
-        // Enviar el formulario al confirmar
-        confirmBtn.addEventListener('click', function () {
-            inscriptionForm.submit();
-        });
+
+        // --- LÓGICA PARA ACTUALIZAR CONTADOR CON DIAGNÓSTICO ---
+        const reminderCard = document.querySelector('.reminder-card');
+        const countElement = document.getElementById('inscritos-count');
+
+        // Mensaje para ver si encontró los elementos
+        console.log('Buscando elementos:', { reminderCard, countElement });
+
+        if (reminderCard && countElement) {
+            const materiaId = reminderCard.dataset.materiaId;
+            console.log('✅ Elementos encontrados. Iniciando polling para materia ID:', materiaId);
+
+            const fetchCount = () => {
+                console.log('Consultando al servidor...'); // Verás esto cada 5 segundos
+                fetch(`/materia/${materiaId}/inscritos`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.count !== undefined) {
+                        countElement.textContent = data.count;
+                    }
+                })
+                .catch(error => console.error('Error durante el fetch:', error));
+            };
+
+            setInterval(fetchCount, 5000);
+        } else {
+            // Si llega aquí, es porque no encontró uno de los elementos
+            console.error('❌ Error: No se encontraron los elementos HTML necesarios (.reminder-card o #inscritos-count). Revisa tu archivo Blade.');
+        }
     });
 </script>
