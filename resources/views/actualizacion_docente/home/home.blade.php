@@ -152,11 +152,12 @@
             </div>
             </a>
             @if($currentUser['status']!=0)
+            
             <form id="form-baja" action="{{ url('/eliminar-inscripcion/' . $currentUser['id']) }}" method="POST" style="display: inline;">
                 @csrf
                 @method('PUT')
                 
-                <button type="submit" class="temariod" style="background: none; border: none; padding: 0; cursor: pointer;">
+                <button type="button" id="openBajaModalBtn" class="temariod" style="background: none; border: none; padding: 0; cursor: pointer;">
                     <div class="dar_baja">
                         <img src="{{ asset('images/Baja.png') }}" alt="baja" style="width: 40px; height: 40px;">
                         Darse de baja<br/> de {{ $materiaActual }}
@@ -168,4 +169,60 @@
         </div>
     </div>
 
+    <!-- Modal de Confirmación para Darse de Baja -->
+    <div id="bajaConfirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Confirmar Baja</h2>
+            <p>¿Estás seguro de que deseas darte de baja de {{ $materiaActual }}?</p>
+            <div class="modal-buttons">
+                <button id="cancelBajaBtn" class="modal-btn cancel">Cancelar</button>
+                <button id="confirmBajaBtn" class="modal-btn confirm">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // --- LÓGICA DEL MODAL DE CONFIRMACIÓN PARA DARSE DE BAJA ---
+        const bajaModal = document.getElementById('bajaConfirmationModal');
+        const openBajaModalBtn = document.getElementById('openBajaModalBtn');
+        const confirmBajaBtn = document.getElementById('confirmBajaBtn');
+        const cancelBajaBtn = document.getElementById('cancelBajaBtn');
+        const closeBajaButton = bajaModal.querySelector('.close-button'); // Selector específico para este modal
+        const formBaja = document.getElementById('form-baja');
+
+        if (openBajaModalBtn) {
+            openBajaModalBtn.addEventListener('click', () => {
+                bajaModal.style.display = 'flex'; // Usar 'flex' para centrar
+            });
+        }
+
+        if(cancelBajaBtn) {
+            cancelBajaBtn.addEventListener('click', () => {
+                bajaModal.style.display = 'none';
+            });
+        }
+
+        if(closeBajaButton) {
+            closeBajaButton.addEventListener('click', () => {
+                bajaModal.style.display = 'none';
+            });
+        }
+
+        if(confirmBajaBtn) {
+            confirmBajaBtn.addEventListener('click', () => {
+                formBaja.submit(); // Envía el formulario si el usuario confirma
+            });
+        }
+
+        // Cierra el modal si se hace clic fuera del contenido
+        window.addEventListener('click', (event) => {
+            if (event.target == bajaModal) {
+                bajaModal.style.display = 'none';
+            }
+        });
+    });
+</script>
