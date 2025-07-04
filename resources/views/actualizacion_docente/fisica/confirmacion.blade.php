@@ -31,42 +31,42 @@
             <div class="confirmacion-card">
                 <img src="{{ asset('images/reactivo_inscrito.png') }}" alt="Icono Diploma" class="icon">
                 <h2>Inscrito a Física</h2>
-                <p>Nombre: {{$currentUser['name']}}</p>
-                <p>Institución: {{$currentUser['procedencia']}}</p>
+                <p>Nombre: {{$currentUser['name'] ?? 'N/A'}}</p>
+                <p>Institución: {{$currentUser['procedencia'] ?? 'N/A'}}</p>
             </div>
     
             {{-- 1. MODIFICACIÓN HTML: Se añade data-materia-id y el id al span del contador --}}
             <div class="confirmacion-reminder-card" data-materia-id="2">
-                <h2><span>Recuerda que:</span> <span><span id="inscritos-count" style="margin: 0;">{{ $contagem_inscritos }}</span>/20 inscritos</span></h2>
+                <h2><span>Recuerda que:</span> <span><span id="inscritos-count" style="margin: 0;">{{ $contagem_inscritos ?? 0 }}</span>/20 inscritos</span></h2>
                 <p>Los cursos se abren con un mínimo de 10 integrantes</p>
                 <p>Si no se apertura un curso puedes darte de baja y elegir otro</p>
                 <p>La fecha límite de registro es el 2 de Julio 2025</p>
             </div>
+            
             <form id="form-baja"  class="baja" action="{{ url('/eliminar-inscripcion/' . $currentUser['id']) }}" method="POST" style="display: inline;">
                 @csrf
                 @method('PUT')
-                <button type="submit"  style="background: none; border: none; padding: 0; cursor: pointer;">
+                <button type="button" id="openBajaConfirmationModalBtn" style="background: none; border: none; padding: 0; cursor: pointer;">
                     <div class="baja">
                         <img src="{{ asset('images/Baja.png') }}" alt="Icono baja" class="icon" style="height:40px">
                         <p class="textoBaja"> Darse de baja </p>
-            
                     </div>
-                    </button>
+                </button>
             </form>
         </div>
 
-        <!-- Modal de Confirmación para Darse de Baja -->
-        <div id="bajaConfirmationModal" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <h2>Confirmar Baja</h2>
-                <p>¿Estás seguro de que deseas darte de baja de Física?</p>
-                <div class="modal-buttons">
-                    <button id="cancelBajaBtn" class="modal-btn cancel">Cancelar</button>
-                    <button id="confirmBajaBtn" class="modal-btn confirm">Confirmar</button>
-                </div>
+    <!-- Modal de Confirmación para Darse de Baja -->
+    <div id="bajaConfirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Confirmar Baja</h2>
+            <p>¿Estás seguro de que deseas darte de baja de Física?</p>
+            <div class="modal-buttons">
+                <button id="cancelBajaBtn" class="modal-btn cancel">Cancelar</button>
+                <button id="confirmBajaBtn" class="modal-btn confirm">Confirmar</button>
             </div>
         </div>
+    </div>
 
 @endsection
 
