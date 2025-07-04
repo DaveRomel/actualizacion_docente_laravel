@@ -28,7 +28,7 @@
         @method('PUT')
 
         <div class="form-group">
-            <input type="text" name="name" value="{{$currentUser['name']}}" placeholder="Nombre" required>
+            <input type="text" name="name" value="{{$currentUser['name']}}" placeholder="Nombre Completo" required>
         </div>
 
         <div class="form-group">
