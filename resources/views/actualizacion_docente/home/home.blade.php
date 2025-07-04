@@ -151,20 +151,6 @@
                Editar<br/> información
             </div>
             </a>
-            @if($currentUser['status']!=0)
-            <form id="form-baja" action="{{ url('/eliminar-inscripcion/' . $currentUser['id']) }}" method="POST" style="display: inline;">
-                @csrf
-                @method('PUT')
-                
-                <button type="submit" class="temariod" style="background: none; border: none; padding: 0; cursor: pointer;">
-                    <div class="dar_baja">
-                        <img src="{{ asset('images/Baja.png') }}" alt="baja" style="width: 40px; height: 40px;">
-                        Darse de baja<br/> de {{ $materiaActual }}
-                    </div>
-                </button>
-            </form>
-
-            @endif
         </div>
     </div>
 
