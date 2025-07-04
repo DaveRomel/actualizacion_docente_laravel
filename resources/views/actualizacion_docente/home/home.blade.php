@@ -11,7 +11,7 @@
     Cerrar sesión
     </a>
     @else
-    <a class="barra-nav" href="{{ route('no_inscripcion') }}">Regístrate</a><a> / </a><a class="barra-nav" href="{{ route('iniciar_sesion') }}">Iniciar sesión</a>
+    <a class="barra-nav" href="{{ route('no_registro') }}">Regístrate</a><a> / </a><a class="barra-nav" href="{{ route('iniciar_sesion') }}">Iniciar sesión</a>
     @endif
 
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
