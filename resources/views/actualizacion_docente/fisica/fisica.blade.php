@@ -43,7 +43,7 @@
     
             {{-- 1. MODIFICACIÓN HTML: Se añade data-materia-id y el id al span del contador --}}
             <div class="reminder-card" data-materia-id="2">
-               <h2><span>Recuerda que:</span> <span><span id="inscritos-count">{{ $contagem_inscritos }}</span>/20 inscritos</span></h2>
+               <h2><span>Recuerda que:</span> <span><span id="inscritos-count" style="margin: 0;">{{ $contagem_inscritos }}</span>/20 inscritos</span></h2>
                 <p>Sólo puedes cambiar de curso si hay disponibilidad.</p>
                 <p>Este curso tiene un cupo máximo para 20 participantes </p>
             </div>

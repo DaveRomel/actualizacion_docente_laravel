@@ -37,7 +37,7 @@
             </div>
     
             <div class="confirmacion-reminder-card" data-materia-id="1">
-                <h2><span>Recuerda que:</span> <span><span id="inscritos-count">{{ $contagem_inscritos }}</span>/30 inscritos</span></h2>
+                <h2><span>Recuerda que:</span> <span><span id="inscritos-count" style="margin: 0;">{{ $contagem_inscritos }}</span>/30 inscritos</span></h2>
                 <p>Los cursos se abren con un mínimo de 10 integrantes</p>
                 <p>Si no se apertura un curso puedes darte de baja y elegir otro</p>
                 <p>La fecha límite de registro es el 2 de Julio 2025</p>

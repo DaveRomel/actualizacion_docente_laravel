@@ -46,7 +46,7 @@
             </div>
     
             <div class="reminder-card" data-materia-id="1">
-               <h2><span>Recuerda que:</span> <span><span id="inscritos-count">{{ $contagem_inscritos }}</span>/30 inscritos</span></h2>
+               <h2><span>Recuerda que:</span> <span><span id="inscritos-count" style="margin: 0;">{{ $contagem_inscritos }}</span>/30 inscritos</span></h2>
                 <p>Solo puedes cambiar de curso si hay disponibilidad.</p>
                 <p>Este curso tiene un cupo máximo para 30 participantes </p>
             </div>
