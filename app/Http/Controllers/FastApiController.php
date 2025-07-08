@@ -9,8 +9,9 @@ use Throwable; // Importar Throwable para capturar cualquier tipo de error o exc
 
 class FastApiController extends Controller
 {
-    // private $baseUrl = 'http://192.168.254.12:4001';
-    private $baseUrl = 'http://192.168.0.15:4000'; // Asegúrate de que esta URL sea correcta
+    private $baseUrl = 'http://localhost:4001';
+    //private $baseUrl = 'http://192.168.254.12:4001';
+    //private $baseUrl = 'http://192.168.0.15:4000'; // Asegúrate de que esta URL sea correcta
 
     /**
      * Crea un nuevo usuario.
