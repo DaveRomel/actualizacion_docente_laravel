@@ -90,6 +90,11 @@ Route::get('/noInscripcion', function()
     return view('errors.no');
 })->name('no_inscripcion');
 
+Route::get('/noRegistro', function()
+{
+    return view('errors.no_registro');
+})->name('no_registro');
+
 Route::post('/login', [FastApiController::class, 'login']);
 Route::post('/logout', [FastApiController::class, 'logout'])->name('logout');
 Route::put('/actualizar-usuario/{user_id}', [FastApiController::class, 'updateUser']);

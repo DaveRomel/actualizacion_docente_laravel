@@ -7,7 +7,7 @@
 @section('contenido')
     <div style="text-align: center; padding: 60px 20px; font-family: Bahnschrift, sans-serif;">
         <h1 style="font-size: 64px; color: #7E2C2C; margin-bottom: 20px;">¡Ups!</h1>
-        <p style="font-size: 28px; color: #C68C3E;">El tiempo para la inscripción ya ha pasado</p>
+        <p style="font-size: 28px; color: #C68C3E;">No es posible hacer un registro<br> Por favor, permanezca atento a la siguiente convocatoria.</p>
         <br>
         <br>
         <p style="font-size: 28px; color: #C68C3E;">Para cualquier aclaración, por favor contacte a la Vice-Rectoría Académica</p>
