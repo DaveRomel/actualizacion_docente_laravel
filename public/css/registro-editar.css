@@ -140,6 +140,61 @@ input::placeholder {
     background-color: #661f1f; /* Color más oscuro al pasar el mouse */
 }
 
+/* === Nuevo diseño del formulario de registro === */
+
+.registro-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.registro-card {
+    background-color: rgba(255, 255, 255, 0.93);
+    border-top: 5px solid #C68C3E;
+    border-radius: 18px;
+    padding: 1.4rem 2.8rem 1.6rem;
+    width: 720px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+}
+
+.registro-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 0.6rem;
+}
+
+.registro-header img {
+    width: 40px;
+    height: 40px;
+}
+
+.registro-divider {
+    border: none;
+    border-top: 1.5px solid #C68C3E;
+    margin: 0 0 1rem 0;
+}
+
+.registro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.5rem;
+    row-gap: 0.4rem;
+    margin-bottom: 1.2rem;
+}
+
+.registro-field {
+    display: flex;
+    align-items: flex-end;
+}
+
+.registro-field input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 /* Media queries para hacer el modal responsivo en diferentes tamaños de pantalla */
 @media (max-width: 768px) {
     .modal-message {

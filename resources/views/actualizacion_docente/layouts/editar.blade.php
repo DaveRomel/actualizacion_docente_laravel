@@ -15,35 +15,51 @@
 @endif
 
 @section('contenido')
-<div class="contenedor-formulario" style="max-height: 450px;">
-    <img src="{{ asset('images/registro.png') }}" alt="Icono editar" style="width: 80px; height: 80px;">
-    <br>
-    <div>
-        <div class="titulo-registro"><strong>Editar información</strong></div>
+<div class="registro-wrapper">
+    <div class="registro-card">
+
+        <div class="registro-header">
+            <img src="{{ asset('images/registro.png') }}" alt="Icono editar">
+            <span class="titulo-registro">Editar información</span>
+        </div>
+
+        <hr class="registro-divider">
+
+        <form id="editUserForm" action="{{ url('/actualizar-usuario/' . $currentUser['id']) }}" method="POST">
+            @csrf
+            @method('PUT')
+
+            <div class="registro-grid">
+                <div class="registro-field">
+                    <input type="text" name="name" value="{{$currentUser['name']}}" placeholder="Nombre Completo" tabindex="1" required>
+                </div>
+                <div class="registro-field">
+                    <input type="text" name="num_escuela" value="{{$currentUser['num_escuela'] ?? ''}}" placeholder="# de Escuela" tabindex="5" required>
+                </div>
+                <div class="registro-field">
+                    <input type="tel" name="celular" value="{{$currentUser['celular']}}" placeholder="Número de teléfono" tabindex="2" required>
+                </div>
+                <div class="registro-field">
+                    <input type="text" name="direccion" value="{{$currentUser['direccion'] ?? ''}}" placeholder="Dirección" tabindex="6" required>
+                </div>
+                <div class="registro-field">
+                    <input type="text" name="procedencia" value="{{$currentUser['procedencia']}}" placeholder="Escuela de procedencia" tabindex="3" required>
+                </div>
+                <div class="registro-field">
+                    <input type="text" name="localidad" value="{{$currentUser['localidad'] ?? ''}}" placeholder="Localidad" tabindex="7" required>
+                </div>
+                <div class="registro-field">
+                    <input type="text" name="subsistema" value="{{$currentUser['subsistema'] ?? ''}}" placeholder="Subsistema" tabindex="4" required>
+                </div>
+                <div class="registro-field">
+                    <input type="email" name="email" value="{{$currentUser['email']}}" placeholder="Correo electrónico" tabindex="8" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-registrarme" tabindex="9">Guardar cambios</button>
+        </form>
+
     </div>
-    <br>
-    {{-- Se ha añadido un ID al formulario para poder seleccionarlo con JavaScript --}}
-    <form id="editUserForm" action="{{ url('/actualizar-usuario/' . $currentUser['id']) }}" method="POST">
-        @csrf
-        @method('PUT')
-
-        <div class="form-group">
-            <input type="text" name="name" value="{{$currentUser['name']}}" placeholder="Nombre Completo" required>
-        </div>
-
-        <div class="form-group">
-            <input type="tel" name="celular" value="{{$currentUser['celular']}}" placeholder="Número de teléfono" required>
-        </div>
-
-        <div class="form-group">
-            <input type="text" name="procedencia" value="{{$currentUser['procedencia']}}" placeholder="Escuela de procedencia" required>
-        </div>
-
-        <div class="form-group">
-            <input type="email" name="email" value="{{$currentUser['email']}}" placeholder="Correo electrónico" required>
-        </div>
-        <button type="submit" class="btn-registrarme">Guardar cambios</button>
-    </form>
 </div>
 
 <!-- Modal para correo ya registrado en edición -->

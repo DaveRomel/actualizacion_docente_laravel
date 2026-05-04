@@ -10,41 +10,56 @@
 
 @section('contenido')
 
-<div class="contenedor-formulario" style="max-height: 450px;">
-    <img src="{{ asset('images/registro.png') }}" alt="Icono registro" style="width: 40px; height: 40px;">
-    <div>
-        <div class="titulo-registro"><strong>Registro</strong></div>
+<div class="registro-wrapper">
+    <div class="registro-card">
+
+        <div class="registro-header">
+            <img src="{{ asset('images/registro.png') }}" alt="Icono registro">
+            <span class="titulo-registro">Registro</span>
+        </div>
+
+        <hr class="registro-divider">
+
+        <form id="registroForm" action="{{ url('/api/crear-usuario') }}" method="POST">
+            @csrf
+
+            <div class="registro-grid">
+                <div class="registro-field">
+                    <input type="text" name="nombre" placeholder="Nombre Completo" tabindex="1" required>
+                </div>
+                <div class="registro-field">
+                    <input type="text" name="direccion" placeholder="Dirección" tabindex="6" required>
+                </div>
+                <div class="registro-field">
+                    <input type="tel" name="telefono" placeholder="Número de teléfono" tabindex="2" required>
+                </div>
+                <div class="registro-field">
+                    <input type="text" name="localidad" placeholder="Localidad" tabindex="7" required>
+                </div>
+                <div class="registro-field">
+                    <input type="text" name="escuela" placeholder="Escuela de procedencia" tabindex="3" required>
+                </div>
+                <div class="registro-field">
+                    <input type="email" name="correo" placeholder="Correo electrónico" tabindex="8" required>
+                </div>
+                <div class="registro-field">
+                    <input type="text" name="subsistema" placeholder="Subsistema" tabindex="4" required>
+                </div>
+                <div class="registro-field">
+                    <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" tabindex="9" required>
+                </div>
+                <div class="registro-field">
+                    <input type="text" name="num_escuela" placeholder="# de Escuela" tabindex="5" required>
+                </div>
+                <div class="registro-field">
+                    <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" placeholder="Confirmar contraseña" tabindex="10" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-registrarme" tabindex="11">Registrarme</button>
+        </form>
+
     </div>
-    {{-- Se ha añadido un ID al formulario para poder seleccionarlo con JavaScript --}}
-    <form id="registroForm" action="{{ url('/api/crear-usuario') }}" method="POST">
-        @csrf
-
-        <div class="form-group">
-            <input type="text" name="nombre" placeholder="Nombre Completo" required>
-        </div>
-
-        <div class="form-group">
-            <input type="tel" name="telefono" placeholder="Número de teléfono" required>
-        </div>
-
-        <div class="form-group">
-            <input type="text" name="escuela" placeholder="Escuela de procedencia" required>
-        </div>
-
-        <div class="form-group">
-            <input type="email" name="correo" placeholder="Correo electrónico" required>
-        </div>
-
-        <div class="form-group">
-            <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" required>
-        </div>
-
-        <div class="form-group">
-            <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" placeholder="Confirmar contraseña" required>
-        </div>
-
-        <button type="submit" class="btn-registrarme">Registrarme</button>
-    </form>
 </div>
 
 <!-- Modal para correo ya registrado -->

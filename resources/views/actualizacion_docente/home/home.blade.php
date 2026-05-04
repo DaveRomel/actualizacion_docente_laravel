@@ -47,6 +47,12 @@
                 <div class="bienvenidop">Bienvenido/a:&nbsp;</div>
                 <div class="nombrep">{{$currentUser['name']}}</div>
             </div>
+            <a class="temariod" href="{{route('editar')}}">
+                <div class="editar_informacion">
+                    <img src="{{ asset('images/configuracion.png') }}" alt="editar" style="width: 40px; height: 40px;">
+                    Editar información
+                </div>
+            </a>
             <div class="nombres">
                 <div class="bienvenidop">Inscrito a:&nbsp;</div>
                 <div class="nombrep">{{$materiaActual}}</div>
@@ -64,6 +70,12 @@
                         <div class="img-hover-m"></div>
                     </a>
                     <div class="titulocurso">Matemáticas</div>
+                    <a href="{{ asset('temarios/Programa_Matematicas.pdf') }}" target="_blank">
+                        <div class="botonTemario" style="cursor: pointer;">
+                            <div class="temario1">Temario</div>
+                            <div class="img-hover-t"></div>
+                        </div>
+                    </a>
                     @if($currentUser['status'] == 3)
                         <form action="{{ route('confirmacion_matematicas') }}" method="GET">
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
@@ -72,14 +84,7 @@
                         <form action="{{ route('inscripcion_matematicas') }}" method="GET">
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
                         </form>
-
                     @endif
-                    <a href="{{ asset('temarios/Programa_Matematicas.pdf') }}" target="_blank">
-                        <div class="botonTemario" style="cursor: pointer;">
-                            <div class="temario1">Temario</div>
-                            <div class="img-hover-t"></div>
-                        </div>
-                    </a>
                 </div>
                 <div class="curso">
                     @if($currentUser['status'] == 2)
@@ -91,6 +96,12 @@
                         <div class="img-hover-f"></div>
                     </a>
                     <div class="titulocurso">Física</div>
+                    <a href="{{ asset('temarios/Programa_Fisica.pdf') }}" target="_blank">
+                        <div class="botonTemario" style="cursor: pointer;">
+                            <div class="temario1">Temario</div>
+                            <div class="img-hover-t"></div>
+                        </div>
+                    </a>
                     @if($currentUser['status'] == 2)
                         <form action="{{ route('confirmacion_fisica') }}" method="GET">
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
@@ -99,14 +110,7 @@
                         <form action="{{ route('inscripcion_fisica') }}" method="GET">
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
                         </form>
-
                     @endif
-                    <a href="{{ asset('temarios/Programa_Fisica.pdf') }}" target="_blank">
-                        <div class="botonTemario" style="cursor: pointer;">
-                            <div class="temario1">Temario</div>
-                            <div class="img-hover-t"></div>
-                        </div>
-                    </a>
                 </div>
                 <div class="curso">
                     @if($currentUser['status'] == 1)
@@ -118,6 +122,12 @@
                         <div class="img-hover-c"></div>
                     <a>
                     <div class="titulocurso">Computación</div>
+                    <a href="{{ asset('temarios/Programa_Computacion.pdf') }}" target="_blank">
+                        <div class="botonTemario" style="cursor: pointer;">
+                            <div class="temario1">Temario</div>
+                            <div class="img-hover-t"></div>
+                        </div>
+                    </a>
                     @if($currentUser['status'] == 1)
                         <form action="{{ route('confirmacion_computacion') }}" method="GET">
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
@@ -126,31 +136,18 @@
                         <form action="{{ route('inscripcion_computacion') }}" method="GET">
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
                         </form>
-
                     @endif
-                    <a href="{{ asset('temarios/Programa_Computacion.pdf') }}" target="_blank">
-                        <div class="botonTemario" style="cursor: pointer;">
-                            <div class="temario1">Temario</div>
-                            <div class="img-hover-t"></div>
-                        </div>
-                    </a>
                 </div>
             </div>
-            <div class="temario">
+            <!--<div class="temario">
                 <div class="botonTemario">
                     <img src="{{ asset('images/descargar constancia.png') }}" alt="descarga temario"
                         style="width: 30px; height: 30px;">
                 </div>
                 <div class="constanciatxt">Descarga aquí tu constancia una vez finalizado el curso</div>
-            </div>
+            </div>-->
         </div>
         <div class="editar_baja">
-             <a class="temariod" href="{{route('editar')}}">
-            <div class="editar_informacion">
-                <img src="{{ asset('images/configuracion.png') }}" alt="editar" style="width: 40px; height: 40px;">
-               Editar<br/> información
-            </div>
-            </a>
             @if($currentUser['status']!=0)
             
             <form id="form-baja" action="{{ url('/eliminar-inscripcion/' . $currentUser['id']) }}" method="POST" style="display: inline;">
