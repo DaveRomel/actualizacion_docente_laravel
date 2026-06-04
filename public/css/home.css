@@ -122,6 +122,32 @@
     background-image: url('../images/Inscripción_computación.png');
 }
 
+.img-hover-i {
+    width: 120px;
+    height: 120px;
+    background-image: url('../images/ingles.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+}
+
+.img-hover-i:hover {
+    background-image: url('../images/inscripcion_ingles.png');
+}
+
+.img-hover-e {
+    width: 120px;
+    height: 120px;
+    background-image: url('../images/electronica.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s ease;
+}
+
+.img-hover-e:hover {
+    background-image: url('../images/inscripcion_electronica.png');
+}
+
 .cursos {
     display: flex;
     gap: 160px;
@@ -146,7 +172,7 @@
 }
 
 .botonTemario {
-    margin-top: 40px;
+    margin-top: 20px;
     width: 100px;
     background-color: #fff;
     border: 2px solid #7E2C2C;
@@ -207,17 +233,18 @@
 
 .editar_baja{
     display: flex;
-    position: relative;
-    justify-content: space-between;
-    margin: 0 32px;
-    z-index: 0;
-    top: -390px;
+    justify-content: center;
+    margin: 4px 32px;
 }
 
 .dar_baja{
     font-family: 'Bahnschrift', sans-serif;
     font-size: 18pt;
     color: #C68C3E;
+}
+
+#openBajaModalBtn:hover .dar_baja {
+    text-decoration: underline;
 }
 
 .curso button {

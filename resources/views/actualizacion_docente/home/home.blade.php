@@ -28,13 +28,15 @@
 @php
     $materiaActual = 'Ninguno';
     if ($currentUser['status'] == 1) {
-        $materiaActual = 'Inglés';
+        $materiaActual = 'Computación';
     } elseif ($currentUser['status'] == 2) {
         $materiaActual = 'Física';
     } elseif ($currentUser['status'] == 3) {
         $materiaActual = 'Matemáticas';
     } elseif ($currentUser['status'] == 8) {
         $materiaActual = 'Electrónica';
+    } elseif ($currentUser['status'] == 9) {
+        $materiaActual = 'Inglés';
     }
 @endphp
 
@@ -65,6 +67,7 @@
             <div class="cursos">
 
                 <div class="curso">
+
                     @if($currentUser['status'] == 3)
                         <a href="{{ route('confirmacion_matematicas') }}">
                     @else
@@ -73,8 +76,9 @@
                     
                         <div class="img-hover-m"></div>
                     </a>
+                    <br>
                     <div class="titulocurso">Matemáticas</div>
-                    <a href="{{ asset('temarios/Programa_Matematicas.pdf') }}" target="_blank">
+                    <a href="{{ asset('temarios/2026-actualización_docente_matemáticas.pdf') }}" target="_blank">
                         <div class="botonTemario" style="cursor: pointer;">
                             <div class="temario1">Temario</div>
                             <div class="img-hover-t"></div>
@@ -100,8 +104,9 @@
                      
                         <div class="img-hover-f"></div>
                     </a>
+                    <br>
                     <div class="titulocurso">Física</div>
-                    <a href="{{ asset('temarios/Programa_Fisica.pdf') }}" target="_blank">
+                    <a href="{{ asset('temarios/2026-actualización_docente_física.pdf') }}" target="_blank">
                         <div class="botonTemario" style="cursor: pointer;">
                             <div class="temario1">Temario</div>
                             <div class="img-hover-t"></div>
@@ -119,27 +124,28 @@
                 </div>
 
                 <div class="curso">
-                    @if($currentUser['status'] == 1)
-                        <a href="{{ route('confirmacion_computacion') }}">
+                    @if($currentUser['status'] == 9)
+                        <a href="{{ route('confirmacion_ingles') }}">
                     @else
-                       <a href="{{ route('inscripcion_computacion') }}">
+                       <a href="{{ route('inscripcion_ingles') }}">
                     @endif
-                     
-                        <div class="img-hover-c"></div>
+
+                        <div class="img-hover-i"></div>
                     <a>
+                    <br>
                     <div class="titulocurso">Inglés</div>
-                    <a href="{{ asset('temarios/Programa_Computacion.pdf') }}" target="_blank">
+                    <a href="{{ asset('temarios/2026-actualización_docente_inglés.pdf') }}" target="_blank">
                         <div class="botonTemario" style="cursor: pointer;">
                             <div class="temario1">Temario</div>
                             <div class="img-hover-t"></div>
                         </div>
                     </a>
-                    @if($currentUser['status'] == 1)
-                        <form action="{{ route('confirmacion_computacion') }}" method="GET">
+                    @if($currentUser['status'] == 9)
+                        <form action="{{ route('confirmacion_ingles') }}" method="GET">
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
                         </form>
                     @else
-                        <form action="{{ route('inscripcion_computacion') }}" method="GET">
+                        <form action="{{ route('inscripcion_ingles') }}" method="GET">
                             <button type="submit" class="btn btn-primary">Inscribirse</button>
                         </form>
                     @endif
@@ -152,10 +158,11 @@
                        <a href="{{ route('inscripcion_electronica') }}">
                     @endif
                      
-                        <div class="img-hover-c"></div>
+                        <div class="img-hover-e"></div>
                     <a>
+                    <br>
                     <div class="titulocurso">Electrónica</div>
-                    <a href="{{ asset('temarios/Programa_Computacion.pdf') }}" target="_blank">
+                    <a href="{{ asset('temarios/2026-actualización_docente_electrónica.pdf') }}" target="_blank">
                         <div class="botonTemario" style="cursor: pointer;">
                             <div class="temario1">Temario</div>
                             <div class="img-hover-t"></div>
@@ -192,7 +199,7 @@
                 <button type="button" id="openBajaModalBtn" class="temariod" style="background: none; border: none; padding: 0; cursor: pointer;">
                     <div class="dar_baja">
                         <img src="{{ asset('images/Baja.png') }}" alt="baja" style="width: 40px; height: 40px;">
-                        Darse de baja<br/> de {{ $materiaActual }}
+                        Darse de baja de: <span style="color: #7E2C2C;">{{ $materiaActual }}</span>
                     </div>
                 </button>
             </form>

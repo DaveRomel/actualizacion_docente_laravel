@@ -205,6 +205,10 @@ class FastApiController extends Controller
                             return redirect('/computacion/confirmacion');
                         case 2:
                             return redirect('/fisica/confirmacion');
+                        case 8:
+                            return redirect('/electronica/confirmacion');
+                        case 9:
+                            return redirect('/ingles/confirmacion');
                         default:
                             return redirect('/matematicas/confirmacion');
                     }

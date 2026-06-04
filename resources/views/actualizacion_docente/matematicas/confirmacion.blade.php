@@ -40,7 +40,7 @@
                 <h2><span>Recuerda que:</span> <span><span id="inscritos-count" style="margin: 0;">{{ $contagem_inscritos ?? 0 }}</span>/25 inscritos</span></h2>
                 <p>Los cursos se abren con un mínimo de 10 integrantes</p>
                 <p>Si no se apertura un curso puedes darte de baja y elegir otro</p>
-                <p>La fecha límite de registro es el 2 de Julio 2025</p>
+                <p>La fecha límite de registro es el 24 de Junio 2026</p>
             </div>
             
             <form id="form-baja"  class="baja" action="{{ url('/eliminar-inscripcion/' . ($currentUser['id'] ?? '')) }}" method="POST" style="display: inline;">

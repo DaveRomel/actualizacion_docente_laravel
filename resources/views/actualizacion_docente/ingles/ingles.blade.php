@@ -32,11 +32,11 @@
     
             <div class="inscription-card">
                 <img src="{{ asset('images/Inscripción_computación.png') }}" alt="Icono Diploma" class="icon"> {{-- Asegúrate de tener un icono apropiado --}}
-                <h2>Inscripción - Computación</h2>
+                <h2>Inscripción - Inglés</h2>
                 <p>Nombre: {{$currentUser['name']}}</p>
                 <p>Institución: {{$currentUser['procedencia']}}</p>
                 {{-- PASO 1.1: Agrega un ID al formulario --}}
-                <form id="inscriptionForm" action="{{ url('/inscribir-usuario/' . $currentUser['id'] .'/1') }}" method="post">
+                <form id="inscriptionForm" action="{{ url('/inscribir-usuario/' . $currentUser['id'] .'/9') }}" method="post">
                     @csrf
                 {{-- PASO 1.2: Cambia el tipo de botón y añade un ID --}}
                 <button type="button" id="openModalBtn" class="{{ $contagem_inscritos >= 30 || $currentUser['status'] != 0 ? 'disabled' : '' }}" {{ $contagem_inscritos >= 30 || $currentUser['status'] != 0 ? 'disabled' : '' }}>
@@ -45,7 +45,7 @@
                 </form>
             </div>
     
-            <div class="reminder-card" data-materia-id="1">
+            <div class="reminder-card" data-materia-id="9">
                <h2><span>Recuerda que:</span> <span><span id="inscritos-count" style="margin: 0;">{{ $contagem_inscritos }}</span>/30 inscritos</span></h2>
                 <p>Solo puedes cambiar de curso si hay disponibilidad.</p>
                 <p>Este curso tiene un cupo máximo para 30 participantes </p>

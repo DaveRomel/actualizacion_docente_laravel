@@ -31,12 +31,12 @@
     
             <div class="confirmacion-card">
                 <img src="{{ asset('images/reactivo_inscrito.png') }}" alt="Icono Diploma" class="icon">
-                <h2>Inscrito a Inglés</h2>
+                <h2>Inscrito a Electónica</h2>
                 <p>Nombre: {{$currentUser['name']}}</p>
                 <p>Institución: {{$currentUser['procedencia']}}</p>
             </div>
     
-            <div class="confirmacion-reminder-card" data-materia-id="1">
+            <div class="confirmacion-reminder-card" data-materia-id="8">
                 <h2><span>Recuerda que:</span> <span><span id="inscritos-count" style="margin: 0;">{{ $contagem_inscritos }}</span>/30 inscritos</span></h2>
                 <p>Los cursos se abren con un mínimo de 10 integrantes</p>
                 <p>Si no se apertura un curso puedes darte de baja y elegir otro</p>
@@ -59,7 +59,7 @@
             <div class="modal-content">
                 <span class="close-button">&times;</span>
                 <h2>Confirmar Baja</h2>
-                <p>¿Estás seguro de que deseas darte de baja de Inglés?</p>
+                <p>¿Estás seguro de que deseas darte de baja de Electrónica?</p>
                 <div class="modal-buttons">
                     <button id="cancelBajaBtn" class="modal-btn cancel">Cancelar</button>
                     <button id="confirmBajaBtn" class="modal-btn confirm">Confirmar</button>
