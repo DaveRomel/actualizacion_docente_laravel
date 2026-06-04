@@ -31,7 +31,7 @@
     
             <div class="confirmacion-card">
                 <img src="{{ asset('images/reactivo_inscrito.png') }}" alt="Icono Diploma" class="icon">
-                <h2>Inscrito a Computación</h2>
+                <h2>Inscrito a Inglés</h2>
                 <p>Nombre: {{$currentUser['name']}}</p>
                 <p>Institución: {{$currentUser['procedencia']}}</p>
             </div>
@@ -59,7 +59,7 @@
             <div class="modal-content">
                 <span class="close-button">&times;</span>
                 <h2>Confirmar Baja</h2>
-                <p>¿Estás seguro de que deseas darte de baja de Computación?</p>
+                <p>¿Estás seguro de que deseas darte de baja de Inglés?</p>
                 <div class="modal-buttons">
                     <button id="cancelBajaBtn" class="modal-btn cancel">Cancelar</button>
                     <button id="confirmBajaBtn" class="modal-btn confirm">Confirmar</button>

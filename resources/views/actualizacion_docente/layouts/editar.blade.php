@@ -34,7 +34,7 @@
                     <input type="text" name="name" value="{{$currentUser['name']}}" placeholder="Nombre Completo" tabindex="1" required>
                 </div>
                 <div class="registro-field">
-                    <input type="text" name="num_escuela" value="{{$currentUser['num_escuela'] ?? ''}}" placeholder="# de Escuela" tabindex="5" required>
+                    <input type="text" name="No_Escuela" value="{{$currentUser['No_Escuela'] ?? ''}}" placeholder="Num de Escuela" tabindex="5" required>
                 </div>
                 <div class="registro-field">
                     <input type="tel" name="celular" value="{{$currentUser['celular']}}" placeholder="Número de teléfono" tabindex="2" required>

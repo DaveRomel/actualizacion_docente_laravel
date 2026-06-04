@@ -28,11 +28,13 @@
 @php
     $materiaActual = 'Ninguno';
     if ($currentUser['status'] == 1) {
-        $materiaActual = 'Computación';
+        $materiaActual = 'Inglés';
     } elseif ($currentUser['status'] == 2) {
         $materiaActual = 'Física';
     } elseif ($currentUser['status'] == 3) {
         $materiaActual = 'Matemáticas';
+    } elseif ($currentUser['status'] == 8) {
+        $materiaActual = 'Electrónica';
     }
 @endphp
 
@@ -59,7 +61,9 @@
             </div>
         </div>
         <div class="container1">
+
             <div class="cursos">
+
                 <div class="curso">
                     @if($currentUser['status'] == 3)
                         <a href="{{ route('confirmacion_matematicas') }}">
@@ -86,6 +90,7 @@
                         </form>
                     @endif
                 </div>
+
                 <div class="curso">
                     @if($currentUser['status'] == 2)
                         <a href="{{ route('confirmacion_fisica') }}">
@@ -112,6 +117,7 @@
                         </form>
                     @endif
                 </div>
+
                 <div class="curso">
                     @if($currentUser['status'] == 1)
                         <a href="{{ route('confirmacion_computacion') }}">
@@ -121,7 +127,7 @@
                      
                         <div class="img-hover-c"></div>
                     <a>
-                    <div class="titulocurso">Computación</div>
+                    <div class="titulocurso">Inglés</div>
                     <a href="{{ asset('temarios/Programa_Computacion.pdf') }}" target="_blank">
                         <div class="botonTemario" style="cursor: pointer;">
                             <div class="temario1">Temario</div>
@@ -138,6 +144,34 @@
                         </form>
                     @endif
                 </div>
+
+                <div class="curso">
+                    @if($currentUser['status'] == 8)
+                        <a href="{{ route('confirmacion_electronica') }}">
+                    @else
+                       <a href="{{ route('inscripcion_electronica') }}">
+                    @endif
+                     
+                        <div class="img-hover-c"></div>
+                    <a>
+                    <div class="titulocurso">Electrónica</div>
+                    <a href="{{ asset('temarios/Programa_Computacion.pdf') }}" target="_blank">
+                        <div class="botonTemario" style="cursor: pointer;">
+                            <div class="temario1">Temario</div>
+                            <div class="img-hover-t"></div>
+                        </div>
+                    </a>
+                    @if($currentUser['status'] == 8)
+                        <form action="{{ route('confirmacion_electronica') }}" method="GET">
+                            <button type="submit" class="btn btn-primary">Inscribirse</button>
+                        </form>
+                    @else
+                        <form action="{{ route('inscripcion_electronica') }}" method="GET">
+                            <button type="submit" class="btn btn-primary">Inscribirse</button>
+                        </form>
+                    @endif
+                </div>
+
             </div>
             <!--<div class="temario">
                 <div class="botonTemario">
@@ -147,6 +181,7 @@
                 <div class="constanciatxt">Descarga aquí tu constancia una vez finalizado el curso</div>
             </div>-->
         </div>
+
         <div class="editar_baja">
             @if($currentUser['status']!=0)
             
@@ -164,6 +199,7 @@
 
             @endif
         </div>
+        
     </div>
 
     <!-- Modal de Confirmación para Darse de Baja -->

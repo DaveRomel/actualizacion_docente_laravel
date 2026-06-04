@@ -32,7 +32,7 @@
     
             <div class="inscription-card">
                 <img src="{{ asset('images/Inscripción_computación.png') }}" alt="Icono Diploma" class="icon"> {{-- Asegúrate de tener un icono apropiado --}}
-                <h2>Inscripción - Computación</h2>
+                <h2>Inscripción - Inglés</h2>
                 <p>Nombre: {{$currentUser['name']}}</p>
                 <p>Institución: {{$currentUser['procedencia']}}</p>
                 {{-- PASO 1.1: Agrega un ID al formulario --}}

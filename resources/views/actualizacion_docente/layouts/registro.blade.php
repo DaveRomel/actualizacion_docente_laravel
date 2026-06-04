@@ -49,7 +49,7 @@
                     <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" tabindex="9" required>
                 </div>
                 <div class="registro-field">
-                    <input type="text" name="num_escuela" placeholder="# de Escuela" tabindex="5" required>
+                    <input type="text" name="No_Escuela" placeholder="# de Escuela" tabindex="5" required>
                 </div>
                 <div class="registro-field">
                     <input type="password" name="confirmar_contrasena" id="confirmar_contrasena" placeholder="Confirmar contraseña" tabindex="10" required>
@@ -81,6 +81,15 @@
     </div>
 </div>
 
+<!-- Modal para errores generales del servidor -->
+<div id="serverErrorModal" class="modal">
+    <div class="modal-content">
+        <img src="https://placehold.co/60x60/7E2C2C/ffffff?text=!" alt="Icono de error" class="modal-icon">
+        <p id="serverErrorMessage" class="modal-message">Ocurrió un error al procesar la solicitud.</p>
+        <button id="closeServerErrorModalBtn" class="modal-button">Cerrar</button>
+    </div>
+</div>
+
 {{-- Script JavaScript para manejar el envío del formulario y los modales --}}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -88,8 +97,11 @@
         const registroForm = document.getElementById('registroForm');
         const emailExistsModal = document.getElementById('emailExistsModal');
         const passwordMismatchModal = document.getElementById('passwordMismatchModal'); // Nuevo modal
+        const serverErrorModal = document.getElementById('serverErrorModal');
+        const serverErrorMessage = document.getElementById('serverErrorMessage');
         const closeModalBtn = document.getElementById('closeEmailModalBtn'); // Botón para modal de email
         const closePasswordModalBtn = document.getElementById('closePasswordModalBtn'); // Botón para modal de contraseña
+        const closeServerErrorModalBtn = document.getElementById('closeServerErrorModalBtn');
         const contrasenaInput = document.getElementById('contrasena'); // Campo de contraseña
         const confirmarContrasenaInput = document.getElementById('confirmar_contrasena'); // Campo de confirmar contraseña
 
@@ -166,16 +178,21 @@
                     // Maneja otros errores (ej. errores de validación, errores del servidor 5xx)
                     const errorData = await response.json();
                     console.error('Error en el registro:', errorData.message || 'Error desconocido', 'Estado:', response.status);
+                    serverErrorMessage.textContent = errorData.detail || errorData.message || 'Ocurrió un error al procesar la solicitud.';
+                    showModal(serverErrorModal);
                 }
             } catch (error) {
                 // Captura errores de red o errores que impiden que la petición se complete
                 console.error('Error de red o del servidor:', error);
+                serverErrorMessage.textContent = 'No se pudo conectar con el servidor. Por favor, intente de nuevo.';
+                showModal(serverErrorModal);
             }
         });
 
         // Añade event listeners para cerrar los modales
         closeModalBtn.addEventListener('click', () => hideModal(emailExistsModal));
         closePasswordModalBtn.addEventListener('click', () => hideModal(passwordMismatchModal));
+        closeServerErrorModalBtn.addEventListener('click', () => hideModal(serverErrorModal));
 
         // Opcional: Cierra los modales si se hace clic fuera del contenido del modal
         emailExistsModal.addEventListener('click', function(event) {
@@ -187,6 +204,12 @@
         passwordMismatchModal.addEventListener('click', function(event) {
             if (event.target === passwordMismatchModal) {
                 hideModal(passwordMismatchModal);
+            }
+        });
+
+        serverErrorModal.addEventListener('click', function(event) {
+            if (event.target === serverErrorModal) {
+                hideModal(serverErrorModal);
             }
         });
     });

@@ -10,8 +10,9 @@ use Throwable; // Importar Throwable para capturar cualquier tipo de error o exc
 class FastApiController extends Controller
 {
      private $baseUrl = 'http://192.168.254.12:4001';
-    /* private $baseUrl = 'http://localhost:4000/api'; */
-   // private $baseUrl = 'http://192.168.0.15:4000'; // Asegúrate de que esta URL sea correcta
+     //private $baseUrl = 'http://127.0.0.1:4001';
+     /*private $baseUrl = 'http://localhost:4001'; */
+     //private $baseUrl = 'http://192.168.0.15:4000'; // Asegúrate de que esta URL sea correcta
 
     /**
      * Crea un nuevo usuario.
@@ -28,7 +29,7 @@ class FastApiController extends Controller
                 'name'         => $request->input('nombre'),
                 'celular'      => $request->input('telefono'),
                 'procedencia'  => $request->input('escuela'),
-                'num_escuela'  => $request->input('num_escuela'),
+                'No_Escuela'  => $request->input('No_Escuela'),
                 'subsistema'   => $request->input('subsistema'),
                 'direccion'    => $request->input('direccion'),
                 'localidad'    => $request->input('localidad'),
@@ -48,12 +49,17 @@ class FastApiController extends Controller
                 return redirect('/iniciar_sesion');
             } else {
                 // Si hay otro tipo de error de la API externa, devuelve una respuesta JSON
-                return response()->json(['message' => 'Error al registrar el usuario. Por favor, intente de nuevo.'], $response->status());
+                $errorBody = $response->json();
+                $errorDetail = $errorBody['detail'] ?? $errorBody['message'] ?? $response->body();
+                \Log::error('FastAPI error en createUser - Status: ' . $response->status() . ' Body: ' . $response->body());
+                return response()->json(['message' => 'Error al registrar el usuario.', 'detail' => $errorDetail], $response->status());
             }
         } catch (Throwable $e) {
             // Si ocurre cualquier excepción (ej. la API no está disponible), muestra una página de error genérica.
             // También es buena idea registrar el error para futura depuración: \Log::error($e->getMessage());
-            return response()->view('errors.generico');
+            // return response()->view('errors.generico');
+            \Log::error('Error en createUser: ' . $e->getMessage());
+            return response()->json(['message' => 'Error de conexión con el servidor. Por favor, intente de nuevo más tarde.'], 500);
         }
     }
 
@@ -226,13 +232,13 @@ class FastApiController extends Controller
         }
     }
 
-     /**
-     * Contar inscritos por materia.
-     * Modificado para estandarizar la salida JSON para llamadas AJAX.
-     *
-     * @param int $materia_id
-     * @return \Illuminate\Http\JsonResponse
-     */
+    /**
+    * Contar inscritos por materia.
+    * Modificado para estandarizar la salida JSON para llamadas AJAX.
+    *
+    * @param int $materia_id
+    * @return \Illuminate\Http\JsonResponse
+    */
     public function contarInscritos($materia_id)
     {
         try {

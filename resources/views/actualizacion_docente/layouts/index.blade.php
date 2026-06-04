@@ -23,7 +23,7 @@
                 <p>Si no se apertura un curso puedes darte de baja y elegir otro.</p>
             </li>
             <li>
-                <p>fecha <strong>límite </strong>de registro es el <strong>2 de julio de 2025.</strong></p>
+                <p>fecha <strong>límite </strong>de registro es el <strong>26 de junio de 2026.</strong></p>
             </li>
         </ul>
     </div>
