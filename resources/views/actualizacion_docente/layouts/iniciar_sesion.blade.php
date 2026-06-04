@@ -41,6 +41,15 @@
     <a href="{{ route('cambiar_contrasena') }}" class="pass_olvidado" style="color: #7E2C2C; font-style: italic;">Olvidaste tu contraseña</a>
 </div>
 
+<!-- Modal para sesión expirada -->
+<div id="sessionExpiredModal" class="modal" @if(session('session_expired')) style="display:flex;" @endif>
+    <div class="modal-content">
+        <img src="https://placehold.co/60x60/7E2C2C/ffffff?text=!" alt="Icono de sesión expirada" class="modal-icon">
+        <p class="modal-message">Tu sesión ha expirado. Por favor, inicia sesión nuevamente.</p>
+        <button id="closeSessionExpiredModalBtn" class="modal-button">Cerrar</button>
+    </div>
+</div>
+
 <!-- Modal para credenciales incorrectas -->
 <div id="loginErrorModal" class="modal">
     <div class="modal-content">
@@ -58,6 +67,18 @@
         const loginForm = document.getElementById('loginForm');
         const loginErrorModal = document.getElementById('loginErrorModal');
         const closeLoginModalBtn = document.getElementById('closeLoginModalBtn');
+
+        // Modal de sesión expirada
+        const sessionExpiredModal = document.getElementById('sessionExpiredModal');
+        const closeSessionExpiredModalBtn = document.getElementById('closeSessionExpiredModalBtn');
+        if (closeSessionExpiredModalBtn) {
+            closeSessionExpiredModalBtn.addEventListener('click', () => { sessionExpiredModal.style.display = 'none'; });
+        }
+        if (sessionExpiredModal) {
+            sessionExpiredModal.addEventListener('click', function(event) {
+                if (event.target === sessionExpiredModal) { sessionExpiredModal.style.display = 'none'; }
+            });
+        }
 
         // Verifica si el formulario fue encontrado
         if (!loginForm) {

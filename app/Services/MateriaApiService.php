@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Log;
 
 class MateriaApiService
 {
-    //protected $fastApiBaseUrl = 'http://192.168.0.15:4000/api';
-    protected $fastApiBaseUrl = 'http://192.168.254.12:4001';
-    //protected $fastApiBaseUrl = 'http://127.0.0.1:4001';
+    //protected $baseUrl = 'http://192.168.0.15:4000/api';
+    protected $baseUrl = 'http://127.0.0.1:4001';
+    //protected $baseUrl = 'http://127.0.0.1:4001';
     protected $cacheDuration = 1; // Segundos
 
     public function getContagemInscritos($materia_id)
@@ -21,7 +21,7 @@ class MateriaApiService
         return Cache::remember($cacheKey, $this->cacheDuration, function () use ($materia_id) {
             try {
                 $apiToken = session('api_token');
-                $response = Http::withToken($apiToken)->get("{$this->fastApiBaseUrl}/inscripcion/contar_inscritos_por_materia/{$materia_id}");
+                $response = Http::withToken($apiToken)->get("{$this->baseUrl}/inscripcion/contar_inscritos_por_materia/{$materia_id}");
                 if ($response->successful()) {
                     $data = $response->json();
                     if (is_numeric($data)) return (int) $data;

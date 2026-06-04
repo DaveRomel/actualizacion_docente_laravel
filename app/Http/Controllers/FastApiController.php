@@ -9,7 +9,7 @@ use Throwable; // Importar Throwable para capturar cualquier tipo de error o exc
 
 class FastApiController extends Controller
 {
-     private $baseUrl = 'http://192.168.254.12:4001';
+     private $baseUrl = 'http://127.0.0.1:4001';
      //private $baseUrl = 'http://127.0.0.1:4001';
      /*private $baseUrl = 'http://localhost:4001'; */
      //private $baseUrl = 'http://192.168.0.15:4000'; // Asegúrate de que esta URL sea correcta
@@ -105,6 +105,8 @@ class FastApiController extends Controller
                     // Si la actualización fue exitosa pero no se pudo obtener el usuario actualizado
                     return response()->json(['message' => 'Usuario actualizado, pero no se pudieron obtener los nuevos datos.'], $userResponse->status());
                 }
+            } elseif ($response->status() === 401) {
+                return $this->sessionExpired();
             } else {
                 // Otros errores de la API externa
                 $errorMessage = $response->json()['message'] ?? $response->json()['detail'] ?? 'Error desconocido al actualizar el usuario.';
@@ -214,6 +216,9 @@ class FastApiController extends Controller
                     }
                 }
             }
+            if ($response->status() === 401) {
+                return $this->sessionExpired();
+            }
             return response()->json($response->json(), $response->status());
         } catch (Throwable $e) {
             return response()->view('errors.generico');
@@ -292,6 +297,9 @@ class FastApiController extends Controller
                     return redirect('/principal');
                 }
             }
+            if ($response->status() === 401) {
+                return $this->sessionExpired();
+            }
             return response()->json($response->json(), $response->status());
         } catch (Throwable $e) {
             return response()->view('errors.generico');
@@ -369,6 +377,15 @@ class FastApiController extends Controller
         } catch (Throwable $e) {
             return response()->view('errors.generico');
         }
+    }
+
+    /**
+     * Redirige al login cuando el token ha expirado.
+     */
+    private function sessionExpired()
+    {
+        session()->flush();
+        return redirect()->route('iniciar_sesion')->with('session_expired', true);
     }
 
     /**

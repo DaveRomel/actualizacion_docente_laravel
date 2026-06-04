@@ -60,134 +60,77 @@ Route::get('/recuperar_contraseña', function () {
     return view('actualizacion_docente.layouts.cambiar_password');
 })->name('recuperar_contraseña');
 
-Route::get('/matematicas/inscripcion/', function () {
-    $token = session('api_token');
-    $baseUrl = 'http://192.168.254.12:4001';
+$baseUrl = 'http://127.0.0.1:4001';
+
+$fetchCount = function (int $materiaId) use ($baseUrl): int {
     try {
-        $response = Http::withToken($token)->get("{$baseUrl}/api/inscripcion/contar_inscritos_por_materia/3");
+        $response = Http::withToken(session('api_token'))
+            ->get("{$baseUrl}/api/inscripcion/contar_inscritos_por_materia/{$materiaId}");
         $data = $response->json();
-        $contagem_inscritos = is_numeric($data) ? $data : ($data['count'] ?? 0);
+        return is_numeric($data) ? (int) $data : ($data['count'] ?? 0);
     } catch (\Throwable $e) {
-        $contagem_inscritos = 0;
+        return 0;
     }
-    return view('actualizacion_docente.matematicas.matematicas', compact('contagem_inscritos'));
+};
+
+Route::get('/matematicas/inscripcion/', function () use ($fetchCount) {
+    return view('actualizacion_docente.matematicas.matematicas', [
+        'contagem_inscritos' => $fetchCount(3)
+    ]);
 })->name('inscripcion_matematicas')->middleware('ensure.api.data');
 
-Route::get('/matematicas/confirmacion/', function () {
-    $token = session('api_token');
-    $baseUrl = 'http://192.168.254.12:4001';
-    try {
-        $response = Http::withToken($token)->get("{$baseUrl}/api/inscripcion/contar_inscritos_por_materia/3");
-        $data = $response->json();
-        $contagem_inscritos = is_numeric($data) ? $data : ($data['count'] ?? 0);
-    } catch (\Throwable $e) {
-        $contagem_inscritos = 0;
-    }
-    return view('actualizacion_docente.matematicas.confirmacion', compact('contagem_inscritos'));
+Route::get('/matematicas/confirmacion/', function () use ($fetchCount) {
+    return view('actualizacion_docente.matematicas.confirmacion', [
+        'contagem_inscritos' => $fetchCount(3)
+    ]);
 })->name('confirmacion_matematicas')->middleware('ensure.api.data');
 
-Route::get('/computacion/inscripcion', function () {
-    $token = session('api_token');
-    $baseUrl = 'http://192.168.254.12:4001';
-    try {
-        $response = Http::withToken($token)->get("{$baseUrl}/api/inscripcion/contar_inscritos_por_materia/1");
-        $data = $response->json();
-        $contagem_inscritos = is_numeric($data) ? $data : ($data['count'] ?? 0);
-    } catch (\Throwable $e) {
-        $contagem_inscritos = 0;
-    }
-    return view('actualizacion_docente.computacion.computacion', compact('contagem_inscritos'));
+Route::get('/computacion/inscripcion', function () use ($fetchCount) {
+    return view('actualizacion_docente.computacion.computacion', [
+        'contagem_inscritos' => $fetchCount(1)
+    ]);
 })->name('inscripcion_computacion')->middleware('ensure.api.data');
 
-Route::get('/computacion/confirmacion', function () {
-    $token = session('api_token');
-    $baseUrl = 'http://192.168.254.12:4001';
-    try {
-        $response = Http::withToken($token)->get("{$baseUrl}/api/inscripcion/contar_inscritos_por_materia/1");
-        $data = $response->json();
-        $contagem_inscritos = is_numeric($data) ? $data : ($data['count'] ?? 0);
-    } catch (\Throwable $e) {
-        $contagem_inscritos = 0;
-    }
-    return view('actualizacion_docente.computacion.confirmacion', compact('contagem_inscritos'));
+Route::get('/computacion/confirmacion', function () use ($fetchCount) {
+    return view('actualizacion_docente.computacion.confirmacion', [
+        'contagem_inscritos' => $fetchCount(1)
+    ]);
 })->name('confirmacion_computacion')->middleware('ensure.api.data');
 
-Route::get('/electronica/inscripcion', function () {
-    $token = session('api_token');
-    $baseUrl = 'http://192.168.254.12:4001';
-    try {
-        $response = Http::withToken($token)->get("{$baseUrl}/api/inscripcion/contar_inscritos_por_materia/8");
-        $data = $response->json();
-        $contagem_inscritos = is_numeric($data) ? $data : ($data['count'] ?? 0);
-    } catch (\Throwable $e) {
-        $contagem_inscritos = 0;
-    }
-    return view('actualizacion_docente.electronica.electronica', compact('contagem_inscritos'));
+Route::get('/electronica/inscripcion', function () use ($fetchCount) {
+    return view('actualizacion_docente.electronica.electronica', [
+        'contagem_inscritos' => $fetchCount(8)
+    ]);
 })->name('inscripcion_electronica')->middleware('ensure.api.data');
 
-Route::get('/electronica/confirmacion', function () {
-    $token = session('api_token');
-    $baseUrl = 'http://192.168.254.12:4001';
-    try {
-        $response = Http::withToken($token)->get("{$baseUrl}/api/inscripcion/contar_inscritos_por_materia/8");
-        $data = $response->json();
-        $contagem_inscritos = is_numeric($data) ? $data : ($data['count'] ?? 0);
-    } catch (\Throwable $e) {
-        $contagem_inscritos = 0;
-    }
-    return view('actualizacion_docente.electronica.confirmacion', compact('contagem_inscritos'));
+Route::get('/electronica/confirmacion', function () use ($fetchCount) {
+    return view('actualizacion_docente.electronica.confirmacion', [
+        'contagem_inscritos' => $fetchCount(8)
+    ]);
 })->name('confirmacion_electronica')->middleware('ensure.api.data');
 
-Route::get('/ingles/inscripcion', function () {
-    $token = session('api_token');
-    $baseUrl = 'http://192.168.254.12:4001';
-    try {
-        $response = Http::withToken($token)->get("{$baseUrl}/api/inscripcion/contar_inscritos_por_materia/9");
-        $data = $response->json();
-        $contagem_inscritos = is_numeric($data) ? $data : ($data['count'] ?? 0);
-    } catch (\Throwable $e) {
-        $contagem_inscritos = 0;
-    }
-    return view('actualizacion_docente.ingles.ingles', compact('contagem_inscritos'));
+Route::get('/ingles/inscripcion', function () use ($fetchCount) {
+    return view('actualizacion_docente.ingles.ingles', [
+        'contagem_inscritos' => $fetchCount(9)
+    ]);
 })->name('inscripcion_ingles')->middleware('ensure.api.data');
 
-Route::get('/ingles/confirmacion', function () {
-    $token = session('api_token');
-    $baseUrl = 'http://192.168.254.12:4001';
-    try {
-        $response = Http::withToken($token)->get("{$baseUrl}/api/inscripcion/contar_inscritos_por_materia/9");
-        $data = $response->json();
-        $contagem_inscritos = is_numeric($data) ? $data : ($data['count'] ?? 0);
-    } catch (\Throwable $e) {
-        $contagem_inscritos = 0;
-    }
-    return view('actualizacion_docente.ingles.confirmacion', compact('contagem_inscritos'));
+Route::get('/ingles/confirmacion', function () use ($fetchCount) {
+    return view('actualizacion_docente.ingles.confirmacion', [
+        'contagem_inscritos' => $fetchCount(9)
+    ]);
 })->name('confirmacion_ingles')->middleware('ensure.api.data');
 
-Route::get('/fisica/inscripcion', function () {
-    $token = session('api_token');
-    $baseUrl = 'http://192.168.254.12:4001';
-    try {
-        $response = Http::withToken($token)->get("{$baseUrl}/api/inscripcion/contar_inscritos_por_materia/2");
-        $data = $response->json();
-        $contagem_inscritos = is_numeric($data) ? $data : ($data['count'] ?? 0);
-    } catch (\Throwable $e) {
-        $contagem_inscritos = 0;
-    }
-    return view('actualizacion_docente.fisica.fisica', compact('contagem_inscritos'));
+Route::get('/fisica/inscripcion', function () use ($fetchCount) {
+    return view('actualizacion_docente.fisica.fisica', [
+        'contagem_inscritos' => $fetchCount(2)
+    ]);
 })->name('inscripcion_fisica')->middleware('ensure.api.data');
 
-Route::get('/fisica/confirmacion', function () {
-    $token = session('api_token');
-    $baseUrl = 'http://192.168.254.12:4001';
-    try {
-        $response = Http::withToken($token)->get("{$baseUrl}/api/inscripcion/contar_inscritos_por_materia/2");
-        $data = $response->json();
-        $contagem_inscritos = is_numeric($data) ? $data : ($data['count'] ?? 0);
-    } catch (\Throwable $e) {
-        $contagem_inscritos = 0;
-    }
-    return view('actualizacion_docente.fisica.confirmacion', compact('contagem_inscritos'));
+Route::get('/fisica/confirmacion', function () use ($fetchCount) {
+    return view('actualizacion_docente.fisica.confirmacion', [
+        'contagem_inscritos' => $fetchCount(2)
+    ]);
 })->name('confirmacion_fisica')->middleware('ensure.api.data');
 
 Route::get('/principal', function () {
